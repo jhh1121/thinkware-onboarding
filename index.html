@@ -2057,7 +2057,7 @@ const topics=[
   ],
 
   ["첫날 작성해야 하는 전자결재 문서",
-    "<strong>그룹웨어 홈 → 전자결재 → 결재문서작성 → 인사 탭</strong>|<strong>13. 임직원 동의서</strong>를 선택합니다.|<strong>14. 개인정보 취급자 개인정보보호 서약서</strong>를 선택합니다.|두 문서는 내용을 천천히 읽어본 후 빠짐없이 작성합니다.|작성과 서명이 끝나면 화면 최상단의 기안 버튼을 클릭합니다."
+    "<strong>임직원 동의서와 개인정보 취급자 개인정보보호 서약서</strong>를 작성합니다.|전자결재 문서 작성 단계에서 본인의 소속 회사를 선택하면 각 문서를 바로 열 수 있습니다.|두 문서는 내용을 천천히 읽어본 후 빠짐없이 작성합니다.|작성과 서명이 끝나면 화면 최상단의 기안 버튼을 클릭합니다."
   ],
 
   ["전자결재 제목 작성 방법",
@@ -10752,7 +10752,7 @@ window.addEventListener("load", function(){
       image:
         "./public/groupware-employee-directory.webp",
       description:
-        "이름·부서·담당업무로 임직원을 검색하고, 내 정보에 본인의 담당업무를 등록합니다.",
+        "임직원을 검색하고, 실제 화면 안내에 따라 내 담당업무를 등록합니다.",
       directory:true
     },
     {
@@ -10789,7 +10789,7 @@ window.addEventListener("load", function(){
   image:
     "./public/groupware-document.png",
   description:
-    "그룹웨어 홈 → 전자결재 → 결재문서작성 → 인사 탭에서 13. 임직원 동의서와 14. 개인정보 취급자 개인정보보호 서약서를 천천히 읽어보고 작성합니다.",
+    "본인의 소속 회사를 선택해 임직원 동의서와 개인정보 취급자 개인정보보호 서약서를 바로 열고 작성합니다.",
   detail:
     "electronic-approval"
 },
@@ -10875,28 +10875,28 @@ if(
 
         <div class="gw-flow-item">
           <span>01</span>
-          <strong>그룹웨어 홈</strong>
+          <strong>그룹웨어 로그인</strong>
         </div>
 
         <i>→</i>
 
         <div class="gw-flow-item">
           <span>02</span>
-          <strong>전자결재</strong>
+          <strong>소속 회사 선택</strong>
         </div>
 
         <i>→</i>
 
         <div class="gw-flow-item">
           <span>03</span>
-          <strong>결재문서작성</strong>
+          <strong>필수 문서 작성</strong>
         </div>
 
         <i>→</i>
 
         <div class="gw-flow-item">
           <span>04</span>
-          <strong>인사 탭</strong>
+          <strong>기안</strong>
         </div>
 
       </div>
@@ -10904,8 +10904,8 @@ if(
       <div class="gw-document-grid">
 
         <article>
-          <span>DOCUMENT 13</span>
-          <h4>13. 임직원 동의서</h4>
+          <span>REQUIRED DOCUMENT 01</span>
+          <h4>임직원 동의서</h4>
           <p>각 동의서의 내용을 천천히 읽어보고 빠짐없이 작성합니다.</p>
 
           <ul>
@@ -10918,8 +10918,8 @@ if(
         </article>
 
         <article>
-          <span>DOCUMENT 14</span>
-          <h4>14. 개인정보 취급자<br>개인정보보호 서약서</h4>
+          <span>REQUIRED DOCUMENT 02</span>
+          <h4>개인정보 취급자<br>개인정보보호 서약서</h4>
           <p>내용을 천천히 확인한 후 필수 항목과 서명을 작성합니다.</p>
         </article>
 
@@ -18854,6 +18854,137 @@ html.workweek-modal-open {
   }
 }
 </style>
+<style id="site-image-zoom-20260909">
+.site-zoomable-image{
+  cursor:zoom-in !important;
+}
+.site-zoomable-target{
+  cursor:zoom-in !important;
+}
+.site-image-lightbox{
+  position:fixed;
+  z-index:50000;
+  inset:0;
+  display:none;
+  padding:clamp(18px,4vw,54px);
+  place-items:center;
+  background:rgba(8,11,16,.9);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.site-image-lightbox.open{display:grid;}
+.site-image-lightbox img{
+  display:block !important;
+  width:auto !important;
+  height:auto !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  max-width:94vw !important;
+  max-height:88vh !important;
+  padding:0 !important;
+  object-fit:contain !important;
+  border-radius:10px;
+  background:#fff;
+  box-shadow:0 28px 80px rgba(0,0,0,.48);
+}
+.site-image-lightbox button{
+  position:absolute;
+  top:18px;
+  right:20px;
+  display:grid;
+  width:46px;
+  height:46px;
+  padding:0;
+  place-items:center;
+  color:#fff;
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:50%;
+  background:rgba(18,22,29,.8);
+  font-size:25px;
+  cursor:pointer;
+}
+</style>
+<script id="site-image-zoom-script-20260909">
+(() => {
+  let lightbox=document.querySelector('.site-image-lightbox');
+  if(!lightbox){
+    lightbox=document.createElement('div');
+    lightbox.className='site-image-lightbox';
+    lightbox.setAttribute('role','dialog');
+    lightbox.setAttribute('aria-modal','true');
+    lightbox.setAttribute('aria-label','이미지 확대 보기');
+    lightbox.innerHTML='<button type="button" aria-label="확대 이미지 닫기">×</button><img src="" alt="">';
+    document.body.appendChild(lightbox);
+  }
+
+  const isZoomable=(img) => {
+    if(!(img instanceof HTMLImageElement) || !img.closest('#pageContent')) return false;
+    if(img.closest('a,button,[onclick],.gw-lightbox,.erp-lightbox,.guide-image-modal,.site-image-lightbox')) return false;
+    if(img.id && img.id.endsWith('MainImage')) return false;
+    if(img.matches('[data-no-zoom]')) return false;
+    const source=(img.getAttribute('src') || '').toLowerCase();
+    const alt=(img.getAttribute('alt') || '').toLowerCase();
+    return !source.includes('logo') && !alt.includes('logo') && !alt.includes('로고');
+  };
+
+  const prepare=(root=document) => {
+    const images=root.querySelectorAll ? root.querySelectorAll('#pageContent img') : [];
+    images.forEach((img) => {
+      if(!isZoomable(img)) return;
+      img.classList.add('site-zoomable-image');
+      img.setAttribute('tabindex','0');
+      img.setAttribute('role','button');
+      img.setAttribute('aria-label',`${img.alt || '안내 이미지'} 크게 보기`);
+      const target=img.parentElement;
+      if(target && !target.matches('a,button')){
+        target.classList.add('site-zoomable-target');
+        if(!target.hasAttribute('tabindex')) target.setAttribute('tabindex','0');
+        if(!target.hasAttribute('role')) target.setAttribute('role','button');
+        if(!target.hasAttribute('aria-label')) target.setAttribute('aria-label',`${img.alt || '안내 이미지'} 크게 보기`);
+      }
+    });
+  };
+
+  const openImage=(img) => {
+    const enlarged=lightbox.querySelector('img');
+    enlarged.src=img.currentSrc || img.src;
+    enlarged.alt=img.alt || '확대 이미지';
+    lightbox.classList.add('open');
+    lightbox.querySelector('button').focus();
+  };
+
+  const closeImage=() => lightbox.classList.remove('open');
+
+  document.addEventListener('click',(event) => {
+    if(event.target.closest?.('a,button')) return;
+    const target=event.target.closest?.('.site-zoomable-target');
+    const image=event.target.closest?.('img.site-zoomable-image') || target?.querySelector('img.site-zoomable-image');
+    if(image && isZoomable(image)) openImage(image);
+  });
+
+  document.addEventListener('keydown',(event) => {
+    if(lightbox.classList.contains('open') && event.key==='Escape'){
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      closeImage();
+      return;
+    }
+    const target=event.target;
+    const image=target?.matches?.('img.site-zoomable-image') ? target : target?.querySelector?.('img.site-zoomable-image');
+    if(image && (target.matches('img.site-zoomable-image,.site-zoomable-target')) && (event.key==='Enter' || event.key===' ')){
+      event.preventDefault();
+      openImage(image);
+    }
+  },true);
+
+  lightbox.addEventListener('click',(event) => {
+    if(event.target===lightbox || event.target.closest('button')) closeImage();
+  });
+
+  new MutationObserver(() => prepare()).observe(document.body,{childList:true,subtree:true});
+  prepare();
+})();
+</script>
 <style id="header-dropdown-close-fix-20260908">
 .header-menu-group.menu-selection-made .header-dropdown{
   opacity:0 !important;
@@ -19245,10 +19376,32 @@ html.workweek-modal-open {
   display:block;
 }
 
+#pageContent .gw-guide.duty-mode .gw-employee-directory{
+  display:block;
+}
+
 #pageContent .gw-guide.directory-mode .gw-viewer > .gw-viewer-head,
 #pageContent .gw-guide.directory-mode .gw-viewer > .gw-screen,
-#pageContent .gw-guide.directory-mode .gw-viewer > .gw-controls{
+#pageContent .gw-guide.directory-mode .gw-viewer > .gw-controls,
+#pageContent .gw-guide.duty-mode .gw-viewer > .gw-viewer-head,
+#pageContent .gw-guide.duty-mode .gw-viewer > .gw-screen,
+#pageContent .gw-guide.duty-mode .gw-viewer > .gw-controls{
   display:none !important;
+}
+
+#pageContent .gw-guide.directory-mode .gw-duty-guide{
+  display:block;
+}
+
+#pageContent .gw-guide.duty-mode .gw-directory-head,
+#pageContent .gw-guide.duty-mode .gw-directory-route,
+#pageContent .gw-guide.duty-mode .gw-directory-real-screen{
+  display:none;
+}
+
+#pageContent .gw-guide.duty-mode .gw-duty-guide{
+  display:block;
+  margin-top:0;
 }
 
 #pageContent .gw-viewer.app-install-active > .gw-viewer-head,
@@ -19708,6 +19861,135 @@ html.workweek-modal-open {
   word-break:keep-all;
 }
 
+#pageContent .gw-duty-guide{
+  margin-top:30px;
+  padding:clamp(24px,3.2vw,42px);
+  border:1px solid #e0e4e9;
+  border-radius:22px;
+  background:#fff;
+  box-shadow:0 14px 34px rgba(25,32,43,.06);
+}
+
+#pageContent .gw-duty-head{
+  display:flex;
+  gap:24px;
+  margin-bottom:24px;
+  align-items:flex-end;
+  justify-content:space-between;
+}
+
+#pageContent .gw-duty-head span{
+  display:block;
+  margin-bottom:8px;
+  color:#ed1c2b;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:.18em;
+}
+
+#pageContent .gw-duty-head h4{
+  margin:0;
+  font-size:clamp(24px,2.6vw,36px);
+  line-height:1.2;
+  letter-spacing:-.045em;
+}
+
+#pageContent .gw-duty-head p{
+  max-width:500px;
+  margin:0;
+  color:#69717d;
+  font-size:14px;
+  line-height:1.7;
+  text-align:right;
+  word-break:keep-all;
+}
+
+#pageContent .gw-duty-steps{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin:0 0 22px;
+  padding:0;
+  list-style:none;
+}
+
+#pageContent .gw-duty-steps li{
+  display:flex;
+  min-width:0;
+  padding:15px 16px;
+  align-items:center;
+  border:1px solid #e2e5ea;
+  border-radius:14px;
+  background:#f7f8fa;
+}
+
+#pageContent .gw-duty-steps b{
+  display:grid;
+  width:30px;
+  height:30px;
+  margin-right:11px;
+  flex:0 0 auto;
+  place-items:center;
+  color:#fff;
+  border-radius:9px;
+  background:#ed1c2b;
+  font-size:11px;
+}
+
+#pageContent .gw-duty-steps span{
+  color:#252a32;
+  font-size:13px;
+  font-weight:800;
+  line-height:1.45;
+  word-break:keep-all;
+}
+
+#pageContent .gw-duty-screens{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+}
+
+#pageContent .gw-duty-screen{
+  min-width:0;
+  margin:0;
+  overflow:hidden;
+  border:1px solid #dfe3e8;
+  border-radius:16px;
+  background:#f5f6f8;
+}
+
+#pageContent .gw-guide:not(.erp-photo-guide) .gw-viewer .gw-duty-screen img{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  max-width:100% !important;
+  padding:0 !important;
+  object-fit:contain !important;
+  background:#fff !important;
+}
+
+#pageContent .gw-guide:not(.erp-photo-guide) .gw-viewer .gw-duty-screen:first-child img{
+  width:min(100%,760px) !important;
+  margin:0 auto !important;
+}
+
+#pageContent .gw-duty-screen figcaption{
+  padding:14px 16px 16px;
+  color:#626b77;
+  font-size:12px;
+  line-height:1.6;
+  word-break:keep-all;
+}
+
+#pageContent .gw-duty-screen figcaption strong{
+  display:block;
+  margin-bottom:3px;
+  color:#20252d;
+  font-size:13px;
+}
+
 @media(max-width:900px){
   #pageContent .gw-employee-directory{
     width:calc(100% - 32px);
@@ -19721,6 +20003,24 @@ html.workweek-modal-open {
 
   #pageContent .gw-directory-head{
     gap:18px;
+  }
+
+  #pageContent .gw-duty-head{
+    display:block;
+  }
+
+  #pageContent .gw-duty-head p{
+    max-width:none;
+    margin-top:12px;
+    text-align:left;
+  }
+
+  #pageContent .gw-duty-steps{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  #pageContent .gw-duty-screens{
+    grid-template-columns:1fr;
   }
 }
 
@@ -19737,6 +20037,24 @@ html.workweek-modal-open {
     grid-column:1/-1;
     max-width:none;
     text-align:left;
+  }
+
+  #pageContent .gw-duty-guide{
+    padding:22px 16px;
+  }
+
+  #pageContent .gw-duty-steps{
+    grid-template-columns:1fr;
+  }
+
+  #pageContent .gw-duty-screen:last-child{
+    overflow-x:auto;
+    overscroll-behavior-inline:contain;
+  }
+
+  #pageContent .gw-guide:not(.erp-photo-guide) .gw-viewer .gw-duty-screen:last-child img{
+    width:760px !important;
+    max-width:none !important;
   }
 }
 </style>
@@ -19781,7 +20099,7 @@ html.workweek-modal-open {
         </div>
         <p>
           임직원 조회에서 이름·부서·담당업무를 검색할 수 있습니다.
-          입사 후에는 다른 구성원이 나를 쉽게 찾도록 본인의 담당업무도 꼭 등록해 주세요.
+          아래 실제 화면을 따라 본인의 담당업무도 등록해 주세요.
         </p>
       </header>
 
@@ -19822,84 +20140,50 @@ html.workweek-modal-open {
         </figcaption>
       </figure>
 
-      <div class="gw-directory-grid">
-        <article class="gw-directory-panel">
-          <div class="gw-directory-panel-top">
-            <div>
-              <span>01 · 임직원 찾기</span>
-              <h4>임직원 조회</h4>
-            </div>
-            <b>⌕</b>
+      <section class="gw-duty-guide" aria-labelledby="gwDutyTitle">
+        <header class="gw-duty-head">
+          <div>
+            <span>담당업무 기입 방법</span>
+            <h4 id="gwDutyTitle">내 담당업무 수정하기</h4>
           </div>
+          <p>프로필 메뉴에서 개인환경설정으로 이동한 뒤 담당업무를 수정하고 저장합니다.</p>
+        </header>
 
-          <div class="gw-search-mock">
-            <span>이름 · 부서 · 담당업무 검색</span>
-            <b>검색</b>
-          </div>
+        <ol class="gw-duty-steps">
+          <li><b>01</b><span>우측 상단 프로필 클릭</span></li>
+          <li><b>02</b><span>개인환경설정 클릭</span></li>
+          <li><b>03</b><span>비밀번호 입력</span></li>
+          <li><b>04</b><span>담당업무 수정 후 저장</span></li>
+        </ol>
 
-          <div class="gw-person-result">
-            <div class="gw-person-avatar">김</div>
-            <div class="gw-person-info">
-              <strong>김하늘 책임</strong>
-              <small>경영관리본부 · 인사팀</small>
-            </div>
-            <div class="gw-person-task">
-              담당업무 · 휴가, 근태, 4대보험, 제증명서
-            </div>
-          </div>
-        </article>
+        <div class="gw-duty-screens">
+          <figure class="gw-duty-screen">
+            <img
+              src="./public/groupware-profile-menu-annotated.webp"
+              alt="그룹웨어 우측 상단 프로필 메뉴에서 개인환경설정을 선택하는 화면"
+              loading="eager"
+              decoding="async"
+            >
+            <figcaption>
+              <strong>프로필 메뉴 열기</strong>
+              우측 상단 프로필을 클릭하고 개인환경설정을 선택합니다.
+            </figcaption>
+          </figure>
 
-        <article class="gw-directory-panel">
-          <div class="gw-directory-panel-top">
-            <div>
-              <span>02 · 내 정보 등록</span>
-              <h4>내 담당업무 등록</h4>
-            </div>
-            <b>＋</b>
-          </div>
-
-          <div class="gw-register-box">
-            <div class="gw-profile-route">
-              <span>우측 상단 프로필</span>
-              <i>→</i>
-              <span>내 정보</span>
-              <i>→</i>
-              <strong>담당업무</strong>
-            </div>
-
-            <div class="gw-register-label">
-              <span>담당업무</span>
-              <em>필수 입력</em>
-            </div>
-            <div class="gw-register-input">
-              채용 · 제증명서 신청 · 복리후생 안내
-            </div>
-            <div class="gw-register-example">
-              <span>업무명은 짧게</span>
-              <span>검색어 중심으로</span>
-              <span>변경 시 바로 수정</span>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="gw-directory-checks">
-        <article>
-          <span>검색</span>
-          <strong>담당자 찾기</strong>
-          <p>이름뿐 아니라 부서와 담당업무로도 검색할 수 있습니다.</p>
-        </article>
-        <article>
-          <span>작성</span>
-          <strong>업무 단위로 작성</strong>
-          <p>동료가 검색할 표현을 기준으로 핵심 업무만 간결하게 적습니다.</p>
-        </article>
-        <article>
-          <span>수정</span>
-          <strong>정보 최신화</strong>
-          <p>담당업무가 변경되면 내 정보에서 내용을 바로 수정합니다.</p>
-        </article>
-      </div>
+          <figure class="gw-duty-screen">
+            <img
+              src="./public/groupware-duty-edit-annotated.webp"
+              alt="개인환경설정에서 담당업무를 수정하고 저장하는 화면"
+              loading="eager"
+              decoding="async"
+            >
+            <figcaption>
+              <strong>담당업무 수정하기</strong>
+              비밀번호 확인 후 담당업무를 수정하고 저장 버튼을 누릅니다.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
     `;
 
     const viewer=groupwareGuide?.querySelector(".gw-viewer");
@@ -23143,6 +23427,68 @@ document.addEventListener("click", function(event) {
   transform: translateY(-50%);
 }
 
+.approval-company-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 14px;
+}
+
+.approval-company-card {
+  padding: 22px;
+  border: 1px solid #dedbd6;
+  border-radius: 15px;
+  background: #faf9f7;
+}
+
+.approval-company-card > span {
+  display: block;
+  margin-bottom: 14px;
+  color: #d8323c;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.approval-company-links {
+  display: grid;
+  gap: 9px;
+}
+
+.approval-company-links a {
+  display: flex;
+  min-height: 54px;
+  padding: 13px 15px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  color: #27282d;
+  border: 1px solid #dfdcd7;
+  border-radius: 11px;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.45;
+  text-decoration: none;
+  word-break: keep-all;
+}
+
+.approval-company-links a::after {
+  flex: 0 0 auto;
+  color: #d8323c;
+  content: "↗";
+  font-size: 17px;
+}
+
+.approval-company-links a:hover {
+  color: #fff;
+  border-color: #d8323c;
+  background: #d8323c;
+}
+
+.approval-company-links a:hover::after {
+  color: #fff;
+}
+
 /* 부서별 번호 차이 */
 .approval-number-note {
   display: grid;
@@ -23251,7 +23597,8 @@ document.addEventListener("click", function(event) {
   }
 
   .approval-form-list,
-  .approval-number-note {
+  .approval-number-note,
+  .approval-company-grid {
     grid-template-columns: 1fr;
   }
 
@@ -23330,9 +23677,8 @@ document.addEventListener("click", function(event) {
         </div>
 
         <p>
-          그룹웨어의 전자결재 메뉴에서 신규입사자 필수 문서를
-          확인하고 작성합니다. 부서에 따라 양식의 순번이 다를
-          수 있으므로 반드시 양식명을 확인해 주세요.
+          본인의 소속 회사를 확인한 뒤 임직원 동의서와
+          개인정보 취급자 개인정보보호 서약서를 바로 열어 작성합니다.
         </p>
       </header>
 
@@ -23379,51 +23725,35 @@ document.addEventListener("click", function(event) {
       <section class="approval-form-panel">
         <div class="approval-form-title">
           <div>
-            <span>인사</span>
-            <strong>필수 양식 선택</strong>
+            <span>바로가기</span>
+            <strong>소속 회사의 필수 문서 열기</strong>
           </div>
 
-          <p>번호보다 정확한 양식명을 확인해 주세요.</p>
+          <p>그룹웨어에 로그인한 상태에서 문서가 열립니다.</p>
         </div>
 
-        <div class="approval-form-list">
-          <article class="approval-form-item">
-            <small>REQUIRED DOCUMENT 01</small>
-            <strong>임직원 동의서</strong>
+        <div class="approval-company-grid">
+          <article class="approval-company-card">
+            <span>팅크웨어</span>
+            <div class="approval-company-links">
+              <a href="https://portal.thinkware.co.kr/WebSite/Approval/Forms/Form.aspx?fmid=d33be651-7ff5-4185-be5e-b72aac9a5514&amp;mode=DRAFT&amp;CFN_OpenWindowName=36004" target="_blank" rel="noopener noreferrer">임직원 동의서</a>
+              <a href="https://portal.thinkware.co.kr/WebSite/Approval/Forms/Form.aspx?fmid=a37ee4ae-e618-4322-b2ed-8b56eb1ca718&amp;mode=DRAFT&amp;CFN_OpenWindowName=81004" target="_blank" rel="noopener noreferrer">개인정보 취급자 개인정보보호 서약서</a>
+            </div>
           </article>
 
-          <article class="approval-form-item">
-            <small>REQUIRED DOCUMENT 02</small>
-            <strong>
-              개인정보 취급자 개인정보보호 서약서
-            </strong>
+          <article class="approval-company-card">
+            <span>팅크웨어오토모티브</span>
+            <div class="approval-company-links">
+              <a href="https://portal.thinkware.co.kr/WebSite/Approval/Forms/Form.aspx?fmid=f1edd272-95fa-4204-bca2-529d3a876704&amp;mode=DRAFT&amp;CFN_OpenWindowName=81431" target="_blank" rel="noopener noreferrer">임직원 동의서</a>
+              <a href="https://portal.thinkware.co.kr/WebSite/Approval/Forms/Form.aspx?fmid=84130bbe-4e48-4c52-a01a-c9963c696135&amp;mode=DRAFT&amp;CFN_OpenWindowName=82112" target="_blank" rel="noopener noreferrer">개인정보 취급자 개인정보보호 서약서</a>
+            </div>
           </article>
-        </div>
-
-        <div class="approval-number-note">
-          <div>
-            <small>일반 부서 화면</small>
-            <strong>
-              13. 임직원 동의서<br>
-              14. 개인정보 취급자 개인정보보호 서약서
-            </strong>
-          </div>
-
-          <div>
-            <small>인사팀 화면</small>
-            <strong>
-              15. 임직원 동의서<br>
-              16. 개인정보 취급자 개인정보보호 서약서
-            </strong>
-          </div>
         </div>
 
         <p class="approval-important">
-          <strong>꼭 확인해 주세요.</strong>
-          부서별 권한과 화면 구성에 따라 양식 순번은 달라질 수
-          있습니다. 순번만 찾지 말고 ‘임직원 동의서’와
-          ‘개인정보 취급자 개인정보보호 서약서’라는 양식명을
-          기준으로 선택해 주세요.
+          <strong>소속 회사를 확인해 주세요.</strong>
+          팅크웨어와 팅크웨어오토모티브의 문서가 다르므로 본인의
+          소속 회사에 맞는 링크를 선택해 작성합니다.
         </p>
       </section>
 
@@ -35077,6 +35407,16 @@ img:hover {
 .footer-company-logo{display:flex;align-items:center;width:124px;margin-right:auto;}
 .footer-company-logo img{display:block;width:100%;height:auto;}
 .access-modern-v2 .access-v2-logo img{display:block;width:min(190px,70%);height:auto;}
+#pageContent .gw-guide:not(.erp-photo-guide) .gw-viewer .access-modern-v2 .access-v2-logo img{
+  display:block !important;
+  width:min(190px,70%) !important;
+  height:auto !important;
+  min-height:0 !important;
+  max-width:190px !important;
+  padding:0 !important;
+  object-fit:contain !important;
+  background:transparent !important;
+}
 @media(max-width:700px){
   .home-manual-final{padding:0 20px 64px;}
   .network-manual-entry{display:block;width:100%;margin-top:0;padding:22px;}
