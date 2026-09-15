@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1914" height="922" viewBox="0 0 1914 922">
+  <image href="groupware-profile-menu-full.png" width="1914" height="922"/>
+  <ellipse cx="1731" cy="28" rx="35" ry="27" fill="none" stroke="#ed1c2e" stroke-width="5"/>
+  <circle cx="1701" cy="8" r="18" fill="#ed1c2e"/>
+  <text x="1701" y="14" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="17" font-weight="700">1</text>
+  <rect x="1704" y="83" width="110" height="34" rx="6" fill="none" stroke="#ed1c2e" stroke-width="5"/>
+  <rect x="1498" y="82" width="190" height="36" rx="18" fill="#ed1c2e"/>
+  <text x="1593" y="105" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="16" font-weight="700">2 · 개인환경설정</text>
+</svg>
