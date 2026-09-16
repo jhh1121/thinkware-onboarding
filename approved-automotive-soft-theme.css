@@ -56,3 +56,370 @@
 #pageContent .company-overview .company-intro>h3{position:relative!important;inset:auto!important;transform:none!important;display:block!important;align-self:stretch!important;width:100%!important;max-width:none!important;margin:42px 0 0!important;padding:0!important;color:var(--auto-ink)!important;font-size:clamp(36px,3.6vw,52px)!important;line-height:1.15!important;text-align:center!important;background:transparent!important}
 #pageContent .company-overview .company-intro>p{position:relative!important;display:block!important;width:100%!important;max-width:820px!important;margin:28px auto 0!important;padding:0!important;color:var(--auto-muted)!important;font-size:16px!important;line-height:1.75!important;text-align:center!important;background:transparent!important}
 @media(max-width:760px){#pageContent .company-overview .company-intro{min-height:390px!important;padding:42px 22px!important}#pageContent .company-overview .company-intro>.company-label{font-size:clamp(31px,9vw,46px)!important}#pageContent .company-overview .company-intro>strong.company-intro-line{margin-top:18px!important;font-size:15px!important}#pageContent .company-overview .company-intro>strong.company-intro-line::after{margin-top:17px!important}#pageContent .company-overview .company-intro>h3{margin-top:32px!important;font-size:32px!important}#pageContent .company-overview .company-intro>p{margin-top:20px!important;font-size:14px!important}}
+
+/* THINKWARE SIGNAL: meaningful section identity without decorative diagonals */
+#pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.butfit-membership-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.workweek-board-top,.access-modern-head)::after{display:none!important}
+#pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.butfit-membership-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.workweek-board-top,.access-modern-head){isolation:isolate!important}
+#pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.butfit-membership-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.workweek-board-top,.access-modern-head)>:not(.tw-section-signal){position:relative!important;z-index:2!important}
+#pageContent .tw-section-signal{position:absolute!important;z-index:1!important;right:clamp(28px,5vw,74px)!important;top:50%!important;width:min(30%,320px)!important;transform:translateY(-50%)!important;pointer-events:none!important}
+#pageContent .erp-photo-guide:not(.required-photo-guide) .erp-intro>div.tw-section-signal{position:absolute!important;left:auto!important;right:clamp(28px,5vw,74px)!important;top:50%!important;bottom:auto!important;width:min(30%,320px)!important;min-width:0!important;max-width:320px!important;height:auto!important;margin:0!important;padding:0!important;transform:translateY(-50%)!important}
+#pageContent .erp-photo-guide:not(.required-photo-guide) .erp-intro>div.tw-section-signal{top:0!important;bottom:0!important;height:100%!important;transform:none!important}
+#pageContent .erp-photo-guide:not(.required-photo-guide) .tw-section-signal .tw-signal-name{position:absolute!important;right:0!important;top:18px!important;width:100%!important;margin:0!important}
+#pageContent .erp-photo-guide:not(.required-photo-guide) .tw-section-signal .tw-signal-path{position:absolute!important;left:0!important;right:0!important;bottom:25px!important;width:100%!important}
+#pageContent .erp-photo-guide:not(.required-photo-guide) .tw-section-signal .tw-signal-meta{position:absolute!important;left:0!important;right:0!important;bottom:4px!important;width:100%!important;margin:0!important}
+#pageContent .tw-signal-name{display:block!important;margin-bottom:18px!important;color:rgba(21,25,31,.075)!important;font-size:clamp(25px,3.2vw,44px)!important;font-weight:900!important;line-height:1!important;letter-spacing:-.055em!important;text-align:right!important;white-space:nowrap!important}
+#pageContent .tw-signal-path{position:relative!important;display:grid!important;grid-template-columns:repeat(4,1fr)!important;align-items:center!important;height:20px!important}
+#pageContent .tw-signal-path::before{content:""!important;position:absolute!important;left:10%!important;right:10%!important;top:50%!important;height:1px!important;background:linear-gradient(90deg,rgba(239,23,53,.18),rgba(239,23,53,.72),rgba(239,23,53,.18))!important}
+#pageContent .tw-signal-path i{position:relative!important;display:block!important;width:8px!important;height:8px!important;margin:auto!important;border:2px solid #f7f8fa!important;border-radius:50%!important;background:#cbd1d8!important;box-shadow:0 0 0 1px rgba(21,25,31,.13)!important}
+#pageContent .tw-signal-path i:nth-child(3){width:11px!important;height:11px!important;background:var(--auto-red)!important;box-shadow:0 0 0 4px rgba(239,23,53,.10)!important}
+#pageContent .tw-signal-meta{display:flex!important;justify-content:space-between!important;margin-top:11px!important;color:#89919b!important;font-size:9px!important;font-weight:800!important;letter-spacing:.1em!important}
+/* ERP selection and image interaction */
+#pageContent .erp-step.active{border-color:#171c24!important;background:#171c24!important;color:#fff!important;box-shadow:0 14px 30px rgba(18,24,32,.16)!important}
+#pageContent .erp-step.active :is(.erp-step-copy strong,.erp-step-copy small){color:#fff!important;opacity:1!important}
+#pageContent .erp-step.active .erp-step-number,#pageContent .erp-step.active .erp-step-arrow{color:#ff4050!important;opacity:1!important}
+#pageContent #erpZoomButton{display:none!important}
+#pageContent .erp-photo-guide :is(.erp-image-frame,#erpMainImage){cursor:default!important}
+@media(max-width:820px){#pageContent .tw-section-signal{right:22px!important;width:26%!important;opacity:.58!important}#pageContent .tw-signal-name{font-size:25px!important}#pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.butfit-membership-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.workweek-board-top,.access-modern-head)>:not(.tw-section-signal){max-width:70%!important}}
+@media(max-width:600px){#pageContent .tw-section-signal{display:none!important}#pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.butfit-membership-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.workweek-board-top,.access-modern-head)>:not(.tw-section-signal){max-width:none!important}}
+
+/* Keep signals in a dedicated top-right band so body copy never overlaps them. */
+#pageContent :is(.required-intro,.it-guide-hero,.resort-hero,.butfit-membership-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.workweek-board-top,.access-modern-head)>.tw-section-signal{left:auto!important;right:clamp(24px,5vw,64px)!important;top:14px!important;bottom:auto!important;width:min(29%,290px)!important;max-width:290px!important;height:72px!important;margin:0!important;padding:0!important;transform:none!important}
+#pageContent :is(.required-intro,.it-guide-hero,.resort-hero,.butfit-membership-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.workweek-board-top,.access-modern-head)>.tw-section-signal .tw-signal-name{position:absolute!important;right:0!important;top:0!important;width:100%!important;margin:0!important;font-size:30px!important}
+#pageContent :is(.required-intro,.it-guide-hero,.resort-hero,.butfit-membership-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.workweek-board-top,.access-modern-head)>.tw-section-signal .tw-signal-path{position:absolute!important;left:0!important;right:0!important;top:36px!important;width:100%!important;height:14px!important}
+#pageContent :is(.required-intro,.it-guide-hero,.resort-hero,.butfit-membership-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.workweek-board-top,.access-modern-head)>.tw-section-signal .tw-signal-meta{position:absolute!important;left:0!important;right:0!important;top:55px!important;width:100%!important;margin:0!important}
+
+/* Final collision guard: keep the complete signal above descriptive copy. */
+#pageContent :is(.required-intro,.it-guide-hero,.resort-hero,.butfit-membership-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.workweek-board-top,.access-modern-head)>.tw-section-signal{top:8px!important;height:62px!important}
+#pageContent :is(.required-intro,.it-guide-hero,.resort-hero,.butfit-membership-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.workweek-board-top,.access-modern-head)>.tw-section-signal .tw-signal-name{font-size:27px!important}
+#pageContent :is(.required-intro,.it-guide-hero,.resort-hero,.butfit-membership-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.workweek-board-top,.access-modern-head)>.tw-section-signal .tw-signal-path{top:30px!important;height:12px!important}
+#pageContent :is(.required-intro,.it-guide-hero,.resort-hero,.butfit-membership-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.workweek-board-top,.access-modern-head)>.tw-section-signal .tw-signal-meta{top:47px!important}
+
+/* Approved event-page editorial hero: compact automotive ribbon, no enclosing card. */
+#pageContent .benefit-event-guide{padding-top:38px!important}
+#pageContent .event-guide-header{
+  position:relative!important;
+  display:block!important;
+  min-height:330px!important;
+  padding:58px 48% 42px 50px!important;
+  overflow:hidden!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+}
+#pageContent .event-guide-header>div{position:relative!important;z-index:3!important}
+#pageContent .event-guide-header h3{font-size:clamp(48px,5.4vw,72px)!important;line-height:1.02!important}
+#pageContent .event-guide-header h3::before{
+  content:"LIFE SUPPORT";
+  display:block;
+  margin:0 0 26px 68px;
+  color:var(--auto-red);
+  font-size:11px;
+  font-weight:900;
+  line-height:1;
+  letter-spacing:.32em;
+}
+#pageContent .event-guide-header h3::after{
+  content:"";
+  position:absolute;
+  left:0;
+  top:4px;
+  width:46px;
+  height:5px;
+  border-radius:99px;
+  background:var(--auto-red);
+}
+#pageContent .event-guide-header>p{
+  position:relative!important;
+  z-index:3!important;
+  max-width:560px!important;
+  margin:34px 0 0!important;
+  color:#66707c!important;
+  font-size:17px!important;
+  line-height:1.8!important;
+}
+#pageContent .event-guide-header>.tw-section-signal{
+  display:block!important;
+  position:absolute!important;
+  z-index:1!important;
+  left:auto!important;
+  right:4%!important;
+  top:36px!important;
+  width:38%!important;
+  max-width:450px!important;
+  height:230px!important;
+  opacity:1!important;
+  transform:none!important;
+}
+#pageContent .event-guide-header>.tw-section-signal>*{display:none!important}
+#pageContent .event-guide-header>.tw-section-signal::before{
+  content:"";
+  position:absolute;
+  right:-34px;
+  top:24px;
+  width:290px;
+  height:118px;
+  border-top:22px solid var(--auto-red);
+  border-left:22px solid var(--auto-red);
+  border-radius:82px 0 0 0;
+  transform:skewX(-29deg) rotate(-2deg);
+  box-shadow:-14px 16px 0 -10px #20252c;
+}
+#pageContent .event-guide-header>.tw-section-signal::after{
+  content:"LIFE\A SUPPORT";
+  white-space:pre;
+  position:absolute;
+  right:-4px;
+  bottom:-18px;
+  color:rgba(21,25,31,.055);
+  font-size:66px;
+  font-weight:900;
+  line-height:.72;
+  letter-spacing:-.06em;
+  text-align:right;
+}
+#pageContent .event-important{margin-top:0!important}
+@media(max-width:900px){
+  #pageContent .event-guide-header{min-height:300px!important;padding:48px 42% 36px 30px!important}
+  #pageContent .event-guide-header>.tw-section-signal{right:1%!important;width:38%!important;opacity:.72!important}
+  #pageContent .event-guide-header>p{font-size:15px!important}
+}
+@media(max-width:650px){
+  #pageContent .event-guide-header{min-height:0!important;padding:42px 22px 46px!important}
+  #pageContent .event-guide-header>.tw-section-signal{display:none!important}
+  #pageContent .event-guide-header>p{max-width:none!important}
+}
+
+/* Use the approved dimensional S-ribbon asset instead of the CSS approximation. */
+#pageContent .event-guide-header>.tw-section-signal::before{
+  right:0!important;
+  top:0!important;
+  width:100%!important;
+  height:178px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent url("./public/event-life-ribbon.png") center/contain no-repeat!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+#pageContent .event-guide-header>.tw-section-signal::after{
+  right:4px!important;
+  bottom:-4px!important;
+  font-size:58px!important;
+  line-height:.76!important;
+}
+
+/* Unified internal-page hero language. Content and page-specific layout remain intact. */
+#pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.access-modern-head){
+  position:relative!important;
+  overflow:hidden!important;
+  border:0!important;
+  border-radius:0!important;
+  background:#fff!important;
+  box-shadow:none!important;
+}
+#pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.access-modern-head)::after{display:none!important}
+#pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.access-modern-head)>:not(.tw-section-signal){position:relative!important;z-index:3!important}
+#pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.access-modern-head)>.tw-section-signal{
+  display:block!important;
+  position:absolute!important;
+  z-index:1!important;
+  left:auto!important;
+  right:3.5%!important;
+  top:50%!important;
+  bottom:auto!important;
+  width:min(34%,420px)!important;
+  max-width:420px!important;
+  height:190px!important;
+  margin:0!important;
+  padding:0!important;
+  opacity:1!important;
+  transform:translateY(-50%)!important;
+  pointer-events:none!important;
+}
+#pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.access-modern-head)>.tw-section-signal>*{display:none!important}
+#pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.access-modern-head)>.tw-section-signal::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent url("./public/internal-header-ribbon.png") center/contain no-repeat!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+#pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.meal-guide-header,.pc-access-guide-header,.access-modern-head)>.tw-section-signal::after{display:none!important}
+#pageContent .event-guide-header>.tw-section-signal::after{display:block!important;content:"LIFE\A SUPPORT"!important}
+#pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.access-modern-head) :is(h2,h3){max-width:58%!important;margin-left:0!important;transform:none!important}
+#pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.access-modern-head)>p{max-width:55%!important;margin-left:0!important;transform:none!important}
+#pageContent .pc-access-guide-header{padding-left:clamp(28px,5vw,66px)!important;padding-right:42%!important}
+#pageContent .pc-access-guide-header :is(h2,h3){width:auto!important;max-width:100%!important;white-space:normal!important;text-indent:0!important}
+@media(max-width:760px){
+  #pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.access-modern-head)>.tw-section-signal{display:none!important}
+  #pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.access-modern-head) :is(h2,h3),
+  #pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.access-modern-head)>p{max-width:none!important}
+  #pageContent .pc-access-guide-header{padding-right:24px!important}
+}
+
+/* Cohesive internal sections: compact 3-column hero connected to page content. */
+#pageContent :is(.benefit-event-guide,.resort-guide,.meal-benefit-guide,.it-guide,.required-photo-guide,.pc-access-guide,.groupware-access-modern){
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+#pageContent :is(.event-guide-header,.resort-hero,.meal-guide-header,.it-guide-hero,.pc-access-guide-header,.access-modern-head){
+  display:grid!important;
+  grid-template-columns:minmax(300px,1.15fr) minmax(260px,.8fr) minmax(260px,.72fr)!important;
+  align-items:center!important;
+  gap:clamp(24px,3vw,46px)!important;
+  min-height:220px!important;
+  padding:34px clamp(24px,4vw,52px)!important;
+  border:0!important;
+  border-bottom:1px solid #e3e6ea!important;
+  background:#fff!important;
+}
+#pageContent :is(.event-guide-header,.resort-hero,.meal-guide-header,.it-guide-hero,.pc-access-guide-header,.access-modern-head)>:not(.tw-section-signal){max-width:none!important;margin-left:0!important;margin-right:0!important}
+#pageContent :is(.event-guide-header,.resort-hero,.meal-guide-header,.it-guide-hero,.pc-access-guide-header,.access-modern-head)>p{
+  grid-column:2!important;
+  margin:0!important;
+  color:#68717d!important;
+  font-size:15px!important;
+  line-height:1.75!important;
+}
+#pageContent :is(.event-guide-header,.resort-hero,.meal-guide-header,.it-guide-hero,.pc-access-guide-header,.access-modern-head)>.tw-section-signal{
+  position:relative!important;
+  inset:auto!important;
+  grid-column:3!important;
+  width:100%!important;
+  max-width:360px!important;
+  height:138px!important;
+  justify-self:end!important;
+  transform:none!important;
+}
+#pageContent :is(.event-guide-header,.resort-hero,.meal-guide-header,.it-guide-hero,.pc-access-guide-header,.access-modern-head)>.tw-section-signal::after{display:none!important}
+#pageContent .event-guide-header h3{font-size:clamp(44px,4.5vw,64px)!important}
+#pageContent .event-clean-heading{display:none!important}
+#pageContent .event-clean-ui{padding-top:34px!important;border-top:0!important}
+#pageContent .event-important{border-radius:12px!important}
+#pageContent .resort-brand-grid,#pageContent .meal-highlight-grid{margin-top:0!important;padding-top:34px!important}
+#pageContent .resort-brand-card,#pageContent .meal-highlight-grid{border-radius:12px!important}
+@media(max-width:980px){
+  #pageContent :is(.event-guide-header,.resort-hero,.meal-guide-header,.it-guide-hero,.pc-access-guide-header,.access-modern-head){grid-template-columns:minmax(280px,1fr) minmax(240px,.85fr)!important}
+  #pageContent :is(.event-guide-header,.resort-hero,.meal-guide-header,.it-guide-hero,.pc-access-guide-header,.access-modern-head)>.tw-section-signal{display:none!important}
+}
+@media(max-width:680px){
+  #pageContent :is(.event-guide-header,.resort-hero,.meal-guide-header,.it-guide-hero,.pc-access-guide-header,.access-modern-head){grid-template-columns:1fr!important;min-height:0!important;padding:32px 22px!important}
+  #pageContent :is(.event-guide-header,.resort-hero,.meal-guide-header,.it-guide-hero,.pc-access-guide-header,.access-modern-head)>p{grid-column:1!important}
+}
+
+/* The 4.5-day schedule already has its own visual language; keep the original. */
+#pageContent .workweek-board-top>.tw-section-signal{display:none!important}
+#pageContent .workweek-board-top{isolation:auto!important}
+
+/* Final sizing audit: titles stay intact and the ribbon remains a secondary accent. */
+#pageContent :is(.event-guide-header,.resort-hero,.meal-guide-header,.it-guide-hero,.pc-access-guide-header,.access-modern-head){
+  grid-template-columns:minmax(380px,1.3fr) minmax(270px,.8fr) minmax(210px,.55fr)!important;
+  min-height:194px!important;
+  padding-top:28px!important;
+  padding-bottom:28px!important;
+}
+#pageContent :is(.event-guide-header,.resort-hero,.meal-guide-header,.it-guide-hero,.pc-access-guide-header,.access-modern-head)>.tw-section-signal{
+  width:100%!important;
+  max-width:260px!important;
+  height:112px!important;
+}
+#pageContent .event-guide-header h3{font-size:clamp(42px,4vw,54px)!important;white-space:nowrap!important}
+
+/* Full restoration of the original 4.5-day schedule panel. */
+#pageContent .workweek-schedule-board{
+  width:auto!important;
+  min-width:0!important;
+  padding:clamp(28px,3vw,42px)!important;
+  overflow:visible!important;
+  color:#fff!important;
+  border:1px solid rgba(255,255,255,.09)!important;
+  border-radius:24px!important;
+  background:radial-gradient(circle at 92% 8%,rgba(237,28,43,.22),transparent 29%),linear-gradient(145deg,#202630 0%,#11151c 72%)!important;
+  box-shadow:0 24px 55px rgba(20,25,34,.24),inset 0 1px 0 rgba(255,255,255,.07)!important;
+}
+#pageContent .workweek-board-top{
+  display:flex!important;
+  align-items:flex-start!important;
+  justify-content:space-between!important;
+  margin-bottom:38px!important;
+  overflow:visible!important;
+  color:#fff!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+}
+#pageContent .workweek-board-top>div{display:flex!important;max-width:none!important;overflow:visible!important}
+#pageContent .workweek-board-top span{display:block!important;color:#ff5367!important;overflow:visible!important}
+#pageContent .workweek-board-top strong{display:block!important;color:#fff!important;overflow:visible!important;white-space:nowrap!important}
+#pageContent .workweek-board-top>b{display:grid!important;color:#fff!important;opacity:1!important}
+#pageContent .workweek-clock-row{color:rgba(255,255,255,.42)!important}
+#pageContent .workweek-track{overflow:hidden!important}
+#pageContent .workweek-track-rest{color:#c6ced9!important}
+#pageContent .workweek-track-work{color:#fff!important}
+#pageContent .workweek-board-summary strong{color:#fff!important}
+@media(max-width:980px){
+  #pageContent :is(.event-guide-header,.resort-hero,.meal-guide-header,.it-guide-hero,.pc-access-guide-header,.access-modern-head){grid-template-columns:minmax(320px,1fr) minmax(240px,.8fr)!important}
+  #pageContent .event-guide-header h3{white-space:normal!important}
+}
+@media(max-width:560px){#pageContent .workweek-schedule-board{padding:24px 16px!important;border-radius:20px!important}}
+
+/* Give the 4.5-day timeline more horizontal room without increasing its height. */
+#pageContent .workweek-image-section{
+  grid-template-columns:minmax(250px,.55fr) minmax(650px,1.45fr)!important;
+  gap:clamp(30px,4vw,58px)!important;
+}
+#pageContent .workweek-schedule-board{
+  width:100%!important;
+  max-width:none!important;
+  justify-self:stretch!important;
+}
+@media(max-width:1040px){
+  #pageContent .workweek-image-section{grid-template-columns:1fr!important}
+  #pageContent .workweek-schedule-board{width:100%!important}
+}
+
+/* Brand-led internal headers: remove the unofficial ribbon and use THINKWARE typography. */
+#pageContent .tw-section-signal{display:none!important}
+#pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.access-modern-head){
+  isolation:isolate!important;
+  position:relative!important;
+  overflow:hidden!important;
+  background:radial-gradient(circle at 92% 8%,rgba(225,213,255,.48) 0,transparent 31%),radial-gradient(circle at 8% 5%,rgba(255,219,226,.55) 0,transparent 32%),#fff!important;
+}
+#pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.access-modern-head)::before{
+  content:"THINKWARE"!important;
+  display:block!important;
+  position:absolute!important;
+  z-index:0!important;
+  right:-.035em!important;
+  top:-.16em!important;
+  width:auto!important;
+  height:auto!important;
+  color:rgba(21,25,31,.035)!important;
+  background:linear-gradient(90deg,rgba(237,28,46,.035),rgba(104,79,176,.06))!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  font:900 clamp(84px,12vw,168px)/1 Arial,sans-serif!important;
+  letter-spacing:-.085em!important;
+  pointer-events:none!important;
+  transform:none!important;
+}
+#pageContent :is(.event-guide-header,.resort-hero,.meal-guide-header,.it-guide-hero,.pc-access-guide-header,.access-modern-head){
+  grid-template-columns:minmax(380px,1.12fr) minmax(300px,.88fr)!important;
+  min-height:194px!important;
+}
+#pageContent :is(.event-guide-header,.resort-hero,.meal-guide-header,.it-guide-hero,.pc-access-guide-header,.access-modern-head)>p{grid-column:2!important;max-width:520px!important}
+#pageContent :is(.event-guide-header,.resort-hero,.meal-guide-header,.it-guide-hero,.pc-access-guide-header,.access-modern-head)>:not(.tw-section-signal){position:relative!important;z-index:2!important}
+@media(max-width:760px){
+  #pageContent :is(.event-guide-header,.resort-hero,.meal-guide-header,.it-guide-hero,.pc-access-guide-header,.access-modern-head){grid-template-columns:1fr!important}
+  #pageContent :is(.event-guide-header,.resort-hero,.meal-guide-header,.it-guide-hero,.pc-access-guide-header,.access-modern-head)>p{grid-column:1!important;max-width:none!important}
+  #pageContent :is(.erp-intro,.required-intro,.it-guide-hero,.resort-hero,.event-guide-header,.meal-guide-header,.pc-access-guide-header,.access-modern-head)::before{font-size:88px!important;opacity:.65!important}
+}
