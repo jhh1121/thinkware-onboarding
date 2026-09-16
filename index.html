@@ -11425,10 +11425,6 @@ if(
           <div class="erp-image-frame">
             <div class="erp-image-top">
               <span id="erpCurrentNumber">STEP 01</span>
-              <button type="button" id="erpZoomButton">
-                크게 보기
-                <span>＋</span>
-              </button>
             </div>
 
             <img
@@ -11569,10 +11565,7 @@ if(
       lightbox.setAttribute("aria-hidden", "true");
     }
 
-    guide.querySelector("#erpZoomButton")
-      .addEventListener("click", openERPLightbox);
-
-    mainImage.addEventListener("click", openERPLightbox);
+    /* ERP 이미지는 본문에서 충분히 크게 표시하므로 별도 확대 동작을 사용하지 않습니다. */
 
     guide.querySelector("#erpLightboxClose")
       .addEventListener("click", closeERPLightbox);
@@ -14507,7 +14500,7 @@ img[src*="fxd9900-cutout-real.png"].active,
     guide.innerHTML = `
       <div class="event-guide-header">
         <div>
-          <h3>경조사 지원</h3>
+          <h3>경조사 지원 기준</h3>
         </div>
 
         <p>
@@ -38210,36 +38203,37 @@ body.mobile-guide-lightbox-open{overflow:hidden;}
 </style>
 <link rel="stylesheet" href="./approved-automotive-soft-theme.css">
 <style id="header-menu-final-close-fix">
-.header-menu-group.menu-force-closed .header-dropdown,
-.header-menu-group.menu-force-closed:hover .header-dropdown,
-.header-menu-group.menu-force-closed:focus-within .header-dropdown{
-  opacity:0!important;
-  visibility:hidden!important;
-  pointer-events:none!important;
-  transform:translate(-50%,-8px)!important;
-}
-.header-menu-group:last-child.menu-force-closed .header-dropdown,
-.header-menu-group:last-child.menu-force-closed:hover .header-dropdown,
-.header-menu-group:last-child.menu-force-closed:focus-within .header-dropdown{
-  transform:translate(0,-8px)!important;
-}
+.header-menu-group.menu-force-closed .header-dropdown,.header-menu-group.menu-force-closed:hover .header-dropdown,.header-menu-group.menu-force-closed:focus-within .header-dropdown{opacity:0!important;visibility:hidden!important;pointer-events:none!important;transform:translate(-50%,-8px)!important}
+.header-menu-group:last-child.menu-force-closed .header-dropdown,.header-menu-group:last-child.menu-force-closed:hover .header-dropdown,.header-menu-group:last-child.menu-force-closed:focus-within .header-dropdown{transform:translate(0,-8px)!important}
 </style>
-<script id="header-menu-final-close-fix-script">
+<script id="thinkware-signal-and-menu-fix">
 (() => {
+  const signalMap = [];
+  const addSignals = () => {
+    document.querySelectorAll('.tw-section-signal').forEach(signal => signal.remove());
+    signalMap.forEach(([selector,name,labels]) => {
+    document.querySelectorAll(selector).forEach(header => {
+      if (header.querySelector(':scope > .tw-section-signal')) return;
+      const signal = document.createElement('div');
+      signal.className = 'tw-section-signal';
+      signal.setAttribute('aria-hidden','true');
+      signal.innerHTML = `<b class="tw-signal-name">${name}</b><span class="tw-signal-path"><i></i><i></i><i></i><i></i></span><span class="tw-signal-meta">${labels.map(label => `<em>${label}</em>`).join('')}</span>`;
+      header.appendChild(signal);
+    });
+    });
+  };
   const closeSelectedMenu = event => {
-    const selected = event.target.closest('.header-menu-trigger, .header-dropdown [data-open]');
+    const selected = event.target.closest('.header-dropdown [data-open]');
     if (!selected) return;
     const group = selected.closest('.header-menu-group');
     setTimeout(() => {
-      document.querySelectorAll('.header-menu-group').forEach(item => {
-        item.classList.toggle('menu-force-closed', item === group);
-      });
+      document.querySelectorAll('.header-menu-group').forEach(item => item.classList.toggle('menu-force-closed', item === group));
       if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
-    }, 0);
+    },0);
   };
-  document.addEventListener('click', closeSelectedMenu, true);
-  document.querySelectorAll('.header-menu-group').forEach(group => {
-    group.addEventListener('mouseleave', () => group.classList.remove('menu-force-closed'));
-  });
+  document.addEventListener('click',event => { closeSelectedMenu(event); setTimeout(addSignals,60); },true);
+  document.querySelectorAll('.header-menu-group').forEach(group => group.addEventListener('mouseleave',() => group.classList.remove('menu-force-closed')));
+  new MutationObserver(addSignals).observe(document.querySelector('#pageContent'),{childList:true,subtree:true});
+  addSignals();
 })();
 </script>
