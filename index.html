@@ -1429,7 +1429,7 @@ footer{padding:42px 7vw;display:flex;gap:30px;color:#777;background:#050505;font
     </button>
     <div class="header-dropdown">
       <button type="button" data-open="회사 개요">회사 개요</button>
-      <button type="button" data-open="인재상">인재상</button>
+      <button type="button" data-open="Think People">Think People</button>
     </div>
   </div>
 
@@ -1602,6 +1602,13 @@ footer{padding:42px 7vw;display:flex;gap:30px;color:#777;background:#050505;font
         <span>12</span>
         <h3>Vision A.I. 2</h3>
         <p>Vision A.I. 블랙박스 ‘아이나비 QXD2’ 출시</p>
+      </article>
+
+      <article class="history-item">
+        <b>2026</b>
+        <span>01 · 03</span>
+        <h3>신제품 라인업 확대</h3>
+        <p>아이나비 ZX3000·FXD9000, 모터사이클 블랙박스 IB10, 칼트윈 KX·KR 출시</p>
       </article>
     </div>
   </div>
@@ -2045,7 +2052,7 @@ const topics=[
 ["해외 네트워크","미국 · 캐나다 · 일본 · 중국 법인 운영|글로벌 Smart Car IT 기업"]
 ]},
 {n:"02",c:"회사소개",t:"CEO 환영사",s:"팅크웨어에 오신 여러분을 환영합니다",ceo:true,hidden:true},
-{n:"03",c:"회사소개",t:"인재상",s:"THINK PEOPLE",people:true},
+{n:"03",c:"회사소개",t:"Think People",s:"생각하고 · 도전하며 · 기본을 지키는 사람",people:true},
 {n:"04",c:"업무 프로그램",t:"그룹웨어",s:"메일 · 전자결재 · 임직원 정보",d:[
   ["접속 및 계정",
     "접속 주소: <a href='https://portal.thinkware.co.kr' target='_blank' rel='noopener noreferrer'>https://portal.thinkware.co.kr</a>|회사 이메일과 그룹웨어는 같은 계정을 사용합니다.|아이디에는 이메일 주소에서 @thinkware.co.kr 앞부분만 입력합니다.|<strong>초기 비밀번호: asdf1234@@!!</strong>|그룹웨어 비밀번호를 변경하면 PC 계정 비밀번호도 함께 변경됩니다."
@@ -2135,9 +2142,9 @@ const topics=[
 
 {n:"15",c:"인사제도",t:"호칭 가이드",s:"",image:"./public/title-guide-cardnews-v3.webp",d:[
 ["기본 호칭","일반 구성원은 이름 뒤에 ‘책임’을 붙여 부릅니다.|예: 정현호 책임"],
-["보직자","파트장·팀장·센터장·점장은 보직명 뒤에 ‘님’을 붙여 부릅니다."],
-["보직자와 임원","보직자와 임원은 해당 보직이나 직책 뒤에 ‘님’을 붙여 부릅니다.|예: 파트장님 · 팀장님 · 센터장님 · 점장님 · 이사님 · 상무님 · 전무님 · 대표님"],
-["호칭을 모를 때","상대방의 정확한 보직을 모를 때는 이름과 책임 호칭을 사용하거나 소속 팀에 먼저 확인해 주세요."]
+["리더 직책","파트장·팀장·센터장·점장은 직책명 뒤에 ‘님’을 붙여 부릅니다."],
+["리더와 임원","리더와 임원은 해당 직책 뒤에 ‘님’을 붙여 부릅니다.|예: 파트장님 · 팀장님 · 센터장님 · 점장님 · 이사님 · 상무님 · 전무님 · 대표님"],
+["호칭을 모를 때","상대방의 정확한 직책을 모를 때는 이름과 책임 호칭을 사용하거나 소속 팀에 먼저 확인해 주세요."]
 ]}
 ];
 const categories=["전체","회사소개","업무 프로그램","복리후생","인사제도"];
@@ -2494,10 +2501,10 @@ body=`
       <button class="affiliate-orbit-button" type="button" data-affiliate="3" aria-pressed="false"><span>04</span><strong>팅크웨어<br>오토모티브(주)</strong></button>
     </div>
     <div class="affiliate-orbit-details" aria-live="polite">
-      <article class="affiliate-orbit-panel active" data-affiliate-panel="0"><span>01 · DIGITAL MAP &amp; LOCATION</span><h5>(주)아이나비시스템즈</h5><p>자율주행용 고정밀 지도와 위치기반 지도 플랫폼을 개발합니다.</p></article>
-      <article class="affiliate-orbit-panel" data-affiliate-panel="1" hidden><span>02 · MOBILE BUSINESS</span><h5>팅크웨어모바일(주)</h5><p>로봇청소기와 생활가전 상품의 국내 유통 사업을 운영합니다.</p></article>
-      <article class="affiliate-orbit-panel" data-affiliate-panel="2" hidden><span>03 · MOBILITY PLATFORM</span><h5>(주)아이나비모빌리티</h5><p>콜택시 관제 서비스와 모빌리티 플랫폼을 개발하고 운영합니다.</p></article>
-      <article class="affiliate-orbit-panel" data-affiliate-panel="3" hidden><span>04 · AUTOMOTIVE</span><h5>팅크웨어오토모티브(주)</h5><p>차량용 전장 제품과 ADAS 관련 기술을 개발합니다.</p></article>
+      <article class="affiliate-orbit-panel active" data-affiliate-panel="0"><span>01 · DIGITAL MAP &amp; LOCATION</span><h5>(주)아이나비시스템즈</h5><p>자율주행용 고정밀 지도와 위치기반 지도 플랫폼을 개발합니다.</p><dl class="affiliate-disclosure-facts"><div><dt>공시상 주요 사업</dt><dd>지도개발 및 공급</dd></div></dl><small class="affiliate-disclosure-basis">2025년 3분기보고서 기준</small></article>
+      <article class="affiliate-orbit-panel" data-affiliate-panel="1" hidden><span>02 · MOBILE BUSINESS</span><h5>팅크웨어모바일(주)</h5><p>로봇청소기와 생활가전 상품의 국내 유통 사업을 운영합니다.</p><dl class="affiliate-disclosure-facts"><div><dt>공시상 주요 사업</dt><dd>모바일·태블릿 사업</dd></div></dl><small class="affiliate-disclosure-basis">2025년 3분기보고서 기준</small></article>
+      <article class="affiliate-orbit-panel" data-affiliate-panel="2" hidden><span>03 · MOBILITY PLATFORM</span><h5>(주)아이나비모빌리티</h5><p>콜택시 관제 서비스와 모빌리티 플랫폼을 개발하고 운영합니다.</p><dl class="affiliate-disclosure-facts"><div><dt>공시상 주요 사업</dt><dd>택시 콜솔루션 개발 및 관제서비스 공급</dd></div></dl><small class="affiliate-disclosure-basis">2025년 3분기보고서 기준</small></article>
+      <article class="affiliate-orbit-panel" data-affiliate-panel="3" hidden><span>04 · AUTOMOTIVE</span><h5>팅크웨어오토모티브(주)</h5><p>차량용 전장 제품과 ADAS 관련 기술을 개발합니다.</p><dl class="affiliate-disclosure-facts"><div><dt>공시상 주요 사업</dt><dd>소프트웨어 개발</dd></div></dl><small class="affiliate-disclosure-basis">2025년 3분기보고서 기준</small></article>
     </div>
   </div>
 
@@ -2525,10 +2532,10 @@ body=`
 body=`
 <section class="people-guide">
   <header class="people-intro">
-    <div><h3>THINK PEOPLE</h3></div>
+    <div><h3>Think People</h3></div>
     <p>THINKWARE의 핵심가치를 행동 속에 담고 있는 사람을 팅크인이라 합니다.</p>
   </header>
-  <div class="people-brand-board" aria-label="THINKWARE의 인재상">
+  <div class="people-brand-board" aria-label="THINKWARE의 Think People">
     <small>THINK People</small>
     <strong>THINKWARE</strong>
     <i class="people-pencil" aria-hidden="true">✎</i>
@@ -2650,7 +2657,7 @@ body=`
     <img src="./public/title-guide-cardnews-v3.webp" alt="팅크웨어 호칭 가이드" loading="lazy" decoding="async" data-no-zoom>
     <div class="title-guide-correction">
       <article><span>일반 구성원</span><strong>이름 + <em>책임</em></strong><p>예: 정현호 책임</p></article>
-      <article><span>보직자 · 임원</span><strong>보직·직책 + <em>님</em></strong><p>파트장님 · 팀장님 · 센터장님 · 점장님<br>이사님 · 상무님 · 전무님 · 대표님</p></article>
+      <article><span>리더 · 임원</span><strong>직책명 + <em>님</em></strong><p>파트장님 · 팀장님 · 센터장님 · 점장님<br>이사님 · 상무님 · 전무님 · 대표님</p></article>
     </div>
   </figure>
   <div class="title-guide-note">
@@ -9156,6 +9163,15 @@ window.addEventListener("load", function(){
           location.lat,
           location.lng
         );
+
+      /*
+        world-map.webp의 한반도 윤곽과 계산 좌표의 차이를 보정한다.
+        본사 표식을 실제 성남(서울 남동쪽) 위치에 맞춘다.
+      */
+      if(country === "KOREA"){
+        position.x -= 2;
+        position.y -= 1.5;
+      }
 
       node.style.setProperty(
         "left",
@@ -30709,19 +30725,19 @@ img:hover {
           <div class="exception-work-steps">
             <article class="exception-work-step">
               <span class="exception-work-number">01</span>
-              <small>확인</small>
-              <strong>근무 유형 확인</strong>
+              <small>사전 공유</small>
+              <strong>사전 일정 공유</strong>
               <p>
-                외근, 출장, 교육, 재택근무 등 해당 유형을 선택합니다.
+                근무 장소와 시간을 팀원·팀장에게 미리 공유합니다.
               </p>
             </article>
 
             <article class="exception-work-step">
               <span class="exception-work-number">02</span>
-              <small>공유</small>
-              <strong>사전 일정 공유</strong>
+              <small>유형 확인</small>
+              <strong>근무 유형 확인</strong>
               <p>
-                근무 장소와 시간을 팀원·팀장에게 미리 공유합니다.
+                외근, 출장, 교육, 재택근무 등 해당 유형을 선택합니다.
               </p>
             </article>
 
@@ -38237,3 +38253,4 @@ body.mobile-guide-lightbox-open{overflow:hidden;}
   addSignals();
 })();
 </script>
+<link rel="stylesheet" href="./design-cleanup.css?v=6">
