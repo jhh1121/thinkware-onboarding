@@ -1,0 +1,106 @@
+/* Square-edged corporate preview. Loaded after the approved production styles. */
+:root{
+  --angular-red:#e31837;
+  --angular-ink:#14181e;
+  --angular-muted:#626b76;
+  --angular-line:#d7dbe0;
+  --angular-paper:#f5f6f7;
+  --angular-surface:#fff;
+  --angular-radius:4px;
+}
+
+body{background:var(--angular-paper)!important;color:var(--angular-ink)!important}
+
+.header-menu-trigger,
+.header-menu-group>div,
+.mobile-menu-panel,
+.mobile-menu-links button{
+  border-radius:2px!important;
+}
+
+#pageContent :is(
+  .it-guide,.people-guide,.work-support-guide,.staff-sale-guide,
+  .erp-document-guide,.required-photo-guide,.app-install-real-guide,
+  .workweek-schedule-board,.butfit-info-board,.event-guide,.meal-guide,
+  .resort-guide,.company-overview
+){
+  border-radius:6px!important;
+  border-color:var(--angular-line)!important;
+  box-shadow:0 14px 34px rgba(20,24,30,.055)!important;
+}
+
+#pageContent :is(
+  .erp-intro,.required-intro,.it-guide-hero,.resort-hero,
+  .butfit-membership-hero,.event-guide-header,.meal-guide-header,
+  .pc-access-guide-header,.workweek-board-top,.company-intro
+){
+  border-radius:0!important;
+  background:
+    linear-gradient(90deg,rgba(227,24,55,.055),transparent 34%),
+    #f7f8f9!important;
+}
+
+#pageContent :is(
+  .card,.it-card,.work-support-group,.manual-card,.guide-card,
+  .meal-card,.event-card,.erp-document-guide article,
+  .required-account-guide>article,.required-summary,
+  .erp-step-list,.erp-viewer,.system-help-card,
+  .business-group,.affiliate-orbit,.affiliate-orbit-panel,
+  .evaluation-board,.staff-sale-step,.butfit-pricing-card,
+  .butfit-contact-card,.resort-brand-card,.resort-days-card,
+  .workweek-time-card,.attendance-step-card,.approval-screen-card,
+  .approval-form-panel,.approval-company-card,.access-brand-panel,
+  .access-login-panel,.access-v2-step,.pc-access-info-card,
+  .mobile-qr-card,.mobile-qr-step,.mobile-install-panel,
+  .password-key-card,.password-route-card,.password-route-step,
+  .flex-work-step,.exception-critical-card,.exception-work-step,
+  .event-table-card,.mutual-fee-section,.mutual-fee-table-wrap,
+  .section-card
+){
+  border-radius:var(--angular-radius)!important;
+  border-color:var(--angular-line)!important;
+  box-shadow:none!important;
+}
+
+#pageContent :is(.it-card,.manual-card,.guide-card,.meal-card,.event-card,.erp-document-guide article):hover{
+  transform:translateY(-2px)!important;
+  border-color:#aeb5bd!important;
+  box-shadow:0 10px 22px rgba(20,24,30,.065)!important;
+}
+
+#pageContent :is(
+  button,.support-site-link,.required-m365-card>a,
+  .event-image-tabs button,.meal-tab,.event-table-filter,.event-main-tab,
+  .mobile-guide-zoom,.system-help-modal-close,.event-modal-close
+){border-radius:2px!important}
+
+#pageContent :is(
+  .it-card-number,.erp-step-number,.attendance-step-number,
+  .flex-work-step-number,.guide-main-image,.poster,
+  .erp-image-frame,.mobile-guide-zoom img
+){border-radius:2px!important}
+
+#pageContent .erp-step.active,
+#pageContent :is(.meal-tab,.event-table-filter,.event-main-tab).active{
+  background:var(--angular-ink)!important;
+  color:#fff!important;
+}
+
+#pageContent .erp-step.active *{color:#fff!important}
+
+#pageContent .summary::after,
+#pageContent .company-overview .company-intro>strong.company-intro-line::after{
+  border-radius:0!important;
+}
+
+#pageContent :is(h2,h3,h4){letter-spacing:-.045em!important}
+#pageContent :is(p,li,dd){color:var(--angular-muted)}
+
+@media(max-width:760px){
+  #pageContent :is(
+    .it-guide,.people-guide,.work-support-guide,.staff-sale-guide,
+    .erp-document-guide,.required-photo-guide,.app-install-real-guide,
+    .workweek-schedule-board,.butfit-info-board,.event-guide,.meal-guide,
+    .resort-guide,.company-overview
+  ){border-radius:4px!important}
+}
