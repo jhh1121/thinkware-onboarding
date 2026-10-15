@@ -1,0 +1,812 @@
+/* ==========================================================================
+   Design polish layer (2026-10-15)
+   Loaded after corporate-angular-theme.css. Keeps the square-edged corporate
+   direction and fixes typography, contrast, focus, motion and touch issues
+   found in the UI/UX Pro Max, Taste (redesign) and Impeccable audits.
+   ========================================================================== */
+
+:root{
+  --polish-font:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  --polish-red:#e31837;          /* 4.7:1 on white, matches --angular-red */
+  --polish-red-on-dark:#ff5a6e;  /* 5.6:1 on #0b0e13 */
+  --polish-ink:#14181e;
+  --polish-muted:#5b636e;        /* 6.1:1 on white */
+  --polish-muted-on-dark:#a3acb8;/* 8.4:1 on #050505 */
+  --polish-focus:#e31837;
+  --red:var(--polish-red);
+}
+
+/* ---------- Typography: one Korean-first family, Korean line breaking ---------- */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{
+  font-family:var(--polish-font)!important;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+}
+button,input,select,textarea{font-family:inherit}
+:where(h1,h2,h3,h4){text-wrap:balance}
+:where(p,li,dd){text-wrap:pretty}
+
+/* Numbers set in Arial fell back to a different Hangul face; keep the family, align digits */
+#pageContent :is(.flex-work-time strong,.event-money,.mutual-fee-item strong,
+  .event-money-mutual,.event-money-total,.mutual-fee-final-table td:last-child){
+  font-family:var(--polish-font)!important;
+  font-variant-numeric:tabular-nums;
+}
+:where(time,td,.history-year,.meal-stat strong){font-variant-numeric:tabular-nums}
+
+/* ---------- Readable minimum sizes (was 7–10px) ---------- */
+.eyebrow,
+#hero .hero-copy .eyebrow,
+#hero .vx5000-copy .eyebrow{
+  font-size:12px!important;
+  letter-spacing:.14em!important;
+}
+#hero .vx5000-award-badge span{font-size:12px!important;letter-spacing:.04em!important}
+#hero .vx5000-award-badge small{font-size:12px!important}
+.projection-node .node-label .node-city{font-size:10px!important}
+@media(max-width:850px){
+  .projection-node .node-label{font-size:10px!important}
+  /* city names repeat in the office panel below; keep only the selected one */
+  .projection-node:not(.active) .node-label .node-city{display:none!important}
+  .projection-node.active .node-label .node-city{font-size:10px!important}
+}
+.history-item b{font-variant-numeric:tabular-nums}
+.history-item span{font-size:13px!important;font-weight:800;color:var(--polish-red)!important;font-variant-numeric:tabular-nums}
+.history-item p{font-size:14px!important;line-height:1.6;color:var(--polish-muted)!important}
+footer{font-size:12px!important;color:var(--polish-muted-on-dark)!important}
+
+/* ---------- Contrast ---------- */
+.summary,.card p{color:var(--polish-muted)!important}
+.card small,.section-card small,.important{color:var(--polish-red)!important}
+:is(.global-network,.hero,.page .pagebar) .eyebrow{color:var(--polish-red-on-dark)!important}
+
+/* Primary red buttons: white text needs ≥4.5:1, and hover should deepen, not lighten */
+.staff-sale-button{background:var(--polish-red)!important}
+.staff-sale-button:hover{background:#c8102e!important}
+
+/* ---------- Browser surfaces ---------- */
+::selection{background:rgba(227,24,55,.18);color:inherit}
+:root{accent-color:var(--polish-red);caret-color:var(--polish-red)}
+a{text-underline-offset:.2em}
+html{scrollbar-color:#b9bfc7 transparent}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#b9bfc7;border:2px solid transparent;border-radius:10px;background-clip:padding-box}
+::-webkit-scrollbar-thumb:hover{background-color:#8c949e}
+
+/* ---------- Keyboard focus: visible everywhere, including where it was removed ---------- */
+:focus-visible{
+  outline:2px solid var(--polish-focus)!important;
+  outline-offset:3px!important;
+}
+.header :focus-visible,.global-network :focus-visible,footer :focus-visible{
+  outline-color:#fff!important;
+}
+.skip-link{
+  position:fixed;z-index:10000;top:12px;left:12px;
+  padding:12px 18px;
+  color:#fff;background:var(--polish-ink);
+  font-weight:800;font-size:14px;
+  transform:translateY(-160%);
+  transition:transform .2s cubic-bezier(.22,1,.36,1);
+}
+.skip-link:focus{transform:none}
+
+/* ---------- Touch targets (≥44px on touch devices) ---------- */
+@media(pointer:coarse){
+  .mobile-menu-toggle,.mobile-menu-close{min-height:44px;min-width:44px}
+  .mobile-menu-links button,.mobile-menu-links a{min-height:44px}
+  .global-network :is([role="tab"],.network-tabs button,.office-tabs button){min-height:44px}
+  #page .back,#page .pagebar .back{min-height:44px;display:inline-flex;align-items:center}
+}
+
+/* ---------- Press feedback ---------- */
+:is(button,.card,a.button):active{transition-duration:.08s}
+.card:active,.mobile-menu-links button:active{transform:translateY(1px) scale(.99)}
+
+/* ---------- Hero: start the 12s loop where the welcome copy is already in,
+   instead of ~1.5s of empty black on first load. Same offset for every layer keeps them in sync. ---------- */
+html:root #hero,html:root #hero *{animation-delay:-1.6s!important}
+html:root #hero .lane{animation-delay:0s!important}
+html:root #hero .dashcam-piece{animation-delay:calc(var(--piece-delay,0s) - 1.6s)!important}
+
+/* ---------- Mobile hero: keep the welcome copy legible over the bright sky ---------- */
+@media(max-width:760px){
+  #hero .hero-copy::before{
+    content:"";position:absolute;z-index:-1;
+    inset:-40px -24px -48px -24px;
+    /* closest-side keeps every edge fully transparent, so the scrim never shows a box */
+    background:radial-gradient(closest-side,rgba(3,4,7,.6),rgba(3,4,7,.32) 60%,rgba(3,4,7,0));
+    pointer-events:none;
+  }
+}
+
+/* ---------- Reduced motion: keep the story, drop the loops ---------- */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  #hero .hero-copy{
+    animation:none!important;opacity:1!important;visibility:visible!important;transform:none!important;
+  }
+  #hero :is(.dashcam,.product-copy,.vx5000-copy,.vx5000-award-badge,.car-wrap,.sweep){
+    animation:none!important;opacity:0!important;visibility:hidden!important;
+  }
+  .lane,.buildings,.map-marker i,.network-line::after{animation:none!important}
+}
+
+/* ==========================================================================
+   Unified detail-page header (2026-10-15)
+   Every page opened from the header menu now uses one header pattern:
+   white panel, 1px line, 4px radius, eyebrow + title on the left,
+   summary on the right (stacked on mobile). Replaces the pink gradient +
+   watermark, dark card, centered and right-aligned variants from earlier layers.
+   Two IDs (#page #pageContent) outrank the single-ID rules in index.html.
+   ========================================================================== */
+:root{
+  --ph-line:#d7dbe0;
+  --ph-muted:#626b76;
+  --ph-pad-y:40px;
+  --ph-pad-x:48px;
+}
+
+/* One content column and one top offset for every detail page */
+#page #pageContent{padding-top:40px!important}
+#page #pageContent>:is(section,div){
+  width:auto!important;
+  max-width:1180px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+/* Sections whose first block is the header start flush, like the rest */
+#page #pageContent>:has(>:is(.erp-intro,.it-guide-hero,.event-guide-header,.resort-hero,.meal-guide-header,.workweek-header,.butfit-membership-hero,.company-intro):first-child){padding-top:0!important}
+
+/* ---- Panel ---- */
+#page #pageContent :is(
+  .company-intro,.people-intro,.erp-intro,.it-guide-hero,.event-guide-header,
+  .resort-hero,.meal-guide-header,.workweek-header,.butfit-membership-hero,
+  .evaluation-flow-head,.work-support-head
+){
+  position:relative!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,420px)!important;
+  grid-template-rows:none!important;
+  grid-template-areas:none!important;
+  grid-auto-rows:auto!important;
+  align-content:start!important;
+  column-gap:56px!important;
+  row-gap:12px!important;
+  align-items:end!important;
+  justify-items:start!important;
+  min-height:0!important;
+  height:auto!important;
+  margin:0 0 32px!important;
+  padding:var(--ph-pad-y) var(--ph-pad-x)!important;
+  overflow:hidden!important;
+  text-align:left!important;
+  color:var(--polish-ink)!important;
+  background:#fff!important;
+  background-image:none!important;
+  border:1px solid var(--ph-line)!important;
+  border-radius:4px!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+/* watermark text, gradient washes and short red bars */
+#page #pageContent :is(
+  .company-intro,.people-intro,.erp-intro,.it-guide-hero,.event-guide-header,
+  .resort-hero,.meal-guide-header,.workweek-header,.butfit-membership-hero,
+  .evaluation-flow-head,.work-support-head,.pc-access-guide-header
+)::before,
+#page #pageContent :is(
+  .company-intro,.people-intro,.erp-intro,.it-guide-hero,.event-guide-header,
+  .resort-hero,.meal-guide-header,.workweek-header,.butfit-membership-hero,
+  .evaluation-flow-head,.work-support-head,.pc-access-guide-header
+)::after,
+#page #pageContent .company-intro>strong.company-intro-line::after,
+#page #pageContent :is(.event-guide-header,.meal-guide-header,.resort-hero) h3::after{
+  content:none!important;display:none!important;
+}
+#page #pageContent :is(
+  .erp-intro,.it-guide-hero,.event-guide-header,.resort-hero,.meal-guide-header,
+  .pc-access-guide-header,.butfit-membership-hero
+)>.tw-section-signal{display:none!important}
+
+/* Wrappers holding eyebrow + title stay in the left column */
+#page #pageContent :is(
+  .people-intro,.erp-intro,.event-guide-header,.resort-hero,.meal-guide-header,
+  .workweek-header,.evaluation-flow-head,.work-support-head
+)>div:not(.tw-section-signal){
+  grid-column:1!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  gap:12px!important;
+  min-width:0!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  text-align:left!important;
+}
+
+/* ---- Eyebrow ---- */
+#page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)>.eyebrow,
+#page #pageContent .company-intro>.company-label,
+#page #pageContent .workweek-header .workweek-eyebrow,
+#page #pageContent .butfit-membership-copy>b,
+#page #pageContent :is(.evaluation-flow-head,.work-support-head)>div>span,
+#page #pageContent .event-guide-header h3::before{
+  display:block!important;
+  position:static!important;
+  margin:0!important;
+  padding:0!important;
+  color:var(--polish-red)!important;
+  background:none!important;
+  font-family:var(--polish-font)!important;
+  font-size:12px!important;
+  font-weight:800!important;
+  line-height:1.3!important;
+  letter-spacing:.14em!important;
+  text-transform:uppercase!important;
+  text-align:left!important;
+  opacity:1!important;
+  transform:none!important;
+  -webkit-text-stroke:0!important;
+  -webkit-text-fill-color:currentColor!important;
+}
+/* event header keeps its "LIFE SUPPORT" eyebrow, which lives on h3::before */
+#page #pageContent .event-guide-header h3::before{margin-bottom:12px!important}
+
+/* ---- Title ---- */
+#page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)>h2,
+#page #pageContent :is(
+  .company-intro,.people-intro,.erp-intro,.it-guide-hero,.event-guide-header,
+  .resort-hero,.meal-guide-header,.workweek-header,.butfit-membership-hero,
+  .evaluation-flow-head,.work-support-head
+) h3{
+  position:static!important;
+  max-width:none!important;
+  width:auto!important;
+  margin:0!important;
+  padding:0!important;
+  color:var(--polish-ink)!important;
+  background:none!important;
+  font-family:var(--polish-font)!important;
+  font-size:clamp(30px,3.4vw,44px)!important;
+  font-weight:800!important;
+  line-height:1.15!important;
+  letter-spacing:-.045em!important;
+  text-align:left!important;
+  white-space:normal!important;
+  -webkit-text-fill-color:currentColor!important;
+}
+
+/* ---- Summary (right column) ---- */
+#page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)>.summary,
+#page #pageContent :is(
+  .company-intro,.people-intro,.erp-intro,.it-guide-hero,.event-guide-header,
+  .resort-hero,.meal-guide-header,.workweek-header,.evaluation-flow-head,.work-support-head
+)>p,
+#page #pageContent .company-intro>strong.company-intro-line{
+  grid-column:2!important;
+  max-width:420px!important;
+  margin:0!important;
+  padding:0!important;
+  color:var(--ph-muted)!important;
+  background:none!important;
+  font-size:15px!important;
+  font-weight:500!important;
+  line-height:1.7!important;
+  letter-spacing:-.01em!important;
+  text-align:left!important;
+}
+#page #pageContent .erp-intro>a{grid-column:2!important;justify-self:start!important;margin:4px 0 0!important}
+
+/* Company overview: flat siblings -> label/title left, tagline/description right */
+#page #pageContent .company-intro>.company-label{grid-column:1!important;grid-row:1!important;align-self:end!important}
+#page #pageContent .company-intro>h3{grid-column:1!important;grid-row:2!important}
+#page #pageContent .company-intro>strong.company-intro-line{grid-row:1!important;color:var(--polish-ink)!important;font-weight:800!important;align-self:end!important}
+#page #pageContent .company-intro>p{grid-row:2!important}
+
+/* Butfit: copy wrapper holds eyebrow, title and summary in one column */
+#page #pageContent .butfit-membership-copy{display:contents!important}
+#page #pageContent .butfit-membership-copy>:is(b,h3){grid-column:1!important}
+#page #pageContent .butfit-membership-copy>b{grid-row:1!important}
+#page #pageContent .butfit-membership-copy>h3{grid-row:2!important}
+#page #pageContent .butfit-membership-copy>p{
+  grid-column:2!important;grid-row:1 / span 2!important;align-self:end!important;
+  max-width:420px!important;margin:0!important;color:var(--ph-muted)!important;
+  font-size:15px!important;line-height:1.7!important;text-align:left!important;
+}
+
+/* Headers that sit inside a bordered card become the card's top band */
+#page #pageContent :is(.people-guide,.evaluation-flow-v2,.work-support-guide){
+  border-radius:4px!important;
+  overflow:hidden!important;
+}
+#page #pageContent :is(.people-intro,.evaluation-flow-head){
+  margin:0!important;
+  border:0!important;
+  border-bottom:1px solid var(--ph-line)!important;
+  border-radius:0!important;
+}
+#page #pageContent .work-support-guide{padding:0 48px 48px!important}
+#page #pageContent .work-support-head{
+  margin:0 -48px 32px!important;
+  border:0!important;
+  border-bottom:1px solid var(--ph-line)!important;
+  border-radius:0!important;
+}
+
+/* ---- Pages with no in-page header: the page's own eyebrow/title/summary in the same panel ---- */
+#page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored){
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,420px)!important;
+  column-gap:56px!important;
+  align-content:start!important;
+  width:auto!important;
+  max-width:1180px!important;
+  margin:0 auto!important;
+  padding-left:0!important;padding-right:0!important;
+}
+#page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)::before{
+  content:""!important;
+  display:block!important;
+  grid-column:1 / -1!important;
+  grid-row:1 / 3!important;
+  margin-bottom:32px!important;
+  background:#fff!important;
+  border:1px solid var(--ph-line)!important;
+  border-radius:4px!important;
+}
+#page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)>*{grid-column:1 / -1!important;min-width:0!important}
+#page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)>:is(.eyebrow,h2,.summary){
+  display:block!important;
+  position:relative!important;
+  z-index:1!important;
+  visibility:visible!important;
+  opacity:1!important;
+  transform:none!important;
+}
+#page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)>.eyebrow{
+  grid-column:1!important;grid-row:1!important;align-self:end!important;
+  margin:0!important;padding:var(--ph-pad-y) 0 12px var(--ph-pad-x)!important;
+}
+#page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)>h2{
+  grid-column:1!important;grid-row:2!important;align-self:start!important;
+  margin:0 0 32px!important;padding:0 0 var(--ph-pad-y) var(--ph-pad-x)!important;
+}
+#page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)>h2::after{content:none!important;display:none!important}
+#page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)>.summary{
+  grid-column:2!important;grid-row:1 / 3!important;align-self:end!important;
+  margin:0 0 32px!important;padding:0 var(--ph-pad-x) var(--ph-pad-y) 0!important;
+}
+#page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)>.summary:empty{display:none!important}
+#page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)>.summary::after{content:none!important;display:none!important}
+
+#page #pageContent>:is(.gw-guide:not(.erp-photo-guide),.staff-sale-guide,.title-guide-restored){margin-top:0!important}
+/* the <br> in this title was hidden on mobile, which glued "규정을한곳에서" together */
+#page #pageContent .work-support-head h3 br{display:inline!important}
+
+/* Step-panel sub-header inside 그룹웨어 (not a page header): same flat look */
+#page #pageContent .pc-access-guide-header{
+  background:#fff!important;background-image:none!important;
+  border:0!important;border-bottom:1px solid var(--ph-line)!important;
+  border-radius:0!important;box-shadow:none!important;text-align:left!important;
+}
+#page #pageContent .pc-access-guide-header h3{color:var(--polish-ink)!important;letter-spacing:-.04em!important}
+#page #pageContent .pc-access-guide-summary{color:var(--ph-muted)!important}
+
+/* Remaining rounded shells on these pages */
+#page #pageContent :is(.title-guide-restored figure,.staff-sale-info){border-radius:4px!important}
+
+@media(max-width:760px){
+  :root{--ph-pad-y:28px;--ph-pad-x:20px}
+  #page #pageContent{padding-top:20px!important}
+  #page #pageContent>:is(section,div){margin-left:16px!important;margin-right:16px!important}
+  #page #pageContent :is(
+    .company-intro,.people-intro,.erp-intro,.it-guide-hero,.event-guide-header,
+    .resort-hero,.meal-guide-header,.workweek-header,.butfit-membership-hero,
+    .evaluation-flow-head,.work-support-head
+  ){
+    grid-template-columns:minmax(0,1fr)!important;
+    row-gap:10px!important;
+    margin-bottom:24px!important;
+  }
+  #page#page #pageContent :is(
+    .company-intro,.people-intro,.erp-intro,.it-guide-hero,.event-guide-header,
+    .resort-hero,.meal-guide-header,.workweek-header,.evaluation-flow-head,.work-support-head
+  )>*,
+  #page#page #pageContent .butfit-membership-copy>*{grid-column:1!important;grid-row:auto!important}
+  #page #pageContent .company-intro>.company-label{order:1}
+  #page #pageContent .company-intro>h3{order:2}
+  #page #pageContent .company-intro>strong.company-intro-line{order:3;margin-top:6px!important}
+  #page #pageContent .company-intro>p{order:4}
+  #page #pageContent :is(.people-intro,.evaluation-flow-head){margin-bottom:0!important}
+  #page #pageContent .work-support-head{margin:0 -20px 24px!important}
+  #page #pageContent .work-support-guide{padding:0 20px 24px!important}
+
+  #page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored){
+    grid-template-columns:minmax(0,1fr)!important;
+    margin:0 16px!important;
+  }
+  #page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)>*{margin-left:0!important;margin-right:0!important}
+  #page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)::before{grid-row:1 / 4!important;margin-bottom:24px!important}
+  #page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)>h2{margin-bottom:0!important;padding-bottom:10px!important}
+  #page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)>.summary{
+    grid-column:1!important;grid-row:3!important;
+    margin:0 0 24px!important;padding:0 var(--ph-pad-x) var(--ph-pad-y)!important;
+  }
+  #page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)>h2:has(+ .summary:empty){padding-bottom:var(--ph-pad-y)!important;margin-bottom:24px!important}
+}
+
+/* ==========================================================================
+   No accent stripes (2026-10-15)
+   The 3-7px red/navy bars on the top or left edge of cards, notices, the
+   header dropdown and the help modal came from different patch layers.
+   Notices keep their tint and get a full 1px tinted outline instead; cards
+   and panels use the same 1px line as everything else.
+   ========================================================================== */
+:root{--stripe-free-line:rgba(227,24,55,.28)}
+
+/* Decorative bars drawn with pseudo-elements */
+html body .card::before,
+html body .card:hover::before,
+#page #pageContent .people-values article::before,
+#page #pageContent .required-summary article::after,
+#page #pageContent .workweek-time-card::after,
+#page #pageContent .workweek-cardnews-modern::after,
+#page #pageContent .evaluation-programs>article::before,
+#page #pageContent .company-facts::before,
+html body .header-dropdown button::before{
+  content:none!important;display:none!important;
+}
+
+/* Notices / warnings: full outline instead of a left or top bar */
+#page #pageContent :is(
+  .it-warning,.event-clean-notice,.meal-warning,.workweek-notice,.staff-sale-notice,
+  .pc-access-warning,.app-install-tip,.butfit-price-notice,.exception-work-warning-box,
+  .flex-work-notice,.flex-work-notice-box,.mobile-qr-notice,.access-v2-login-note,
+  .access-security-notice,.approval-important,.attendance-notice,.event-important,
+  .gw-password-information,.gw-submit-notice
+),
+#page #pageContent .wifi-list>div:first-child small{
+  border:1px solid var(--stripe-free-line)!important;
+  border-radius:4px!important;
+}
+
+/* Cards and panels: same neutral 1px line on every side */
+#page #pageContent :is(.company-facts){
+  border-top:1px solid var(--angular-line,#d7dbe0)!important;
+}
+#page #pageContent .evaluation-mobile-v2 article,
+#page #pageContent .evaluation-mobile-v2 article:is(:first-child,:last-child){
+  border:1px solid var(--angular-line,#d7dbe0)!important;
+  border-radius:4px!important;
+}
+#page #pageContent .butfit-contact-card{
+  border:1px solid var(--angular-line,#d7dbe0)!important;
+  border-radius:4px!important;
+}
+#page #pageContent .title-guide-correction article{
+  border-left:0!important;
+}
+html body .system-help-modal-box{
+  border-top-width:1px!important;
+}
+html body .office-card{
+  border-top-width:1px!important;
+}
+
+/* Header dropdown: square panel with a 1px line, hover shows as a tint */
+html body .header-dropdown{
+  border:1px solid rgba(17,20,27,.12)!important;
+  border-top:1px solid rgba(17,20,27,.12)!important;
+}
+html body .header-dropdown button:is(:hover,:focus-visible){
+  background:#f5f6f7!important;
+  color:var(--polish-red)!important;
+}
+
+/* ==========================================================================
+   Round 3 (2026-10-15): fewer decorative labels, square corners everywhere,
+   no colored glows, 사내판매 spacing, resort cards, mobile install guide.
+   ========================================================================== */
+
+/* ---- 1. Decorative English / category labels removed ---- */
+/* header eyebrows (incl. "업무 프로그램 · 04" on the three pages without an in-page header) */
+#page #pageContent .company-intro>.company-label,
+#page #pageContent .workweek-header .workweek-eyebrow,
+#page #pageContent .butfit-membership-copy>b,
+#page #pageContent :is(.evaluation-flow-head,.work-support-head)>div>span,
+#page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)>.eyebrow{
+  display:none!important;
+}
+#page #pageContent .event-guide-header h3::before{content:none!important;display:none!important}
+#page #pageContent .company-intro>h3,
+#page #pageContent .butfit-membership-copy>h3{grid-row:1 / 3!important;align-self:end!important}
+#page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)>h2{
+  grid-row:1 / 3!important;align-self:center!important;
+  padding-top:var(--ph-pad-y)!important;
+}
+/* small English kickers above Korean titles */
+#page #pageContent :is(
+  .company-ceo-message>small,.affiliate-orbit-panel>span,
+  .mobile-qr-card-caption,.mobile-install-toggle>span,
+  .password-key-label,.password-route-label,.password-security>article>small,
+  .approval-title-rule>small,.access-v2-eyebrow,.password-modern-eyebrow,
+  .required-domain-card>header>span,.system-help-label,.erp-help-v2 header>div>span,
+  .event-quick-summary>article>small,
+  .resort-brand-card>div>small,.resort-section-label,
+  .meal-tab>div>small,.meal-warning>span,.meal-viewer-bar>span,.meal-cardnews-overlay>small,
+  .flex-work-heading>div>span,.workweek-notice>span,
+  .evaluation-flow-name>small,
+  .work-support-group-title>div>small,.work-support-links a>span>small,.work-support-guide a>span>small
+){display:none!important}
+/* company facts: keep the Korean footnotes, drop "CEO" / "FOUNDED" without shifting the grid */
+#page #pageContent .company-facts>article:is(:nth-child(1),:nth-child(2))>small{visibility:hidden!important}
+
+/* ---- 2. Square corners (2–4px) on the content that was still 7–28px round ---- */
+#page #pageContent :is(
+  .company-facts,.gw-viewer,.pc-access-address,.pc-access-address-icon,.pc-access-address>a,
+  .pc-access-example,.access-v2-preview,.access-v2-address,.access-v2-login,.access-v2-value,
+  .access-v2-button,.gw-directory-route,.gw-directory-real-screen,.gw-duty-guide,.gw-duty-steps>li,
+  .gw-duty-screen,.mobile-qr-modern,.mobile-qr-card,.mobile-qr-steps,.mobile-install-option,
+  .password-modern,.password-route>span,.password-route-steps,.approval-modern,.approval-image-frame,
+  .approval-form-title>div>span,.approval-company-links>a,.approval-title-rule,
+  .mobile-attendance-modern,.attendance-missed-alert,.attendance-state,.flex-work-modern,
+  .flex-work-route-line>span,.flex-work-example,.flex-work-time,.exception-work-modern,
+  .exception-route-line>span,.exception-work-type,.required-domain-card>ol>li,.required-help,
+  .system-help-icon,.system-help-contacts>div,.erp-account-first,.erp-account-first>div>b,
+  .erp-help-v2,.erp-help-route,.erp-help-route>div>strong,.erp-manual-link,.erp-help-contacts,
+  .erp-help-contacts>div>span,.it-quick-links>a,.wifi-list>div,.wifi-common-password,
+  .it-contacts>article,.event-important-number,.event-info-grid>article,.event-quick-summary,
+  .resort-days-section,.resort-days-table,.resort-days-row,.resort-process,.resort-process-grid,
+  .resort-notice-grid>article,.resort-brand-card,.meal-highlight-grid,.meal-image-viewer,.meal-detail>div,
+  .meal-notice-grid>article,.workweek-time-grid,.flex-work-icon,.flex-time-normal,.flex-time-workweek,
+  .flex-work-warning,.workweek-image-section,.workweek-board-top>b,.workweek-track,
+  .workweek-culture-note,.workweek-location-grid>article,.staff-sale-link,.butfit-pricing-card,
+  .butfit-pricing-grid>article,.butfit-change-row,.butfit-contact-name,.evaluation-flow-track>div,
+  .work-support-group-title>b,.work-support-links>a,.title-guide-note,.gw-password-badge,
+  .gw-step,.erp-step,.meal-tab,.event-main-tab,.event-table-filter
+){border-radius:4px!important}
+/* pills and badges */
+#page #pageContent :is(
+  .erp-image-top>span,.required-tags>span,.flex-time-title>b,.butfit-pricing-head>div>span,
+  .butfit-change-row>span,.staff-sale-button,.mobile-guide-zoom-hint
+){border-radius:2px!important}
+
+/* ---- 3. No colored glow shadows ---- */
+#page #pageContent :is(
+  .support-site-link,.required-m365-card>a,.system-help-icon,.flex-work-icon,
+  .workweek-copy-note i,.workweek-track-work,.gw-step,.gw-password-badge,
+  .affiliate-orbit-core,.affiliate-orbit-button,.people-value-circle,.staff-sale-button
+){box-shadow:none!important}
+
+/* ---- 4. 사내판매: no empty band at the top of the card ---- */
+#page #pageContent .staff-sale-guide{padding:40px 48px!important}
+#page #pageContent .staff-sale-info{margin-top:0!important}
+
+/* ---- 5. Resort cards: same white card as the rest instead of the dark red-glow tile ---- */
+#page #pageContent .resort-brand-card{
+  color:var(--polish-ink)!important;
+  background:#fff!important;
+  background-image:none!important;
+  border:1px solid var(--angular-line,#d7dbe0)!important;
+  box-shadow:none!important;
+}
+#page #pageContent .resort-brand-card::before,
+#page #pageContent .resort-brand-card::after{content:none!important;display:none!important}
+#page #pageContent .resort-brand-card :is(h4,b){color:var(--polish-ink)!important}
+#page #pageContent .resort-brand-card p{color:var(--ph-muted,#626b76)!important}
+#page #pageContent .resort-brand-card>div{margin-top:0!important}
+
+/* ---- 6. 모바일 설치 방법 ---- */
+/* one accordion column: an opened guide gets the full width so the screenshot is readable */
+#page #pageContent .mobile-install-guides{grid-template-columns:minmax(0,1fr)!important;gap:10px!important;align-items:start!important}
+#page #pageContent .mobile-install-option{grid-column:1 / -1!important;min-height:0!important;padding:16px 20px!important}
+#page #pageContent .mobile-install-option{
+  border:1px solid var(--angular-line,#d7dbe0)!important;
+  box-shadow:none!important;
+}
+#page #pageContent .mobile-install-toggle{min-height:32px!important;display:flex!important;align-items:center!important}
+#page #pageContent .mobile-install-toggle>i{
+  width:28px!important;height:28px!important;
+  border-radius:2px!important;
+  color:var(--polish-ink)!important;
+  background:#fff!important;
+  border:1px solid var(--angular-line,#d7dbe0)!important;
+  box-shadow:none!important;
+  font-style:normal!important;
+}
+#page #pageContent .mobile-install-option.open .mobile-install-toggle>i,
+#page #pageContent .mobile-install-toggle:hover>i{border-color:var(--polish-ink)!important}
+/* image at its own proportions: no gray bands above and below */
+#page #pageContent .mobile-guide-zoom{
+  height:auto!important;
+  padding:0!important;
+  background:#0d0f12!important;
+  border:1px solid var(--angular-line,#d7dbe0)!important;
+  overflow:hidden!important;
+}
+#page #pageContent .mobile-guide-zoom img{
+  width:100%!important;height:auto!important;max-height:none!important;
+  object-fit:contain!important;
+}
+#page #pageContent .mobile-guide-zoom-hint{
+  right:10px!important;bottom:10px!important;top:auto!important;left:auto!important;
+  padding:6px 10px!important;
+  font-size:12px!important;
+  background:rgba(20,24,30,.88)!important;
+}
+#page #pageContent .mobile-install-panel ol{margin-top:14px!important}
+#page #pageContent .mobile-qr-card{box-shadow:none!important;align-self:start!important}
+#page #pageContent .mobile-qr-card::before{border-width:1px!important;border-radius:2px!important}
+
+@media(max-width:1100px){
+  #page #pageContent .mobile-qr-body{grid-template-columns:minmax(0,1fr)!important}
+  #page #pageContent .mobile-qr-card{justify-self:start!important;width:auto!important;max-width:240px!important}
+}
+@media(max-width:760px){
+  #page #pageContent .staff-sale-guide{padding:24px 20px!important}
+  #page#page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)>h2{
+    grid-row:1 / 3!important;padding-top:var(--ph-pad-y)!important;
+  }
+}
+
+/* 격주 월요일 board: corporate-angular-theme painted its top strip light like a page header,
+   leaving white text on white inside the dark board */
+#page #pageContent .workweek-board-top{background:transparent!important;background-image:none!important}
+#page #pageContent .workweek-board-top span{color:var(--polish-red-on-dark)!important}
+
+/* ==========================================================================
+   Round 4 (2026-10-15): alignment and wrapping after the labels were removed
+   ========================================================================== */
+/* the hidden "DOCUMENT TITLE" label left an empty 150px column, wrapping the example onto two lines */
+#page #pageContent .approval-title-rule{grid-template-columns:minmax(0,1fr)!important}
+@media(min-width:761px){#page #pageContent .approval-title-rule>strong{white-space:nowrap!important}}
+
+/* header titles sit on the vertical middle of the panel, not on the bottom edge */
+#page #pageContent :is(
+  .company-intro,.people-intro,.erp-intro,.it-guide-hero,.event-guide-header,
+  .resort-hero,.meal-guide-header,.workweek-header,.butfit-membership-hero,
+  .evaluation-flow-head,.work-support-head
+){align-items:center!important}
+#page #pageContent .company-intro>h3,
+#page #pageContent .butfit-membership-copy>:is(h3,p){align-self:center!important}
+
+/* notices whose English label was removed: the title no longer sits in a 150-180px column */
+#page #pageContent :is(.meal-warning,.workweek-notice){grid-template-columns:minmax(0,1fr)!important}
+/* leftover English labels */
+#page #pageContent :is(.affiliate-orbit-core>span,.mutual-fee-final-header>div>small){display:none!important}
+/* counters like "02 / 02" never break */
+#page #pageContent :is(.erp-controls>span,.meal-controls>span){white-space:nowrap!important}
+
+/* one readable floor for small labels: 8-11px labels sat next to 12px ones and looked out of place */
+#page #pageContent :is(
+  .company-facts>article>small,.business-list>div>span,.affiliate-disclosure-facts dt,
+  .pc-access-address-text>small,.pc-access-info-card>span,.access-v2-login-label,.access-v2-step>small,
+  .gw-directory-head>div>span,.gw-real-screen-head>div>span,.gw-real-screen-head>small,
+  .gw-duty-head>div>span,.gw-duty-steps>li>b,.mobile-qr-step>small,.mobile-qr-step>p,.mobile-qr-notice,
+  .password-key-notice,.password-route-number,.password-route-step p,.password-security>article>p,
+  .approval-modern-head small,.approval-screen-copy>span,.approval-company-card>span,
+  .attendance-modern-head small,.attendance-step-number,.attendance-state small,
+  .flex-work-eyebrow,.flex-work-section-label,.flex-work-step-number,.flex-work-step>small,.flex-work-step>p,
+  .flex-work-time>small,.exception-work-eyebrow,.exception-work-critical-label,.exception-critical-card>small,
+  .exception-section-label,.exception-work-number,.exception-work-step>small,.exception-work-step>p,
+  .exception-work-type>small,
+  .required-summary>article>span,.required-m365-card>div>span,.system-help-contacts>div>span,
+  .system-help-contacts>div>em,.erp-image-top>span,.erp-description-label,.required-tags>span,
+  .erp-help-route>small,.erp-help-contacts>small,
+  .it-quick-links>a>span,.it-section-title>span,.it-card-number,.it-card-content>span,.wifi-list>div>span,
+  .it-contact-title>span,.it-contacts>article>span,
+  .event-important span,.event-main-tab>span,.event-table-title>span,.event-info-grid>article>span,
+  .resort-brand-card>span,.resort-brand-card>em,.resort-days-card-head span,.resort-process-heading>span,
+  .resort-process-grid>article>span,.resort-notice-grid>article>span,
+  .meal-tab>span,.meal-viewer-bar>button,.meal-viewer-copy>span,.meal-detail>div>span,.meal-controls>span,
+  .meal-notice-grid>article>span,
+  .flex-time-title>b,.flex-time-point>span,.flex-time-comparison p,.workweek-board-top span,
+  .workweek-track small,.workweek-board-summary small,.workweek-location-grid>article>span,
+  .butfit-contact-card small,.butfit-contact-name>span,
+  .evaluation-flow-name>span,.evaluation-flow-track small
+){font-size:12px!important;letter-spacing:.02em!important}
+#page #pageContent .flex-time-title>b{white-space:nowrap!important}
+
+/* 그룹웨어 > 담당업무: short title broke onto two lines; step chips were too narrow for their text */
+@media(min-width:761px){
+  #page #pageContent .gw-duty-head>div:first-child{flex:1 1 auto!important;max-width:none!important;min-width:0!important}
+  #page #pageContent .gw-duty-head h4{white-space:nowrap!important}
+  #page #pageContent .gw-duty-steps{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+/* table cells such as "남 20 · 여 90" stay on one line */
+#page #pageContent .event-table-card td{white-space:nowrap!important}
+
+/* ERP / 필수 프로그램 step tabs: the active (dark) tab kept dark number and title text */
+#page #pageContent .erp-step.active :is(.erp-step-copy,.erp-step-copy *,strong,small,.erp-step-arrow){color:#fff!important}
+#page #pageContent .erp-step.active .erp-step-number{color:var(--polish-red-on-dark)!important}
+#page #pageContent .required-tags>span{white-space:nowrap!important}
+
+@media(max-width:760px){
+  /* description text was squeezed into an 89px column next to the prev/next buttons */
+  #page #pageContent .erp-description{grid-template-columns:minmax(0,1fr)!important}
+  #page #pageContent .erp-description>.erp-controls{justify-self:end!important}
+  /* three step tabs side by side broke "지출결의서 상신" mid-word; stack them */
+  #page #pageContent .erp-step-list{grid-template-columns:minmax(0,1fr)!important}
+  #page #pageContent .it-contact-title h4{font-size:28px!important}
+  #page #pageContent .resort-days-row>div{font-size:12px!important}
+  #page #pageContent .title-guide-correction :is(article>span,article>p){font-size:11px!important}
+}
+
+/* Round 5: 계열사 — keep the circular orbit; only the side panel's red top line is replaced */
+#page#page #pageContent .affiliate-disclosure-facts,
+#page#page #pageContent .affiliate-disclosure-facts>div{border:1px solid var(--angular-line,#d7dbe0)!important;border-radius:4px!important;box-shadow:none!important}
+#page#page #pageContent .affiliate-disclosure-facts>div{border:0!important}
+#page#page #pageContent :is(.affiliate-disclosure-facts,.affiliate-disclosure-facts>div)::before{content:none!important;display:none!important}
+/* the four affiliates are circles again around the round core
+   (corporate-angular-theme's "button{border-radius:2px}" had squared them) */
+@media(min-width:761px){
+  #page#page #pageContent .affiliate-orbit-button{
+    border-radius:50%!important;
+    box-shadow:0 12px 30px rgba(22,28,37,.08)!important;
+  }
+  #page#page #pageContent .affiliate-orbit-button:is(:hover,:focus-visible){
+    border-color:var(--polish-red)!important;
+    box-shadow:0 16px 34px rgba(227,24,55,.16)!important;
+  }
+  #page#page #pageContent .affiliate-orbit-button.active{
+    color:#fff!important;background:var(--polish-red)!important;border-color:var(--polish-red)!important;
+    box-shadow:0 18px 38px rgba(227,24,55,.25)!important;
+  }
+  #page#page #pageContent .affiliate-orbit-button.active>span{color:rgba(255,255,255,.8)!important}
+  #page#page #pageContent .affiliate-orbit-core{inset:36%!important;box-shadow:0 18px 40px rgba(227,24,55,.24)!important}
+  #page#page #pageContent .affiliate-orbit-core strong{font-size:19px!important;letter-spacing:-.04em!important}
+}
+
+/* 계열사 on mobile: the same orbit as desktop, scaled to the phone width
+   (the original mobile layout dropped the circle for a 2x2 card grid) */
+@media(max-width:760px){
+  #page#page #pageContent .affiliate-orbit-map{
+    position:relative!important;display:block!important;
+    width:min(100%,320px)!important;height:auto!important;aspect-ratio:1 / 1!important;
+    margin:8px auto 4px!important;padding:0!important;
+  }
+  #page#page #pageContent .affiliate-orbit{margin-left:12px!important;margin-right:12px!important;padding-left:8px!important;padding-right:8px!important}
+  #page#page #pageContent .affiliate-orbit-line{
+    display:block!important;position:absolute!important;inset:16.5%!important;border-radius:50%!important;
+  }
+  #page#page #pageContent .affiliate-orbit-core{
+    display:grid!important;place-content:center!important;position:absolute!important;inset:35%!important;
+    width:auto!important;height:auto!important;margin:0!important;
+    border-radius:50%!important;background:var(--polish-red)!important;
+    box-shadow:0 12px 28px rgba(227,24,55,.22)!important;
+  }
+  #page#page #pageContent .affiliate-orbit-core strong{font-size:13px!important;letter-spacing:-.03em!important}
+  #page#page #pageContent .affiliate-orbit-button,
+  #page#page #pageContent .affiliate-orbit-button:nth-of-type(n){
+    position:absolute!important;
+    display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;
+    width:33%!important;height:auto!important;aspect-ratio:1 / 1!important;min-height:0!important;
+    margin:0!important;padding:6px!important;text-align:center!important;
+    border-radius:50%!important;
+    box-shadow:0 8px 20px rgba(22,28,37,.08)!important;
+  }
+  #page#page #pageContent .affiliate-orbit-button:nth-of-type(1){left:50%!important;top:0!important;right:auto!important;bottom:auto!important;transform:translateX(-50%)!important}
+  #page#page #pageContent .affiliate-orbit-button:nth-of-type(2){right:0!important;top:50%!important;left:auto!important;bottom:auto!important;transform:translateY(-50%)!important}
+  #page#page #pageContent .affiliate-orbit-button:nth-of-type(3){left:50%!important;bottom:0!important;top:auto!important;right:auto!important;transform:translateX(-50%)!important}
+  #page#page #pageContent .affiliate-orbit-button:nth-of-type(4){left:0!important;top:50%!important;right:auto!important;bottom:auto!important;transform:translateY(-50%)!important}
+  #page#page #pageContent .affiliate-orbit-button>span{margin-bottom:3px!important;font-size:11px!important}
+  #page#page #pageContent .affiliate-orbit-button>strong{font-size:12px!important;line-height:1.3!important;letter-spacing:-.05em!important}
+  #page#page #pageContent .affiliate-orbit-button.active{
+    color:#fff!important;background:var(--polish-red)!important;border-color:var(--polish-red)!important;
+    box-shadow:0 10px 24px rgba(227,24,55,.25)!important;
+  }
+  #page#page #pageContent .affiliate-orbit-button.active>span{color:rgba(255,255,255,.8)!important}
+}
+@media(max-width:360px){
+  #page#page #pageContent .affiliate-orbit-core strong{font-size:11px!important}
+  #page#page #pageContent .affiliate-orbit-button>strong{font-size:11px!important}
+  #page#page #pageContent .affiliate-orbit-button>span{font-size:10px!important}
+}

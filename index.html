@@ -4,7 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>THINKWARE 신규입사자 온보딩</title>
+<meta name="description" content="팅크웨어 신규 입사자를 위한 회사 소개, 업무 프로그램, 복리후생, 인사제도 안내">
+<meta name="theme-color" content="#050609">
 <link rel="icon" type="image/png" href="./public/thinkware-logo.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style id="design-polish-critical">
+/* Dropdown styles are defined far below the header; hide menus until then so they never flash open on load. */
+.header-dropdown{opacity:0;visibility:hidden;pointer-events:none}
+.header-menu-group:hover .header-dropdown,.header-menu-group:focus-within .header-dropdown{opacity:1;visibility:visible;pointer-events:auto}
+</style>
 <style>
 :root{--red:#f52243;--black:#050609;--paper:#f4f4f1;--line:#ddd}
 *{box-sizing:border-box}
@@ -1416,6 +1425,7 @@ footer{padding:42px 7vw;display:flex;gap:30px;color:#777;background:#050505;font
 <body>
 <div class="progress" id="progress"></div>
 
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
 <header class="header">
 <a class="logo" href="#top">
   <img src="./public/thinkware-logo.png" alt="THINKWARE">
@@ -1472,7 +1482,7 @@ footer{padding:42px 7vw;display:flex;gap:30px;color:#777;background:#050505;font
 </nav>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
 <div class="movie" id="top">
 <section class="hero" id="hero">
 <video class="drive-video" autoplay muted playsinline loop preload="metadata" poster="./public/car-drive-poster.jpg">
@@ -2501,10 +2511,10 @@ body=`
       <button class="affiliate-orbit-button" type="button" data-affiliate="3" aria-pressed="false"><span>04</span><strong>팅크웨어<br>오토모티브(주)</strong></button>
     </div>
     <div class="affiliate-orbit-details" aria-live="polite">
-      <article class="affiliate-orbit-panel active" data-affiliate-panel="0"><span>01 · DIGITAL MAP &amp; LOCATION</span><h5>(주)아이나비시스템즈</h5><p>자율주행용 고정밀 지도와 위치기반 지도 플랫폼을 개발합니다.</p><dl class="affiliate-disclosure-facts"><div><dt>공시상 주요 사업</dt><dd>지도개발 및 공급</dd></div></dl><small class="affiliate-disclosure-basis">2025년 3분기보고서 기준</small></article>
-      <article class="affiliate-orbit-panel" data-affiliate-panel="1" hidden><span>02 · MOBILE BUSINESS</span><h5>팅크웨어모바일(주)</h5><p>로봇청소기와 생활가전 상품의 국내 유통 사업을 운영합니다.</p><dl class="affiliate-disclosure-facts"><div><dt>공시상 주요 사업</dt><dd>모바일·태블릿 사업</dd></div></dl><small class="affiliate-disclosure-basis">2025년 3분기보고서 기준</small></article>
-      <article class="affiliate-orbit-panel" data-affiliate-panel="2" hidden><span>03 · MOBILITY PLATFORM</span><h5>(주)아이나비모빌리티</h5><p>콜택시 관제 서비스와 모빌리티 플랫폼을 개발하고 운영합니다.</p><dl class="affiliate-disclosure-facts"><div><dt>공시상 주요 사업</dt><dd>택시 콜솔루션 개발 및 관제서비스 공급</dd></div></dl><small class="affiliate-disclosure-basis">2025년 3분기보고서 기준</small></article>
-      <article class="affiliate-orbit-panel" data-affiliate-panel="3" hidden><span>04 · AUTOMOTIVE</span><h5>팅크웨어오토모티브(주)</h5><p>차량용 전장 제품과 ADAS 관련 기술을 개발합니다.</p><dl class="affiliate-disclosure-facts"><div><dt>공시상 주요 사업</dt><dd>소프트웨어 개발</dd></div></dl><small class="affiliate-disclosure-basis">2025년 3분기보고서 기준</small></article>
+      <article class="affiliate-orbit-panel active" data-affiliate-panel="0"><span>01 · DIGITAL MAP &amp; LOCATION</span><h5>(주)아이나비시스템즈</h5><p>자율주행용 고정밀 지도와 위치기반 지도 플랫폼을 개발합니다.</p><dl class="affiliate-disclosure-facts"><div><dt>공시상 주요 사업</dt><dd>지도개발 및 공급</dd></div></dl></article>
+      <article class="affiliate-orbit-panel" data-affiliate-panel="1" hidden><span>02 · MOBILE BUSINESS</span><h5>팅크웨어모바일(주)</h5><p>로봇청소기와 생활가전 상품의 국내 유통 사업을 운영합니다.</p><dl class="affiliate-disclosure-facts"><div><dt>공시상 주요 사업</dt><dd>모바일·태블릿 사업</dd></div></dl></article>
+      <article class="affiliate-orbit-panel" data-affiliate-panel="2" hidden><span>03 · MOBILITY PLATFORM</span><h5>(주)아이나비모빌리티</h5><p>콜택시 관제 서비스와 모빌리티 플랫폼을 개발하고 운영합니다.</p><dl class="affiliate-disclosure-facts"><div><dt>공시상 주요 사업</dt><dd>택시 콜솔루션 개발 및 관제서비스 공급</dd></div></dl></article>
+      <article class="affiliate-orbit-panel" data-affiliate-panel="3" hidden><span>04 · AUTOMOTIVE</span><h5>팅크웨어오토모티브(주)</h5><p>차량용 전장 제품과 ADAS 관련 기술을 개발합니다.</p><dl class="affiliate-disclosure-facts"><div><dt>공시상 주요 사업</dt><dd>소프트웨어 개발</dd></div></dl></article>
     </div>
   </div>
 
@@ -17180,7 +17190,7 @@ html.meal-modal-open {
         <div class="workweek-schedule-board">
           <div class="workweek-board-top">
             <div>
-              <span>MONDAY SCHEDULE</span>
+              <span>월요일 근무 시간</span>
               <strong>13:00 — 18:00</strong>
             </div>
             <b>5H</b>
@@ -25587,7 +25597,7 @@ document.addEventListener("click", function(event) {
       <div class="approval-title-rule">
         <small>DOCUMENT TITLE</small>
         <strong>
-          제목 예시 · 임직원 동의서_정현호
+          제목 예시: 임직원 동의서_정현호
         </strong>
       </div>
     `;
@@ -30902,11 +30912,11 @@ img:hover {
   /* 상단 핵심 요약 */
   #pageContent .event-quick-summary {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     margin-bottom: 18px;
     overflow: hidden;
     background: #171a20;
-    border-radius: 16px;
+    border-radius: 4px;
   }
 
   #pageContent .event-quick-summary article {
@@ -31277,15 +31287,9 @@ img:hover {
           </article>
 
           <article>
-            <small>APPLICATION</small>
-            <strong>발생일로부터 3개월 이내</strong>
-            <p>신청서를 작성하고 해당 증빙서류를 첨부합니다.</p>
-          </article>
-
-          <article>
-            <small>ROUTE</small>
-            <strong>전자결재 → 총무</strong>
-            <p>경조금 신청서를 선택해 결재를 진행합니다.</p>
+            <small>MUTUAL AID</small>
+            <strong>상조회 가입 방법</strong>
+            <p>전자결재 → 총무 → 상조회 가입 동의서로 기안을 올립니다.</p>
           </article>
         </div>
 
@@ -38255,3 +38259,11 @@ body.mobile-guide-lightbox-open{overflow:hidden;}
 </script>
 <link rel="stylesheet" href="./design-cleanup.css?v=6">
 <link rel="stylesheet" href="./corporate-angular-theme.css?v=1">
+<link rel="stylesheet" href="./design-polish.css?v=6">
+<script id="design-polish-motion">
+(function(){
+  var mq=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)');
+  if(!mq||!mq.matches)return;
+  document.querySelectorAll('#hero video').forEach(function(v){v.removeAttribute('autoplay');v.pause();});
+})();
+</script>
