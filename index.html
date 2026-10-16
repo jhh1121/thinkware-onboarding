@@ -2151,10 +2151,11 @@ const topics=[
 ]},
 
 {n:"15",c:"인사제도",t:"호칭 가이드",s:"",image:"./public/title-guide-cardnews-v3.webp",d:[
-["기본 호칭","일반 구성원은 이름 뒤에 ‘책임’을 붙여 부릅니다.|예: 정현호 책임"],
-["리더 직책","파트장·팀장·센터장·점장은 직책명 뒤에 ‘님’을 붙여 부릅니다."],
-["리더와 임원","리더와 임원은 해당 직책 뒤에 ‘님’을 붙여 부릅니다.|예: 파트장님 · 팀장님 · 센터장님 · 점장님 · 이사님 · 상무님 · 전무님 · 대표님"],
-["호칭을 모를 때","상대방의 정확한 직책을 모를 때는 이름과 책임 호칭을 사용하거나 소속 팀에 먼저 확인해 주세요."]
+["기본 호칭","일반 구성원은 이름 뒤에 ‘책임’을 붙여 부릅니다. ‘님’은 붙여도, 붙이지 않아도 됩니다.|예: 정현호 책임 · 정현호 책임님"],
+["리더","파트장·팀장·부서장·센터장·점장은 직책명 뒤에 ‘님’을 붙여 부릅니다.|예: 팀장님 · 파트장님"],
+["임원","이사·상무·전무·대표는 직위명 뒤에 ‘님’을 붙여 부릅니다.|예: 이사님 · 상무님 · 전무님 · 대표님"],
+["호칭을 모를 때","상대방의 정확한 직책을 모를 때는 이름과 책임(님) 호칭을 사용하거나 소속 팀에 먼저 확인해 주세요."],
+["압존법","압존법은 쓰지 않습니다. 누구에게 말하든 상대의 호칭과 높임은 그대로 유지합니다.|예: 대표님께 “김민수 팀장님께서 검토하셨습니다.”"]
 ]}
 ];
 const categories=["전체","회사소개","업무 프로그램","복리후생","인사제도"];
@@ -2662,16 +2663,42 @@ body=`
 </section>`;
 }else if(x.t==="호칭 가이드"){
 body=`
-<section class="title-guide-restored">
-  <figure>
-    <img src="./public/title-guide-cardnews-v3.webp" alt="팅크웨어 호칭 가이드" loading="lazy" decoding="async" data-no-zoom>
-    <div class="title-guide-correction">
-      <article><span>일반 구성원</span><strong>이름 + <em>책임</em></strong><p>예: 정현호 책임</p></article>
-      <article><span>리더 · 임원</span><strong>직책명 + <em>님</em></strong><p>파트장님 · 팀장님 · 센터장님 · 점장님<br>이사님 · 상무님 · 전무님 · 대표님</p></article>
+<section class="tg title-guide-restored">
+  <p class="tg-lead"><strong>직급 대신 ‘책임’으로 서로를 부릅니다.</strong> 호칭은 수평적으로, 존중은 모두에게 똑같이 담습니다.</p>
+  <div class="tg-rules">
+    <article class="tg-main">
+      <span>일반 구성원</span>
+      <strong>이름 + 책임<em>(님)</em></strong>
+      <p>‘님’은 붙여도, 붙이지 않아도 괜찮습니다.</p>
+      <small>예) 정현호 책임 · 정현호 책임님</small>
+    </article>
+    <article>
+      <span>리더</span>
+      <strong>직책명 + 님</strong>
+      <p>파트장 · 팀장 · 부서장 · 센터장 · 점장</p>
+      <small>예) 팀장님 · 파트장님</small>
+    </article>
+    <article>
+      <span>임원</span>
+      <strong>직위명 + 님</strong>
+      <p>이사 · 상무 · 전무 · 대표</p>
+      <small>예) 상무님 · 대표님</small>
+    </article>
+    <article>
+      <span>호칭을 모를 때</span>
+      <strong>이름 + 책임<em>(님)</em></strong>
+      <p>정확한 직책을 모르면 이 호칭을 쓰거나 소속 팀에 먼저 확인합니다.</p>
+    </article>
+  </div>
+  <div class="tg-note">
+    <div>
+      <span>압존법은 쓰지 않습니다</span>
+      <p>누구에게 말하든 상대의 호칭과 높임은 그대로 유지합니다.</p>
     </div>
-  </figure>
-  <div class="title-guide-note">
-    <span>호칭을 모를 때</span><strong>이름 + 책임</strong><p>또는 소속 팀에 확인합니다.</p>
+    <dl>
+      <dt>대표님께 보고할 때</dt>
+      <dd>“김민수 팀장님께서 검토하셨습니다.”</dd>
+    </dl>
   </div>
 </section>`;
 }else{
@@ -38837,3 +38864,96 @@ body.mobile-guide-lightbox-open{overflow:hidden;}
   }, true);
 })();
 </script>
+<style id="tw-title-guide">
+/* 2026-10-16 호칭 가이드: 카드뉴스 대신 설명형 (수평적 호칭 원칙) */
+#pageContent .tg { display: grid; gap: 16px; }
+#pageContent .tg-lead {
+  margin: 0;
+  padding: 26px 30px;
+  border: 1px solid #dfe3e8;
+  border-radius: 4px;
+  background: #fff;
+  color: #4b525c;
+  font-size: 16px;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+#pageContent .tg-lead strong { color: #15181d; font-weight: 800; }
+#pageContent .tg-rules {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+#pageContent .tg-rules article {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 28px 26px;
+  border: 1px solid #dfe3e8;
+  border-radius: 4px;
+  background: #fff;
+}
+#pageContent .tg-rules article.tg-main { border-color: #15181d; }
+#pageContent .tg-rules span {
+  color: #ed1c2e;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+#pageContent .tg-rules strong {
+  margin-top: 14px;
+  color: #15181d;
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -.04em;
+  word-break: keep-all;
+}
+#pageContent .tg-rules strong em { color: #8a919b; font-style: normal; font-weight: 700; }
+#pageContent .tg-rules p {
+  margin: 14px 0 0;
+  color: #5b626c;
+  font-size: 15px;
+  line-height: 1.65;
+  word-break: keep-all;
+}
+#pageContent .tg-rules small {
+  margin-top: auto;
+  padding-top: 18px;
+  color: #15181d;
+  font-size: 14px;
+  font-weight: 700;
+}
+#pageContent .tg-note {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  padding: 24px 30px;
+  border-radius: 4px;
+  background: #15181d;
+  color: #fff;
+}
+#pageContent .tg-note span { font-size: 18px; font-weight: 800; }
+#pageContent .tg-note p {
+  margin: 6px 0 0;
+  color: rgba(255, 255, 255, .72);
+  font-size: 15px;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+#pageContent .tg-note dl { margin: 0; }
+#pageContent .tg-note dt { color: rgba(255, 255, 255, .6); font-size: 13px; font-weight: 700; }
+#pageContent .tg-note dd { margin: 6px 0 0; font-size: 17px; font-weight: 700; word-break: keep-all; }
+@media (max-width: 1100px) {
+  #pageContent .tg-rules { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  #pageContent .tg-rules { grid-template-columns: 1fr; }
+}
+@media (max-width: 900px) {
+  #pageContent .tg-rules small { margin-top: 0; }
+  #pageContent .tg-note { grid-template-columns: 1fr; gap: 16px; }
+  #pageContent .tg-lead, #pageContent .tg-note { padding: 22px; }
+  #pageContent .tg-rules article { padding: 22px; }
+}
+</style>
