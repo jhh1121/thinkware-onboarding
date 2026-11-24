@@ -7,12 +7,12 @@
 
 :root{
   --polish-font:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
-  --polish-red:#e31837;          /* 4.7:1 on white, matches --angular-red */
+  --polish-red:#e32526;          /* logo red (thinkware-logo.png), 4.6:1 on white */
   --polish-red-on-dark:#ff5a6e;  /* 5.6:1 on #0b0e13 */
   --polish-ink:#14181e;
   --polish-muted:#5b636e;        /* 6.1:1 on white */
   --polish-muted-on-dark:#a3acb8;/* 8.4:1 on #050505 */
-  --polish-focus:#e31837;
+  --polish-focus:#e32526;
   --red:var(--polish-red);
 }
 
@@ -66,10 +66,10 @@ footer{font-size:12px!important;color:var(--polish-muted-on-dark)!important}
 
 /* Primary red buttons: white text needs ≥4.5:1, and hover should deepen, not lighten */
 .staff-sale-button{background:var(--polish-red)!important}
-.staff-sale-button:hover{background:#c8102e!important}
+.staff-sale-button:hover{background:#c41e1f!important}
 
 /* ---------- Browser surfaces ---------- */
-::selection{background:rgba(227,24,55,.18);color:inherit}
+::selection{background:rgba(227,37,38,.18);color:inherit}
 :root{accent-color:var(--polish-red);caret-color:var(--polish-red)}
 a{text-underline-offset:.2em}
 html{scrollbar-color:#b9bfc7 transparent}
@@ -450,7 +450,7 @@ html:root #hero .dashcam-piece{animation-delay:calc(var(--piece-delay,0s) - 1.6s
    Notices keep their tint and get a full 1px tinted outline instead; cards
    and panels use the same 1px line as everything else.
    ========================================================================== */
-:root{--stripe-free-line:rgba(227,24,55,.28)}
+:root{--stripe-free-line:rgba(227,37,38,.28)}
 
 /* Decorative bars drawn with pseudo-elements */
 html body .card::before,
@@ -754,14 +754,14 @@ html body .header-dropdown button:is(:hover,:focus-visible){
   }
   #page#page #pageContent .affiliate-orbit-button:is(:hover,:focus-visible){
     border-color:var(--polish-red)!important;
-    box-shadow:0 16px 34px rgba(227,24,55,.16)!important;
+    box-shadow:0 16px 34px rgba(227,37,38,.16)!important;
   }
   #page#page #pageContent .affiliate-orbit-button.active{
     color:#fff!important;background:var(--polish-red)!important;border-color:var(--polish-red)!important;
-    box-shadow:0 18px 38px rgba(227,24,55,.25)!important;
+    box-shadow:0 18px 38px rgba(227,37,38,.25)!important;
   }
   #page#page #pageContent .affiliate-orbit-button.active>span{color:rgba(255,255,255,.8)!important}
-  #page#page #pageContent .affiliate-orbit-core{inset:36%!important;box-shadow:0 18px 40px rgba(227,24,55,.24)!important}
+  #page#page #pageContent .affiliate-orbit-core{inset:36%!important;box-shadow:0 18px 40px rgba(227,37,38,.24)!important}
   #page#page #pageContent .affiliate-orbit-core strong{font-size:19px!important;letter-spacing:-.04em!important}
 }
 
@@ -781,7 +781,7 @@ html body .header-dropdown button:is(:hover,:focus-visible){
     display:grid!important;place-content:center!important;position:absolute!important;inset:35%!important;
     width:auto!important;height:auto!important;margin:0!important;
     border-radius:50%!important;background:var(--polish-red)!important;
-    box-shadow:0 12px 28px rgba(227,24,55,.22)!important;
+    box-shadow:0 12px 28px rgba(227,37,38,.22)!important;
   }
   #page#page #pageContent .affiliate-orbit-core strong{font-size:13px!important;letter-spacing:-.03em!important}
   #page#page #pageContent .affiliate-orbit-button,
@@ -801,7 +801,7 @@ html body .header-dropdown button:is(:hover,:focus-visible){
   #page#page #pageContent .affiliate-orbit-button>strong{font-size:12px!important;line-height:1.3!important;letter-spacing:-.05em!important}
   #page#page #pageContent .affiliate-orbit-button.active{
     color:#fff!important;background:var(--polish-red)!important;border-color:var(--polish-red)!important;
-    box-shadow:0 10px 24px rgba(227,24,55,.25)!important;
+    box-shadow:0 10px 24px rgba(227,37,38,.25)!important;
   }
   #page#page #pageContent .affiliate-orbit-button.active>span{color:rgba(255,255,255,.8)!important}
 }
@@ -809,4 +809,1182 @@ html body .header-dropdown button:is(:hover,:focus-visible){
   #page#page #pageContent .affiliate-orbit-core strong{font-size:11px!important}
   #page#page #pageContent .affiliate-orbit-button>strong{font-size:11px!important}
   #page#page #pageContent .affiliate-orbit-button>span{font-size:10px!important}
+}
+
+/* ==========================================================================
+   Type scale (2026-11-09)
+   One size per level on every detail page (desktop / mobile):
+     T1 page title 40/28 · T2 section 28/22 · T3 card 20/18 · T4 item 17/16
+     body 15 · labels 12-13 · figures F1 32/26, F2 24/20
+   Before this, 31 different heading sizes were in use (17-64px).
+   "#page#page" outranks the per-component rules from earlier layers.
+   ========================================================================== */
+:root{
+  --ts-t1:40px;--ts-t2:28px;--ts-t3:20px;--ts-t4:17px;--ts-body:15px;
+  --ts-f1:32px;--ts-f2:24px;
+}
+
+/* T1 page title */
+#page#page #pageContent :is(
+  .company-intro,.people-intro,.erp-intro,.it-guide-hero,.event-guide-header,
+  .resort-hero,.meal-guide-header,.workweek-header,.butfit-membership-hero,
+  .evaluation-flow-head,.work-support-head
+) h3,
+#page#page #pageContent:has(>.gw-guide:not(.erp-photo-guide),>.staff-sale-guide,>.title-guide-restored)>h2{
+  font-size:var(--ts-t1)!important;line-height:1.15!important;letter-spacing:-.045em!important;
+}
+
+/* T2 section title */
+#page#page #pageContent :is(
+  .company-section-heading>h4,.company-ceo-message>h4,.affiliate-orbit-panel>h5,
+  .access-v2-header h3,.gw-directory-head h3,.pc-access-guide-header h3,.password-modern-header h3,
+  .flex-work-header h3,.exception-work-header h3,.approval-modern-head h3,.attendance-modern-head h3,
+  .mobile-qr-header h3,.gw-duty-head h4,.access-v2-brand-copy h4,
+  .erp-description h4,.erp-help-v2 header h4,.erp-document-guide>header h4,
+  .it-section-title h4,.it-contact-title h4,
+  .mutual-fee-final-header h4,
+  .resort-days-copy h4,.resort-process-heading h4,
+  .meal-viewer-copy h4,
+  .workweek-image-copy h4,.flex-work-heading h4
+){
+  font-size:var(--ts-t2)!important;line-height:1.25!important;letter-spacing:-.04em!important;font-weight:800!important;
+}
+
+/* T3 card title */
+#page#page #pageContent :is(
+  .business-group-head h5,
+  .access-v2-login h4,.flex-work-process h4,.exception-work-process h4,.exception-work-critical h4,
+  .flex-work-route h4,.exception-work-route h4,.password-route-card h4,.mobile-qr-content h4,
+  .attendance-step-copy h4,.approval-screen-copy h4,.mobile-install-toggle>strong,
+  .gw-real-screen-head strong,.approval-form-title strong,.pc-access-info-card>strong,.pc-access-address-text>strong,
+  .required-m365-card h4,.required-domain-card h4,.required-summary>article>strong,
+  .erp-document-guide article h5,
+  .it-card-content>h5,.it-quick-links>a>strong,.it-contacts>article>strong,
+  .event-important strong,.event-quick-summary>article>strong,
+  .resort-brand-card h4,.resort-days-card-head h4,
+  .butfit-pricing-head strong,.butfit-contact-card h3,
+  .evaluation-flow-name h4,
+  .work-support-group-title h4,
+  .staff-sale-step>strong,.staff-sale-link-text>strong,
+  .flex-time-point>strong,.workweek-board-summary>article>strong,.flex-work-time>strong
+){
+  font-size:var(--ts-t3)!important;line-height:1.35!important;letter-spacing:-.03em!important;
+}
+
+/* T4 item title */
+#page#page #pageContent :is(
+  .business-list>div>strong,.mobile-combined-guides h5,.password-key-card>h4,
+  .attendance-state strong,.exception-critical-card>strong,.erp-step-copy>strong,
+  .system-help-content>strong,.erp-account-first>strong,.approval-title-rule>strong,
+  .wifi-list>div>strong,.wifi-common-password>strong,
+  .event-table-title>strong,.event-info-grid>article>strong,
+  .resort-process-grid>article>b,.resort-notice-grid>article>strong,
+  .meal-tab strong,.meal-notice-grid>article>strong,
+  .workweek-culture-note>strong,.workweek-location-grid>article>strong,
+  .butfit-contact-name>strong,.work-support-links a strong,.work-support-guide a>span>strong
+){
+  font-size:var(--ts-t4)!important;line-height:1.4!important;letter-spacing:-.02em!important;
+}
+
+/* figures */
+#page#page #pageContent :is(
+  .meal-highlight-grid>article>:is(strong,b),.meal-cardnews-overlay>strong,
+  .workweek-board-top>div>strong,.workweek-time-card>strong,
+  .resort-brand-card>b,.company-facts>article>strong,
+  .password-value,.tg-rules>article>strong
+){
+  font-size:var(--ts-f1)!important;line-height:1.15!important;letter-spacing:-.04em!important;
+}
+#page#page #pageContent .butfit-pricing-grid>article>strong{
+  font-size:var(--ts-f2)!important;line-height:1.2!important;letter-spacing:-.03em!important;
+}
+
+/* body */
+#page#page #pageContent :is(p,li,dd,td){font-size:var(--ts-body);line-height:1.7}
+
+@media(max-width:760px){
+  :root{--ts-t1:28px;--ts-t2:22px;--ts-t3:18px;--ts-t4:16px;--ts-f1:26px;--ts-f2:20px}
+}
+/* boxes sized for the old 58px "Hardware/Software" titles */
+#page#page #pageContent .business-group-head{min-height:0!important;height:auto!important;padding:28px 32px!important}
+@media(max-width:760px){#page#page #pageContent .business-group-head{padding:22px 20px!important}}
+#page#page #pageContent :is(.workweek-time-card,.resort-brand-card,.meal-highlight-grid>article){min-height:0!important}
+#page#page #pageContent .pc-access-guide-header{padding-top:28px!important;padding-bottom:24px!important;min-height:0!important}
+
+/* ==========================================================================
+   Final review fixes (2026-11-23)
+   ========================================================================== */
+/* 경조사 표: 구분 제목이 가로 스크롤 표에서도 항상 보이도록 */
+#page#page #pageContent .event-category-row td{font-size:13px!important;letter-spacing:0!important}
+#page#page #pageContent .event-category-label{display:inline-block;position:sticky;left:12px}
+@media(max-width:760px){
+  #page#page #pageContent .event-category-row td{text-align:left!important;position:static!important}
+}
+/* 경조사 안내 카드 3개 */
+@media(min-width:761px){
+  #page#page #pageContent .event-info-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+/* 남아 있던 둥근 모서리 */
+#page#page #pageContent :is(.event-main-tabs,.event-leave,.site-zoomable-image){border-radius:4px!important}
+/* ERP 안내의 작은 경로 표시 */
+#page#page #pageContent:has(.erp-intro) article>small{border-radius:4px!important}
+/* 그룹웨어 머리글: 태블릿 폭에서 오른쪽 설명이 잘리지 않도록 */
+@media(min-width:761px){
+  #page#page #pageContent .pc-access-guide-header{grid-template-columns:minmax(0,1fr) minmax(0,300px)!important}
+  #page#page #pageContent .pc-access-guide-summary{width:auto!important;max-width:100%!important;min-width:0!important}
+}
+
+/* 설치 방법 아코디언을 QR 아래 전체 폭으로 */
+@media(min-width:1001px){
+  #page#page #pageContent .mobile-qr-body{grid-template-columns:230px minmax(0,1fr)!important;row-gap:0!important;align-items:start!important}
+  #page#page #pageContent .mobile-qr-content{display:contents!important}
+  #page#page #pageContent .mobile-qr-body>.mobile-qr-card{grid-column:1!important;grid-row:1 / span 3!important}
+  #page#page #pageContent .mobile-qr-content>:is(h4,.mobile-qr-description,.mobile-qr-steps){grid-column:2!important}
+  #page#page #pageContent .mobile-qr-content>:is(.mobile-install-guides,.mobile-qr-notice){grid-column:1 / -1!important}
+  #page#page #pageContent .mobile-qr-content>.mobile-install-guides{margin-top:24px!important}
+}
+
+/* 아이폰 설치 안내: 한 장 이미지를 위아래 빈 띠 없이 표시 */
+#page#page #pageContent .mobile-guide-zoom:has(img[src*="iphone-install-guide"]){display:block!important;height:auto!important;min-height:0!important;max-height:none!important;aspect-ratio:auto!important;padding:0!important;background:#f5f6f7!important}
+#page#page #pageContent .mobile-guide-zoom img[src*="iphone-install-guide"]{display:block!important;width:100%!important;height:auto!important;min-height:0!important;max-height:none!important;aspect-ratio:1648 / 1228!important;object-fit:contain!important}
+#page#page #pageContent .mobile-guide-zoom picture{display:block}
+@media(max-width:760px){
+  #page#page #pageContent .mobile-guide-zoom img[src*="iphone-install-guide"]{aspect-ratio:968 / 1821!important}
+}
+
+/* 단계형 안내: 단계를 바꿀 때 화면 전체가 다시 떠오르지 않도록 */
+#page#page #pageContent:has(>.gw-guide),
+#page#page #pageContent:has(>.gw-guide)>*{animation:none!important;transform:none!important}
+#page#page #pageContent .gw-guide .gw-viewer{transition:none!important;transform:none!important;animation:none!important}
+#page#page #pageContent .gw-guide .gw-viewer.tw-settling{opacity:0!important;transform:none!important;transition:none!important}
+#page#page #pageContent .gw-guide .gw-viewer.tw-revealing{opacity:1!important;transform:none!important;transition:opacity .12s linear!important}
+
+/* 안드로이드 안내 한 장 이미지 */
+#page#page #pageContent .mobile-guide-zoom:has(img[src*="android-install-guide"]){display:block!important;height:auto!important;min-height:0!important;max-height:none!important;aspect-ratio:auto!important;padding:0!important;background:#f5f6f7!important}
+#page#page #pageContent .mobile-guide-zoom img[src*="android-install-guide"]{display:block!important;width:100%!important;height:auto!important;min-height:0!important;max-height:none!important;aspect-ratio:2000 / 796!important;object-fit:contain!important}
+@media(max-width:760px){
+  #page#page #pageContent .mobile-guide-zoom img[src*="android-install-guide"]{aspect-ratio:968 / 1504!important}
+}
+/* 크게 보기 표시가 8단계 제목을 가리지 않도록 이미지 아래로 */
+#page#page #pageContent .mobile-guide-zoom:has(img[src*="android-install-guide"]) .mobile-guide-zoom-hint{position:static!important;display:block!important;width:fit-content!important;margin:8px 8px 8px auto!important;transform:none!important}
+
+/* 회사 개요: 박스와 경계를 없애고 여백으로 구분 (2026-11-24) */
+#page#page:has(.company-overview){background:#fff!important}
+#page#page #pageContent:has(.company-overview){max-width:1120px!important;margin:0 auto!important;padding-left:32px!important;padding-right:32px!important;background:transparent!important;box-shadow:none!important;border:0!important}
+#page#page #pageContent .company-overview{max-width:none!important;width:100%!important;margin:0!important;padding:0 0 96px!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+
+#page#page #pageContent .company-overview .company-intro{display:grid!important;grid-template-columns:minmax(0,1fr)!important;min-height:0!important;margin:0!important;padding:56px 0 72px!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#page#page #pageContent .company-overview .company-intro::before,#page#page #pageContent .company-overview .company-intro::after{display:none!important}
+#page#page #pageContent .company-overview .company-intro h3{order:1;grid-column:1!important;grid-row:auto!important;margin:0 0 28px!important;padding:0!important;font-size:40px!important;line-height:1.25!important;letter-spacing:-.02em!important;color:#14181e!important}
+#page#page #pageContent .company-overview .company-intro .company-intro-line{order:2;grid-column:1!important;grid-row:auto!important;display:block!important;width:auto!important;margin:0 0 10px!important;font-size:20px!important;font-weight:700!important;line-height:1.5!important;color:#14181e!important}
+#page#page #pageContent .company-overview .company-intro p{order:3;grid-column:1!important;grid-row:auto!important;max-width:640px!important;width:auto!important;margin:0!important;font-size:16px!important;line-height:1.8!important;color:#4d5560!important}
+#page#page #pageContent .company-overview .company-intro .company-ceo-toggle{order:4;grid-column:1!important;grid-row:auto!important;justify-self:start!important}
+
+#page#page #pageContent .company-overview .company-ceo-toggle{position:static!important;display:inline-flex!important;width:auto!important;height:auto!important;min-height:0!important;margin:18px 0 0!important;padding:0 0 2px!important;background:transparent!important;border:0!important;border-bottom:1px solid #14181e!important;border-radius:0!important;box-shadow:none!important;color:#14181e!important;font-size:14px!important;font-weight:600!important}
+
+#page#page #pageContent .company-overview .company-facts{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:44px 48px!important;margin:0!important;padding:40px 0 0!important;background:transparent!important;border:0!important;border-top:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page #pageContent .company-overview .company-facts article{display:block!important;min-height:0!important;height:auto!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#page#page #pageContent .company-overview .company-facts article::before,#page#page #pageContent .company-overview .company-facts article::after{display:none!important}
+#page#page #pageContent .company-overview .company-facts article>span{display:block!important;margin:0 0 8px!important;font-size:14px!important;font-weight:500!important;letter-spacing:0!important;color:#6b7380!important}
+#page#page #pageContent .company-overview .company-facts article>strong{display:inline!important;margin:0!important;font-size:24px!important;font-weight:700!important;line-height:1.35!important;letter-spacing:-.01em!important;color:#14181e!important}
+#page#page #pageContent .company-overview .company-facts article>small{display:inline!important;margin:0 0 0 8px!important;font-size:13px!important;font-weight:400!important;letter-spacing:0!important;color:#8a919c!important}
+#page#page #pageContent .company-overview .company-facts article:nth-child(-n+2)>small{display:none!important}
+
+#page#page #pageContent .company-overview .company-section-heading{margin:96px 0 32px!important;padding:0!important;border:0!important;background:transparent!important}
+#page#page #pageContent .company-overview .company-section-heading::before,#page#page #pageContent .company-overview .company-section-heading::after{display:none!important}
+#page#page #pageContent .company-overview .company-section-heading h4{margin:0 0 8px!important;font-size:28px!important;line-height:1.3!important;color:#14181e!important}
+#page#page #pageContent .company-overview .company-section-heading p{margin:0!important;font-size:16px!important;line-height:1.7!important;color:#4d5560!important}
+
+#page#page #pageContent .company-overview .business-groups{gap:64px!important;margin:0!important;padding:0!important;background:transparent!important}
+#page#page #pageContent .company-overview .business-group{background:transparent!important;border:0!important;border-top:2px solid #14181e!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page #pageContent .company-overview .business-group:nth-child(2){border-top-color:#e32526!important}
+#page#page #pageContent .company-overview .business-group-head{min-height:0!important;padding:20px 0 16px!important;background:transparent!important;border:0!important;box-shadow:none!important}
+#page#page #pageContent .company-overview .business-group-head::before,#page#page #pageContent .company-overview .business-group-head::after{display:none!important}
+#page#page #pageContent .company-overview .business-group-head *{color:#14181e!important;background:transparent!important}
+#page#page #pageContent .company-overview .business-group-head p{color:#6b7380!important}
+#page#page #pageContent .company-overview .business-list{padding:0!important;background:transparent!important;border:0!important}
+#page#page #pageContent .company-overview .business-list>*{padding-left:0!important;padding-right:0!important;background:transparent!important;border-left:0!important;border-right:0!important;border-radius:0!important;box-shadow:none!important}
+
+#page#page #pageContent .company-overview .affiliate-orbit{margin:0!important;padding-left:0!important;padding-right:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+
+@media(max-width:760px){
+  #page#page #pageContent:has(.company-overview){padding-left:20px!important;padding-right:20px!important}
+  #page#page #pageContent .company-overview .company-intro{padding:32px 0 44px!important}
+  #page#page #pageContent .company-overview .company-intro h3{font-size:28px!important;margin-bottom:20px!important}
+  #page#page #pageContent .company-overview .company-intro .company-intro-line{font-size:18px!important}
+  #page#page #pageContent .company-overview .company-intro p{font-size:15px!important}
+  #page#page #pageContent .company-overview .company-facts{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:30px 20px!important;padding-top:28px!important}
+  #page#page #pageContent .company-overview .company-facts article>strong{display:block!important;font-size:20px!important}
+  #page#page #pageContent .company-overview .company-facts article>small{display:block!important;margin:3px 0 0!important}
+  #page#page #pageContent .company-overview .company-section-heading{margin:64px 0 24px!important}
+  #page#page #pageContent .company-overview .company-section-heading h4{font-size:22px!important}
+  #page#page #pageContent .company-overview .business-groups{gap:44px!important}
+}
+/* 다듬기 */
+#page#page #pageContent .company-overview .company-intro,#page#page #pageContent .company-overview .company-intro *{text-align:left!important}
+#page#page #pageContent .company-overview .company-intro .company-intro-line{justify-self:start!important}
+#page#page #pageContent .company-overview .business-group-head{display:block!important}
+#page#page #pageContent .company-overview .business-group-head>*{margin-left:0!important;padding-left:0!important}
+#page#page #pageContent .company-overview .business-group-head>:empty{display:none!important}
+#page#page #pageContent .company-overview .business-list>*>:first-child{color:#8a919c!important}
+#page#page#page #pageContent .company-overview .business-group .business-group-head{padding-left:0!important;padding-right:0!important}
+#page#page#page #pageContent .company-overview .business-group .business-group-head *{margin-left:0!important;padding-left:0!important}
+@media(max-width:760px){#page#page#page #pageContent .company-overview .affiliate-orbit-details,#page#page#page #pageContent .company-overview .affiliate-orbit-panel{margin-left:0!important;padding-left:0!important;padding-right:0!important;width:100%!important}}
+#page#page #pageContent .company-overview .company-ceo-panel.open{margin:0 0 56px!important}
+
+/* 그룹웨어: 박스와 경계를 없애고 여백과 로고 빨강 글자로 구분 (2026-11-24) */
+#page#page:has(.gw-first-day){background:#fff!important}
+#page#page #pageContent:has(.gw-first-day){display:block!important;width:auto!important;max-width:1120px!important;margin:0 auto!important;padding:56px 32px 96px!important;background:transparent!important;border:0!important;box-shadow:none!important}
+#page#page #pageContent:has(.gw-first-day)::before,#page#page #pageContent:has(.gw-first-day)::after{display:none!important}
+#page#page #pageContent:has(.gw-first-day)>h2{position:static!important;width:auto!important;margin:0 0 14px!important;padding:0!important;font-size:40px!important;line-height:1.25!important;letter-spacing:-.02em!important;text-align:left!important;color:#14181e!important}
+#page#page #pageContent:has(.gw-first-day)>.summary{position:static!important;width:auto!important;max-width:none!important;margin:0 0 56px!important;padding:0!important;font-size:16px!important;line-height:1.7!important;text-align:left!important;color:#4d5560!important}
+
+/* 단계 목록 */
+#page#page #pageContent:has(.gw-first-day) .gw-guide{display:grid!important;grid-template-columns:220px minmax(0,1fr)!important;gap:64px!important;align-items:start!important;width:auto!important;padding:40px 0 0!important;background:transparent!important;border:0!important;border-top:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important}
+#page#page #pageContent:has(.gw-first-day) .gw-guide::before,#page#page #pageContent:has(.gw-first-day) .gw-guide::after{display:none!important}
+#page#page #pageContent:has(.gw-first-day) .gw-steps{display:flex!important;flex-direction:column!important;gap:2px!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;counter-reset:gwstep}
+#page#page #pageContent:has(.gw-first-day) .gw-step{display:block!important;width:100%!important;height:auto!important;min-height:0!important;margin:0!important;padding:11px 0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;text-align:left!important;color:#4d5560!important}
+#page#page #pageContent:has(.gw-first-day) .gw-step::before,#page#page #pageContent:has(.gw-first-day) .gw-step::after{display:none!important}
+#page#page #pageContent:has(.gw-first-day) .gw-step>small{display:none!important}
+#page#page #pageContent:has(.gw-first-day) .gw-step>strong{display:flex!important;align-items:baseline!important;gap:12px!important;margin:0!important;font-size:15px!important;font-weight:500!important;line-height:1.5!important;color:#4d5560!important}
+#page#page #pageContent:has(.gw-first-day) .gw-step>strong::before{counter-increment:gwstep;content:counter(gwstep,decimal-leading-zero);flex:none;width:20px;font-size:13px;font-weight:600;color:#a0a6af}
+#page#page #pageContent:has(.gw-first-day) .gw-step:hover>strong{color:#14181e!important}
+#page#page #pageContent:has(.gw-first-day) .gw-step.active>strong{font-weight:700!important;color:#14181e!important}
+#page#page #pageContent:has(.gw-first-day) .gw-step.active>strong::before{color:#e32526!important}
+#page#page #pageContent:has(.gw-first-day) .gw-step>:not(small):not(strong){display:block!important;width:auto!important;height:auto!important;min-height:0!important;margin:5px 0 0 32px!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;text-align:left!important;font-size:13px!important;font-weight:500!important;letter-spacing:0!important;color:#6b7380!important}
+
+/* 본문 */
+#page#page #pageContent:has(.gw-first-day) .gw-viewer{min-height:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page #pageContent:has(.gw-first-day) .gw-viewer-head{margin:0 0 28px!important;padding:0!important;background:transparent!important;border:0!important}
+#page#page #pageContent:has(.gw-first-day) .gw-viewer-head small,#page#page #pageContent:has(.gw-first-day) .gw-count{display:none!important}
+#page#page #pageContent:has(.gw-first-day) .gw-viewer-head h3{margin:0 0 8px!important;padding:0!important;font-size:28px!important;line-height:1.3!important;color:#14181e!important}
+#page#page #pageContent:has(.gw-first-day) .gw-viewer-head p{max-width:680px!important;margin:0!important;font-size:16px!important;line-height:1.7!important;color:#4d5560!important}
+
+/* PC 접속 단계 */
+#page#page #pageContent:has(.gw-first-day) .pc-access-guide{padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+#page#page #pageContent:has(.gw-first-day) .pc-access-guide-header{display:block!important;margin:0 0 28px!important;padding:0!important;background:transparent!important;border:0!important}
+#page#page #pageContent:has(.gw-first-day) .pc-access-guide-header h3{margin:0 0 8px!important;padding:0!important;font-size:28px!important;line-height:1.3!important;color:#14181e!important}
+#page#page #pageContent:has(.gw-first-day) .pc-access-guide-summary{width:auto!important;max-width:680px!important;margin:0!important;padding:0!important;font-size:16px!important;line-height:1.7!important;text-align:left!important;color:#4d5560!important}
+#page#page #pageContent:has(.gw-first-day) .pc-access-address{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:20px!important;margin:0 0 40px!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#page#page #pageContent:has(.gw-first-day) .pc-access-address-icon{display:none!important}
+#page#page #pageContent:has(.gw-first-day) .pc-access-address-text *{color:#14181e!important}
+#page#page #pageContent:has(.gw-first-day) .pc-access-address-text>:first-child{color:#6b7380!important;font-size:14px!important;font-weight:500!important}
+#page#page #pageContent:has(.gw-first-day) .pc-access-address-text>:last-child{font-size:24px!important;font-weight:700!important;line-height:1.4!important}
+#page#page #pageContent:has(.gw-first-day) .pc-access-address a{flex:none!important;width:auto!important;padding:11px 22px!important;border-radius:4px!important;box-shadow:none!important}
+#page#page #pageContent:has(.gw-first-day) .pc-access-information{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:40px!important;margin:0 0 28px!important;padding:0!important;background:transparent!important;border:0!important}
+#page#page #pageContent:has(.gw-first-day) .pc-access-info-card{min-height:0!important;padding:20px 0 0!important;background:transparent!important;border:0!important;border-top:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important}
+#page#page #pageContent:has(.gw-first-day) .pc-access-info-card>:first-child{color:#6b7380!important;font-weight:500!important}
+#page#page #pageContent:has(.gw-first-day) .pc-access-info-card :is(code,kbd,mark,em,div,span):last-child{background:transparent!important;border:0!important;padding-left:0!important;padding-right:0!important;box-shadow:none!important}
+#page#page #pageContent:has(.gw-first-day) .pc-access-warning{margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;font-size:15px!important;line-height:1.7!important;color:#6b7380!important}
+
+@media(max-width:760px){
+  #page#page #pageContent:has(.gw-first-day){padding:32px 20px 64px!important}
+  #page#page #pageContent:has(.gw-first-day)>h2{font-size:28px!important;margin-bottom:10px!important}
+  #page#page #pageContent:has(.gw-first-day)>.summary{font-size:15px!important;margin-bottom:32px!important}
+  #page#page #pageContent:has(.gw-first-day) .gw-guide{grid-template-columns:minmax(0,1fr)!important;gap:36px!important;padding-top:24px!important}
+  #page#page #pageContent:has(.gw-first-day) .gw-steps{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:0 16px!important}
+  #page#page #pageContent:has(.gw-first-day) .gw-step{padding:9px 0!important}
+  #page#page #pageContent:has(.gw-first-day) .gw-step>strong{gap:8px!important;font-size:14px!important}
+  #page#page #pageContent:has(.gw-first-day) .gw-step>:not(small):not(strong){margin-left:28px!important}
+  #page#page #pageContent:has(.gw-first-day) :is(.gw-viewer-head,.pc-access-guide-header) h3{font-size:22px!important}
+  #page#page #pageContent:has(.gw-first-day) :is(.gw-viewer-head p,.pc-access-guide-summary){font-size:15px!important}
+  #page#page #pageContent:has(.gw-first-day) .pc-access-address{display:block!important;margin-bottom:32px!important}
+  #page#page #pageContent:has(.gw-first-day) .pc-access-address-text>:last-child{font-size:20px!important}
+  #page#page #pageContent:has(.gw-first-day) .pc-access-address a{display:block!important;width:100%!important;margin-top:14px!important;text-align:center!important}
+  #page#page #pageContent:has(.gw-first-day) .pc-access-information{grid-template-columns:minmax(0,1fr)!important;gap:24px!important}
+}
+
+/* 단계별 본문 정리 */
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-employee-directory::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-modern::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-modern::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-modern::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-attendance-modern::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-modern::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-modern::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-directory-head::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-head::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-header::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-modern-header::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-header::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-header::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-body::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-modern-main::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-process::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-process::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-warning::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-notice::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-guide::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-security::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-form-panel::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-route::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-route::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-steps>li::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-steps::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-step::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-route-card::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-route-steps::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-route-step::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-security>article::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-screen-card::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-company-card::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .attendance-step-card::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-step::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-step::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-critical-card::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-type::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-card::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-screen::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .attendance-missed-alert::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .attendance-notice::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .attendance-state::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-important::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-notice::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-notice-box::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-example::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-warning-box::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-title-rule::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-key-card::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-critical::before,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-employee-directory::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-modern::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-modern::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-modern::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-attendance-modern::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-modern::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-modern::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-directory-head::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-head::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-header::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-modern-header::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-header::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-header::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-body::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-modern-main::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-process::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-process::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-warning::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-notice::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-guide::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-security::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-form-panel::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-route::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-route::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-steps>li::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-steps::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-step::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-route-card::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-route-steps::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-route-step::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-security>article::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-screen-card::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-company-card::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .attendance-step-card::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-step::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-step::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-critical-card::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-type::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-card::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-screen::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .attendance-missed-alert::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .attendance-notice::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .attendance-state::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-important::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-notice::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-notice-box::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-example::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-warning-box::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-title-rule::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-key-card::after,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-critical::after{display:none!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-employee-directory,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-modern,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-modern,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-modern,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-attendance-modern,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-modern,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-modern{margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-directory-head,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-head,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-header,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-modern-header,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-header,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-header{display:block!important;min-height:0!important;margin:0 0 28px!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-directory-head h3,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-head h3,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-header h3,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-modern-header h3,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-header h3,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-header h3,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-directory-head h4,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-head h4,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-header h4,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-modern-header h4,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-header h4,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-header h4{margin:0 0 8px!important;font-size:28px!important;line-height:1.3!important;color:#14181e!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-directory-head p,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-head p,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-header p,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-modern-header p,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-header p,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-header p{max-width:680px!important;width:auto!important;margin:0!important;font-size:16px!important;line-height:1.7!important;text-align:left!important;color:#4d5560!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-directory-head span,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-head span,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-header span,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-modern-header span,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-header span,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-header span,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-directory-head small,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-head small,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-header small,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-modern-header small,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-header small,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-header small{color:#6b7380!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-body,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-modern-main,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-process,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-process,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-warning,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-notice{padding-left:0!important;padding-right:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-guide,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-security,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-form-panel,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-route,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-route{margin:40px 0 0!important;padding:32px 0 0!important;background:transparent!important;border:0!important;border-top:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-steps>li,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-steps,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-step,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-route-card,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-route-steps,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-route-step,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-security>article,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-screen-card,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-company-card,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .attendance-step-card,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-step,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-step,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-critical-card,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-type,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-card,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-screen{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding-left:0!important;padding-right:0!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .attendance-missed-alert,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .attendance-notice,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .attendance-state,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-important,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-notice,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-notice-box,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-example,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-warning-box,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-title-rule,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-key-card,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-critical{background:#f5f6f7!important;background-image:none!important;border:0!important;border-radius:4px!important;box-shadow:none!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-title-rule *:not(button):not(button *),#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-key-card *:not(button):not(button *),#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-critical *:not(button):not(button *){color:#14181e!important;background-color:transparent!important;border-color:#d7dbe0!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-title-rule p,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-key-card p,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-critical p{color:#4d5560!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-install-option{background:transparent!important;border:0!important;border-bottom:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-install-toggle{padding-left:0!important;padding-right:0!important;background:transparent!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-guide-zoom{border:0!important;box-shadow:none!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-directory-route,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-route>span,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-route-line>span,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-route-line>span{background:#f5f6f7!important;border:0!important;border-radius:4px!important;box-shadow:none!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-directory-real-screen{padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer :is(.gw-duty-steps>li,.password-route-step,.flex-work-step,.exception-work-step)>:first-child{display:block!important;width:auto!important;height:auto!important;min-width:0!important;margin:0 0 8px!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;font-size:14px!important;font-weight:600!important;text-align:left!important;color:#a0a6af!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer :is(.flex-work-modern,.exception-work-modern,.approval-modern,.mobile-attendance-modern,.gw-employee-directory,.password-modern,.mobile-qr-modern) :is(span,small):not([class*=pointer]):not(.approval-nav-focus *):not(.mobile-guide-zoom-hint):not(.attendance-phone *):not(.gw-duty-image-wrap *):not(.gw-real-screen-frame *){color:#6b7380!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer :is(.flex-work-route-line,.exception-route-line,.password-route,.gw-directory-route)>:is(span,strong){color:#14181e!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer :is(.approval-screen-copy>span,.attendance-step-number,.mobile-qr-step>span){display:block!important;width:auto!important;height:auto!important;margin:0 0 6px!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;font-size:14px!important;font-weight:600!important;color:#a0a6af!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-screen-copy p span{padding:0!important;background:transparent!important;border-radius:0!important;font-weight:700!important;color:#14181e!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer :is(.approval-modern,.mobile-attendance-modern)>:first-child:not(aside){display:block!important;margin:0 0 28px!important;padding:0!important;background:transparent!important;border:0!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer :is(.approval-modern,.mobile-attendance-modern)>:first-child:not(aside) :is(h3,h4){margin:0 0 8px!important;font-size:28px!important;line-height:1.3!important;color:#14181e!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer :is(.approval-modern,.mobile-attendance-modern)>:first-child:not(aside) p{max-width:680px!important;width:auto!important;margin:0!important;font-size:16px!important;line-height:1.7!important;text-align:left!important;color:#4d5560!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-key-card{align-self:start!important;min-height:0!important;height:auto!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-key-card>:last-child{position:static!important;margin-top:24px!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-type{text-align:left!important}
+@media(max-width:760px){#page#page#page #pageContent:has(.gw-first-day) .gw-viewer :is(.approval-modern,.mobile-attendance-modern)>:first-child:not(aside) :is(h3,h4),#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-directory-head h3,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-head h3,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-header h3,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-modern-header h3,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-header h3,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-header h3,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-directory-head h4,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-head h4,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-header h4,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-modern-header h4,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-header h4,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-header h4{font-size:22px!important}#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-directory-head p,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-head p,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-header p,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-modern-header p,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-header p,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-header p,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer :is(.approval-modern,.mobile-attendance-modern)>:first-child:not(aside) p{font-size:15px!important}#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-guide,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-security,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-form-panel,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-route,#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-route{margin-top:32px!important;padding-top:24px!important}}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer :is(.flex-work-step,.exception-work-step){display:block!important;height:auto!important;min-height:0!important;padding-top:0!important;padding-bottom:0!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer :is(.flex-work-step,.exception-work-step)>*{position:static!important;margin-top:0!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer :is(.flex-work-step,.exception-work-step)>:not(:first-child){display:block!important;margin:0 0 6px!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-steps>li{display:flex!important;align-items:baseline!important;gap:10px!important;min-height:0!important}
+#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .gw-duty-steps>li>:first-child{flex:none!important;margin:0!important}
+@media(max-width:760px){#page#page#page #pageContent:has(.gw-first-day) .gw-viewer :is(.flex-work-steps,.exception-work-steps){gap:24px!important}}
+
+/* 로고 빨강 강조 */
+#page#page#page#page #pageContent:has(.gw-first-day) .gw-step.active>strong,#page#page#page#page #pageContent:has(.gw-first-day) .gw-step.active>strong::before{color:#e32526!important}
+#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer :is(.gw-duty-steps>li,.password-route-step,.flex-work-step,.exception-work-step)>:first-child,
+#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer :is(.approval-screen-copy>span,.attendance-step-number,.mobile-qr-step>span),
+#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .pc-access-info-card>:first-child{color:#e32526!important}
+#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .pc-access-address,#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-key-card,#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-title-rule,#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .attendance-missed-alert,#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-notice-box,#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-critical,#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .attendance-notice,#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .attendance-state,#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-important,#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-notice,#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-example,#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-warning-box{padding:0!important;background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .pc-access-address *:not(a):not(button):not(button *),#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-key-card *:not(a):not(button):not(button *),#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-title-rule *:not(a):not(button):not(button *),#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .attendance-missed-alert *:not(a):not(button):not(button *),#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-notice-box *:not(a):not(button):not(button *),#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-critical *:not(a):not(button):not(button *),#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .attendance-notice *:not(a):not(button):not(button *),#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .attendance-state *:not(a):not(button):not(button *),#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .approval-important *:not(a):not(button):not(button *),#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .mobile-qr-notice *:not(a):not(button):not(button *),#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .flex-work-example *:not(a):not(button):not(button *),#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-warning-box *:not(a):not(button):not(button *){background-color:transparent!important;border-color:#d7dbe0!important;box-shadow:none!important}
+#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer :is(.pc-access-address,.password-key-card,.approval-title-rule,.attendance-missed-alert,.flex-work-notice-box,.exception-work-critical) :is(a,button){background:#e32526!important;border:0!important;border-radius:4px!important;box-shadow:none!important;color:#fff!important}
+#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer :is(.pc-access-address,.password-key-card) :is(a,button) *{color:#fff!important}
+#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .pc-access-address .pc-access-address-text>:last-child,
+#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-key-card strong,
+#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-critical :is(h3,h4,strong):not(.exception-critical-card *),
+#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer :is(.attendance-missed-alert,.flex-work-notice-box,.approval-title-rule)>:first-child,
+#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer :is(.attendance-missed-alert,.flex-work-notice-box,.approval-title-rule)>:first-child *{color:#e32526!important}
+#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .password-key-card{align-self:start!important}
+#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-work-critical{margin-bottom:8px!important}
+#page#page#page#page #pageContent:has(.gw-first-day) .gw-viewer .exception-critical-card{padding-top:16px!important;border-top:1px solid #d7dbe0!important}
+/* 1단계로 돌아올 때 예전 접속 안내가 중복 표시되지 않도록 */
+#page#page #pageContent .gw-viewer:has(.pc-access-guide) .groupware-access-modern{display:none!important}
+
+/* 필수 프로그램: 위에서 아래로 따라 하는 1~4단계 흐름 */
+#page#page:has(.required-flow){background:#fff!important}
+#page#page #pageContent:has(.required-flow){display:block!important;width:auto!important;max-width:1120px!important;margin:0 auto!important;padding:64px 32px 104px!important;background:transparent!important;border:0!important;box-shadow:none!important;animation:none!important;transform:none!important}
+#page#page #pageContent:has(.required-flow)::before,#page#page #pageContent:has(.required-flow)::after{display:none!important}
+#page#page #pageContent:has(.required-flow)>:not(.required-flow){display:none!important}
+
+.required-flow{color:#14181e;text-align:left;word-break:keep-all}
+.required-flow *{box-sizing:border-box}
+.required-flow h3,.required-flow h4,.required-flow p,.required-flow ol,.required-flow dl,.required-flow dd{margin:0;padding:0}
+.required-flow ol{list-style:none}
+.required-flow em{font-style:normal}
+
+.rf-head{padding-bottom:64px}
+.required-flow .rf-head h3{font-size:40px;line-height:1.25;font-weight:800;letter-spacing:-.02em;color:#14181e}
+.required-flow .rf-head p{max-width:640px;margin-top:14px;font-size:16px;line-height:1.75;color:#4d5560}
+
+.rf-step{display:grid;grid-template-columns:72px minmax(0,340px) minmax(0,1fr);column-gap:32px;align-items:start;padding:48px 0;border-top:1px solid #d7dbe0}
+.rf-num{font-size:40px;line-height:1;font-weight:800;letter-spacing:-.02em;color:#e32526}
+.required-flow .rf-copy h4{font-size:24px;line-height:1.35;font-weight:800;letter-spacing:-.01em;color:#14181e}
+.required-flow .rf-copy p{margin-top:10px;font-size:15px;line-height:1.75;color:#4d5560}
+.required-flow .rf-copy b{font-weight:700;color:#14181e}
+.rf-side{min-width:0}
+
+.rf-access{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:64px}
+.rf-access small{display:block;margin-bottom:4px;font-size:14px;color:#6b7380}
+.rf-access strong{display:block;font-size:22px;line-height:1.35;font-weight:800;color:#e32526;overflow-wrap:anywhere}
+.rf-access a{flex:none;display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:4px;background:#e32526;color:#fff;font-size:15px;font-weight:700;text-decoration:none;transition:background-color .15s}
+.rf-access a:hover{background:#c91d1e}
+
+.rf-shot{position:relative;display:block;width:100%;padding:0;background:#fff;border:1px solid #e3e6ea;border-radius:4px;overflow:hidden;cursor:zoom-in}
+.rf-shot img{display:block;width:100%;height:auto}
+.rf-shot span{position:absolute;right:10px;bottom:10px;padding:5px 10px;border-radius:3px;background:rgba(20,24,30,.82);color:#fff;font-size:12px;font-weight:600}
+.rf-shot:focus-visible,.rf-access a:focus-visible,.rf-ref a:focus-visible{outline:2px solid #e32526;outline-offset:3px}
+
+.rf-mail>div{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;padding:14px 0;border-top:1px solid #e6e8eb}
+.rf-mail>div:first-child{padding-top:2px;border-top:0}
+.rf-mail dt{font-size:14px;line-height:1.7;color:#6b7380}
+.required-flow .rf-mail dd{font-size:16px;line-height:1.6;color:#14181e}
+.rf-mail b{font-weight:700}
+.rf-mail em{margin-left:4px;font-weight:700;color:#e32526}
+
+.rf-ref{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);gap:64px;padding-top:48px;border-top:1px solid #14181e}
+.required-flow .rf-ref h4{font-size:18px;line-height:1.45;font-weight:800;color:#14181e}
+.required-flow .rf-m365 p{margin-top:8px;font-size:15px;line-height:1.7;color:#4d5560}
+.rf-m365 a{display:inline-block;margin-top:12px;padding-bottom:2px;border-bottom:1px solid #e32526;color:#e32526;font-size:15px;font-weight:700;text-decoration:none}
+.rf-people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin-top:16px}
+.rf-people>div{display:grid;grid-template-columns:auto 1fr;column-gap:8px;align-items:baseline;font-size:15px;line-height:1.7;color:#4d5560}
+.rf-people b{font-size:16px;font-weight:700;color:#14181e}
+.rf-people em{font-size:14px;font-weight:700;color:#e32526}
+.rf-people span,.rf-people a{grid-column:1 / -1;color:#4d5560;text-decoration:none;overflow-wrap:anywhere}
+.rf-people a:hover{color:#14181e;text-decoration:underline}
+
+.rf-lightbox{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:56px 24px 24px;background:rgba(20,24,30,.9)}
+.rf-lightbox[hidden]{display:none}
+.rf-lightbox img{display:block;max-width:min(100%,1100px);max-height:100%;background:#fff}
+.rf-lightbox button{position:absolute;top:14px;right:16px;min-height:36px;padding:0 14px;background:#fff;border:0;border-radius:4px;color:#14181e;font-size:14px;font-weight:700;cursor:pointer}
+
+@media(max-width:960px){
+  .rf-step{grid-template-columns:56px minmax(0,1fr);row-gap:22px;column-gap:12px}
+  .rf-side{grid-column:2}
+}
+@media(max-width:760px){
+  #page#page #pageContent:has(.required-flow){padding:32px 20px 72px!important}
+  .rf-head{padding-bottom:36px}
+  .required-flow .rf-head h3{font-size:28px}
+  .required-flow .rf-head p{font-size:15px}
+  .rf-step{grid-template-columns:36px minmax(0,1fr);padding:32px 0;row-gap:18px;column-gap:8px}
+  .rf-num{font-size:28px}
+  .required-flow .rf-copy h4{font-size:20px;line-height:28px}
+  .rf-side{grid-column:1 / -1}
+  .rf-copy{grid-column:2}
+  .rf-access{display:block}
+  .rf-access strong{font-size:20px}
+  .rf-access a{display:flex;justify-content:center;width:100%;margin-top:14px}
+  .rf-mail>div{grid-template-columns:76px minmax(0,1fr);gap:10px}
+  .required-flow .rf-mail dd{font-size:15px}
+  .rf-ref{grid-template-columns:minmax(0,1fr);gap:36px;padding-top:32px}
+  .rf-people{grid-template-columns:minmax(0,1fr);gap:18px}
+}
+
+/* 크게 보기 표시는 화면을 가리지 않도록 이미지 아래에 */
+.rf-shot span{position:static;display:block;padding:8px 12px;border-top:1px solid #e3e6ea;border-radius:0;background:#fff;color:#4d5560;font-size:13px;font-weight:600;text-align:right}
+.rf-shot:hover span{color:#e32526}
+#page#page #pageContent>.required-flow{width:auto!important;max-width:none!important;margin:0!important}
+
+/* ERP: 1~5단계 흐름 (필수 프로그램 흐름 스타일에 추가) */
+.erp-flow .rf-label{display:block;margin-bottom:8px;font-size:14px;line-height:1.5;color:#6b7380}
+.erp-flow .rf-route{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:0;font-size:16px;line-height:1.6;color:#14181e}
+.erp-flow .rf-route span{font-weight:500}
+.erp-flow .rf-route b{font-weight:800;color:#e32526}
+.erp-flow .rf-route i{font-style:normal;color:#a0a6af}
+.erp-flow .rf-stack{display:grid;gap:24px}
+.erp-flow .rf-mail>div{grid-template-columns:112px minmax(0,1fr)}
+.erp-flow .rf-mail dd b{font-weight:800}
+.erp-flow .rf-mail em.rf-key{margin:0;font-family:Consolas,"Courier New",monospace;font-size:18px;font-weight:700;color:#e32526}
+.required-flow.erp-flow .rf-copy .rf-note{font-weight:600;color:#14181e}
+.required-flow.erp-flow .rf-erp-help .rf-route{margin-top:14px;font-size:15px}
+.required-flow.erp-flow .rf-erp-help .rf-route b{color:#14181e}
+.erp-flow .rf-ref{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+.erp-flow .rf-people{grid-template-columns:minmax(0,1fr)}
+
+@media(max-width:760px){
+  .erp-flow .rf-ref{grid-template-columns:minmax(0,1fr)}
+  .erp-flow .rf-route{font-size:15px;gap:4px 7px}
+  .erp-flow .rf-mail>div{grid-template-columns:92px minmax(0,1fr)}
+  .erp-flow .rf-mail em.rf-key{font-size:16px}
+}
+
+/* 번호와 소제목 묶음을 오른쪽 사진 높이의 가운데로 */
+.required-flow .rf-step{grid-template-columns:minmax(0,444px) minmax(0,1fr);align-items:center}
+.required-flow .rf-lead{display:grid;grid-template-columns:72px minmax(0,1fr);column-gap:32px;align-items:start}
+@media(max-width:960px){
+  .required-flow .rf-step{grid-template-columns:minmax(0,1fr);align-items:start}
+  .required-flow .rf-lead{grid-template-columns:56px minmax(0,1fr);column-gap:12px}
+  .required-flow .rf-side{grid-column:1}
+}
+@media(max-width:760px){
+  .required-flow .rf-lead{grid-template-columns:36px minmax(0,1fr);column-gap:8px}
+  .required-flow .rf-copy{grid-column:2}
+}
+
+/* 전산 안내: 번호 없는 주제별 안내 */
+.required-flow.it-flow .rf-step{grid-template-columns:minmax(0,300px) minmax(0,1fr);column-gap:64px;align-items:start;padding:44px 0}
+.required-flow.it-flow .rf-lead{display:block}
+.required-flow.it-flow .rf-copy small{display:block;margin-bottom:6px;font-size:14px;line-height:1.5;color:#6b7380}
+.required-flow.it-flow .rf-copy h4{font-size:24px;line-height:1.35}
+.required-flow.it-flow .rf-side{grid-column:2}
+.required-flow.it-flow ul{margin:0;padding:0;list-style:none}
+.required-flow.it-flow .it-list li{padding:9px 0;font-size:16px;line-height:1.65;color:#4d5560}
+.required-flow.it-flow .it-list li:first-child{padding-top:2px}
+.required-flow.it-flow .it-list li+li{border-top:1px solid #eceef1}
+.required-flow.it-flow .it-list b{font-weight:800;color:#e32526}
+.required-flow.it-flow .it-list strong{font-weight:700;color:#14181e}
+.required-flow.it-flow .it-link{display:inline-block;margin-top:12px;padding-bottom:2px;border-bottom:1px solid #e32526;color:#e32526;font-size:15px;font-weight:700;text-decoration:none}
+.required-flow.it-flow .rf-side>.it-link:first-child{margin-top:4px}
+.required-flow.it-flow .it-link:focus-visible,.required-flow.it-flow .rf-people a:focus-visible{outline:2px solid #e32526;outline-offset:3px}
+.required-flow.it-flow .it-warning{margin:14px 0 0;font-size:15px;line-height:1.7;color:#4d5560}
+.required-flow.it-flow .it-warning strong{display:block;font-size:16px;font-weight:800;color:#e32526}
+.required-flow.it-flow .it-wifi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.required-flow.it-flow .it-wifi small{display:block;margin-bottom:4px;font-size:14px;color:#6b7380}
+.required-flow.it-flow .it-wifi strong{display:block;margin-bottom:6px;font-size:20px;line-height:1.4;font-weight:800;color:#14181e}
+.required-flow.it-flow .it-wifi p{margin:0;font-size:15px;line-height:1.7;color:#4d5560}
+.required-flow.it-flow .it-wifi .it-path{margin-top:8px;font-size:14px;color:#6b7380}
+.required-flow.it-flow .it-password{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;margin:24px 0 0;padding-top:18px;border-top:1px solid #e6e8eb}
+.required-flow.it-flow .it-password span{font-size:14px;color:#6b7380}
+.required-flow.it-flow .it-password strong{font-size:22px;line-height:1.3;font-weight:800;color:#e32526}
+.required-flow.it-flow .it-password small{font-size:13px;color:#8a919c}
+.required-flow.it-flow .it-contact{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:64px}
+.required-flow.it-flow .it-contact h4{font-size:24px;line-height:1.35}
+.required-flow.it-flow .rf-people{margin-top:0;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.required-flow.it-flow .rf-people small{grid-column:1 / -1;font-size:13px;color:#8a919c}
+
+@media(max-width:960px){
+  .required-flow.it-flow .rf-step{grid-template-columns:minmax(0,1fr);row-gap:18px}
+  .required-flow.it-flow .rf-side{grid-column:1}
+  .required-flow.it-flow .it-contact{grid-template-columns:minmax(0,1fr);gap:22px}
+}
+@media(max-width:760px){
+  .required-flow.it-flow .rf-step{padding:30px 0}
+  .required-flow.it-flow .rf-copy{grid-column:auto}
+  .required-flow.it-flow .rf-copy h4,.required-flow.it-flow .it-contact h4{font-size:20px;line-height:28px}
+  .required-flow.it-flow .it-list li{font-size:15px}
+  .required-flow.it-flow .it-wifi{grid-template-columns:minmax(0,1fr);gap:24px}
+  .required-flow.it-flow .it-wifi strong{font-size:18px}
+  .required-flow.it-flow .rf-people{grid-template-columns:minmax(0,1fr);gap:20px}
+}
+
+/* 기존 경고 박스 스타일 제거 */
+#page#page #pageContent .required-flow.it-flow .it-warning{padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+
+/* 왼쪽 제목과 오른쪽 내용을 줄마다 세로 가운데로 */
+.required-flow.it-flow .rf-step,.required-flow.it-flow .it-contact{align-items:center}
+.required-flow.it-flow .it-list li:first-child{padding-top:0}
+.required-flow.it-flow .it-list li:last-child{padding-bottom:0}
+.required-flow.it-flow .rf-side>.it-link:first-child{display:table;margin-top:0}
+.required-flow.it-flow .it-password{align-items:center}
+@media(max-width:960px){
+  .required-flow.it-flow .rf-step,.required-flow.it-flow .it-contact{align-items:start}
+}
+
+/* 상조회·경조사: 박스 없이 여백, 얇은 선, 로고 빨강 글자로 구분 */
+#page#page#page:has(.benefit-event-guide){background:#fff!important}
+#page#page#page #pageContent:has(.benefit-event-guide){display:block!important;width:auto!important;max-width:1120px!important;margin:0 auto!important;padding:64px 32px 104px!important;background:transparent!important;border:0!important;box-shadow:none!important}
+#page#page#page #pageContent:has(.benefit-event-guide)::before,#page#page#page #pageContent:has(.benefit-event-guide)::after{display:none!important}
+#page#page#page #pageContent .benefit-event-guide{display:block!important;width:auto!important;max-width:none!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .benefit-event-guide::before,#page#page#page #pageContent .benefit-event-guide::after{display:none!important}
+
+/* 제목 */
+#page#page#page #pageContent .benefit-event-guide .event-guide-header{display:block!important;min-height:0!important;margin:0!important;padding:0 0 64px!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .benefit-event-guide .event-guide-header::before,#page#page#page #pageContent .benefit-event-guide .event-guide-header::after{display:none!important}
+#page#page#page #pageContent .benefit-event-guide .event-guide-header>div{display:block!important;margin:0!important;padding:0!important}
+#page#page#page #pageContent .benefit-event-guide .event-guide-header h3{margin:0!important;padding:0!important;font-size:40px!important;line-height:1.25!important;letter-spacing:-.02em!important;color:#14181e!important}
+#page#page#page #pageContent .benefit-event-guide .event-guide-header p{width:auto!important;max-width:680px!important;margin:14px 0 0!important;padding:0!important;font-size:16px!important;line-height:1.75!important;text-align:left!important;color:#4d5560!important}
+
+/* 신청 기한·경로 */
+#page#page#page #pageContent .benefit-event-guide .event-important{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:64px!important;align-items:center!important;margin:0!important;padding:44px 0!important;background:transparent!important;border:0!important;border-top:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .benefit-event-guide .event-important::before,#page#page#page #pageContent .benefit-event-guide .event-important::after{display:none!important}
+#page#page#page #pageContent .benefit-event-guide .event-important>div{width:auto!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+#page#page#page #pageContent .benefit-event-guide .event-important span{display:block!important;margin:0 0 6px!important;padding:0!important;background:transparent!important;font-size:14px!important;font-weight:500!important;letter-spacing:0!important;color:#6b7380!important}
+#page#page#page #pageContent .benefit-event-guide .event-important strong{display:block!important;margin:0!important;font-size:24px!important;line-height:1.4!important;font-weight:800!important;color:#e32526!important}
+#page#page#page #pageContent .benefit-event-guide .event-important p{margin:8px 0 0!important;font-size:15px!important;line-height:1.7!important;color:#4d5560!important}
+#page#page#page #pageContent .benefit-event-guide .event-important-route strong{font-size:17px!important;line-height:1.65!important;font-weight:700!important;color:#14181e!important}
+
+/* 기준 영역 */
+#page#page#page #pageContent .benefit-event-guide .event-clean-ui{display:block!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .benefit-event-guide .event-quick-summary{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:64px!important;margin:0!important;padding:44px 0!important;background:transparent!important;border:0!important;border-top:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .benefit-event-guide .event-quick-summary article{min-height:0!important;height:auto!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;text-align:left!important}
+#page#page#page #pageContent .benefit-event-guide .event-quick-summary article::before,#page#page#page #pageContent .benefit-event-guide .event-quick-summary article::after,#page#page#page #pageContent .benefit-event-guide .event-quick-summary small{display:none!important}
+#page#page#page #pageContent .benefit-event-guide .event-quick-summary strong{display:block!important;margin:0 0 6px!important;font-size:20px!important;line-height:1.4!important;font-weight:800!important;color:#14181e!important}
+#page#page#page #pageContent .benefit-event-guide .event-quick-summary p{margin:0!important;font-size:15px!important;line-height:1.7!important;text-align:left!important;color:#4d5560!important}
+#page#page#page #pageContent .benefit-event-guide .event-clean-heading{display:block!important;margin:0!important;padding:56px 0 24px!important;background:transparent!important;border:0!important;border-top:1px solid #d7dbe0!important;box-shadow:none!important}
+#page#page#page #pageContent .benefit-event-guide .event-clean-heading{order:3}
+#page#page#page #pageContent .benefit-event-guide .event-clean-ui{display:flex!important;flex-direction:column!important}
+#page#page#page #pageContent .benefit-event-guide .event-quick-summary{order:1}
+#page#page#page #pageContent .benefit-event-guide .event-main-tabs{order:4}
+#page#page#page #pageContent .benefit-event-guide .event-main-panel{order:5}
+#page#page#page #pageContent .benefit-event-guide .event-clean-heading>div{margin:0!important;padding:0!important}
+#page#page#page #pageContent .benefit-event-guide .event-clean-heading span{display:none!important}
+#page#page#page #pageContent .benefit-event-guide .event-clean-heading h4{margin:0 0 8px!important;font-size:28px!important;line-height:1.3!important;color:#14181e!important}
+#page#page#page #pageContent .benefit-event-guide .event-clean-heading p{width:auto!important;max-width:720px!important;margin:0!important;font-size:16px!important;line-height:1.7!important;text-align:left!important;color:#4d5560!important}
+
+/* 탭 */
+#page#page#page #pageContent .benefit-event-guide .event-main-tabs{display:flex!important;gap:32px!important;margin:0 0 20px!important;padding:0!important;background:transparent!important;border:0!important;border-bottom:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .benefit-event-guide .event-main-tab{display:inline-flex!important;flex:none!important;width:auto!important;min-height:0!important;height:auto!important;margin:0 0 -1px!important;padding:12px 0!important;background:transparent!important;border:0!important;border-bottom:2px solid transparent!important;border-radius:0!important;box-shadow:none!important;transform:none!important;font-size:16px!important;font-weight:600!important;color:#6b7380!important}
+#page#page#page #pageContent .benefit-event-guide .event-main-tab span{display:none!important}
+#page#page#page #pageContent .benefit-event-guide .event-main-tab.active{border-bottom-color:#e32526!important;font-weight:800!important;color:#e32526!important}
+#page#page#page #pageContent .benefit-event-guide .event-table-filters{display:flex!important;flex-wrap:wrap!important;justify-content:flex-start!important;gap:6px 20px!important;margin:0 0 18px!important;padding:0!important;background:transparent!important;border:0!important}
+#page#page#page #pageContent .benefit-event-guide .event-table-filter{width:auto!important;min-height:32px!important;height:auto!important;margin:0!important;padding:4px 0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important;font-size:14px!important;font-weight:500!important;color:#6b7380!important}
+#page#page#page #pageContent .benefit-event-guide .event-table-filter.active{font-weight:800!important;color:#14181e!important}
+
+/* 지원표 */
+#page#page#page #pageContent .benefit-event-guide .event-main-panel{padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+#page#page#page #pageContent .benefit-event-guide .event-table-card{margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .benefit-event-guide .event-table-title{display:flex!important;justify-content:flex-end!important;margin:0 0 8px!important;padding:0!important;background:transparent!important;border:0!important}
+#page#page#page #pageContent .benefit-event-guide .event-table-title strong{display:none!important}
+#page#page#page #pageContent .benefit-event-guide .event-table-title span{font-size:13px!important;color:#8a919c!important}
+#page#page#page #pageContent .benefit-event-guide .event-table-scroll{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .benefit-event-guide :is(.event-support-table,.mutual-fee-final-table){border-collapse:collapse!important;background:transparent!important;border:0!important;box-shadow:none!important}
+#page#page#page #pageContent .benefit-event-guide :is(.event-support-table,.mutual-fee-final-table) th{padding:10px 12px!important;background:transparent!important;border:0!important;border-top:1px solid #14181e!important;border-bottom:1px solid #d7dbe0!important;font-size:13px!important;font-weight:600!important;letter-spacing:0!important;text-align:left!important;color:#6b7380!important}
+#page#page#page #pageContent .benefit-event-guide :is(.event-support-table,.mutual-fee-final-table) td{padding:12px!important;background:#fff!important;border:0!important;border-bottom:1px solid #eceef1!important;font-size:14px!important;line-height:1.55!important;text-align:left!important;color:#4d5560!important}
+#page#page#page #pageContent .benefit-event-guide .event-support-table tbody tr:not(.event-category-row) td:first-child,#page#page#page #pageContent .benefit-event-guide .mutual-fee-final-table td:first-child{font-weight:700!important;color:#14181e!important}
+#page#page#page #pageContent .benefit-event-guide .event-support-table .event-category-row td{padding:26px 12px 8px!important;background:#fff!important;border-bottom:1px solid #d7dbe0!important}
+#page#page#page #pageContent .benefit-event-guide .event-category-label{padding:0!important;background:transparent!important;font-size:14px!important;font-weight:800!important;color:#e32526!important}
+#page#page#page #pageContent .benefit-event-guide .event-money{padding:0!important;background:transparent!important;font-weight:700!important;color:#14181e!important}
+#page#page#page #pageContent .benefit-event-guide .event-leave{display:inline!important;width:auto!important;height:auto!important;min-width:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;font-weight:700!important;color:#14181e!important}
+#page#page#page #pageContent .benefit-event-guide :is(.event-clean-notice,.mutual-fee-final-note){margin:18px 0 0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;font-size:14px!important;line-height:1.7!important;color:#6b7380!important}
+#page#page#page #pageContent .benefit-event-guide :is(.event-clean-notice,.mutual-fee-final-note) strong{color:#e32526!important}
+
+/* 월 상조회비 */
+#page#page#page #pageContent .benefit-event-guide .mutual-fee-section{margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .benefit-event-guide .mutual-fee-final-header{display:block!important;margin:0 0 18px!important;padding:4px 0 0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+#page#page#page #pageContent .benefit-event-guide .mutual-fee-final-header small{display:none!important}
+#page#page#page #pageContent .benefit-event-guide .mutual-fee-final-header h4{margin:0 0 4px!important;font-size:20px!important;line-height:1.4!important;color:#14181e!important}
+#page#page#page #pageContent .benefit-event-guide .mutual-fee-final-header p{width:auto!important;margin:0!important;font-size:15px!important;line-height:1.7!important;text-align:left!important;color:#4d5560!important}
+#page#page#page #pageContent .benefit-event-guide .mutual-fee-table-wrap{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .benefit-event-guide .mutual-fee-final-table{width:100%!important}
+#page#page#page #pageContent .benefit-event-guide .mutual-fee-final-table td:last-child{font-weight:800!important;color:#e32526!important}
+
+/* 참고 */
+#page#page#page #pageContent .benefit-event-guide .event-info-grid{gap:48px!important;margin:64px 0 0!important;padding:40px 0 0!important;background:transparent!important;border:0!important;border-top:1px solid #14181e!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .benefit-event-guide .event-info-grid article{min-height:0!important;height:auto!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .benefit-event-guide .event-info-grid article::before,#page#page#page #pageContent .benefit-event-guide .event-info-grid article::after,#page#page#page #pageContent .benefit-event-guide .event-info-grid span{display:none!important}
+#page#page#page #pageContent .benefit-event-guide .event-info-grid strong{display:block!important;margin:0 0 6px!important;font-size:18px!important;line-height:1.45!important;font-weight:800!important;color:#14181e!important}
+#page#page#page #pageContent .benefit-event-guide .event-info-grid p{margin:0!important;font-size:15px!important;line-height:1.7!important;color:#4d5560!important}
+
+@media(max-width:760px){
+  #page#page#page #pageContent:has(.benefit-event-guide){padding:32px 20px 72px!important}
+  #page#page#page #pageContent .benefit-event-guide .event-guide-header{padding-bottom:36px!important}
+  #page#page#page #pageContent .benefit-event-guide .event-guide-header h3{font-size:28px!important}
+  #page#page#page #pageContent .benefit-event-guide .event-guide-header p{font-size:15px!important}
+  #page#page#page #pageContent .benefit-event-guide :is(.event-important,.event-quick-summary){grid-template-columns:minmax(0,1fr)!important;gap:24px!important;padding:30px 0!important}
+  #page#page#page #pageContent .benefit-event-guide .event-important strong{font-size:20px!important}
+  #page#page#page #pageContent .benefit-event-guide .event-important-route strong{font-size:16px!important}
+  #page#page#page #pageContent .benefit-event-guide .event-quick-summary strong{font-size:18px!important}
+  #page#page#page #pageContent .benefit-event-guide .event-clean-heading{padding:36px 0 18px!important}
+  #page#page#page #pageContent .benefit-event-guide .event-clean-heading h4{font-size:22px!important}
+  #page#page#page #pageContent .benefit-event-guide .event-clean-heading p{font-size:15px!important}
+  #page#page#page #pageContent .benefit-event-guide .event-info-grid{grid-template-columns:minmax(0,1fr)!important;gap:22px!important;margin-top:44px!important;padding-top:30px!important}
+}
+
+/* 다듬기 */
+#page#page#page #pageContent:has(.benefit-event-guide),#page#page#page #pageContent:has(.benefit-event-guide)>*,#page#page#page #pageContent .benefit-event-guide :is(.event-main-panel,.event-table-card,.event-table-scroll,.mutual-fee-section,.event-support-table,.event-support-table tr,.mutual-fee-final-table tr){animation:none!important;transform:none!important;opacity:1}
+#page#page#page #pageContent .benefit-event-guide .event-clean-heading,#page#page#page #pageContent .benefit-event-guide .event-clean-heading *{text-align:left!important}
+#page#page#page #pageContent .benefit-event-guide :is(.event-clean-notice,.mutual-fee-final-note){text-align:left!important}
+#page#page#page #pageContent .benefit-event-guide :is(.event-support-table,.mutual-fee-final-table) :is(th,td):first-child{padding-left:0!important}
+#page#page#page #pageContent .benefit-event-guide .event-support-table .event-category-row td{padding-left:0!important}
+#page#page#page #pageContent .benefit-event-guide .event-category-label{left:0!important}
+
+/* 모바일 표: 가로 이동 안내는 글자만, 첫 열은 고정 유지 */
+@media(max-width:700px){
+  #page#page#page #pageContent .benefit-event-guide .event-table-scroll::before{margin:0 0 8px!important;padding:0!important;background:transparent!important;border-radius:0!important;font-size:13px!important;font-weight:500!important;color:#8a919c!important}
+  #page#page#page #pageContent .benefit-event-guide .event-support-table th:first-child{background:#fff!important;color:#6b7380!important}
+  #page#page#page #pageContent .benefit-event-guide .event-support-table :is(th,td):first-child{padding-right:10px!important;box-shadow:1px 0 0 #eceef1!important}
+  #page#page#page #pageContent .benefit-event-guide .event-support-table .event-category-row td:first-child{box-shadow:none!important}
+}
+
+/* 표 열 너비: 긴 증빙서류가 비고 칸과 겹치지 않도록 */
+#page#page#page #pageContent .benefit-event-guide .event-table-title span{flex:none!important;width:auto!important;margin-left:auto!important;text-align:right!important}
+@media(min-width:761px){
+  #page#page#page #pageContent .benefit-event-guide .event-table-scroll{overflow-x:visible!important}
+  #page#page#page #pageContent .benefit-event-guide .event-support-table{width:100%!important;min-width:0!important;table-layout:fixed!important}
+  #page#page#page #pageContent .benefit-event-guide .event-support-table :is(th,td){white-space:normal!important;word-break:keep-all!important;overflow:visible!important}
+  #page#page#page #pageContent .benefit-event-guide .event-support-table th:nth-child(1){width:18%!important}
+  #page#page#page #pageContent .benefit-event-guide .event-support-table th:nth-child(2){width:17%!important}
+  #page#page#page #pageContent .benefit-event-guide .event-support-table th:nth-child(3){width:12%!important}
+  #page#page#page #pageContent .benefit-event-guide .event-support-table th:nth-child(4){width:11%!important}
+  #page#page#page #pageContent .benefit-event-guide .event-support-table th:nth-child(5){width:24%!important}
+  #page#page#page #pageContent .benefit-event-guide .event-support-table th:nth-child(6){width:18%!important}
+}
+
+/* 지원표·상조회비 표 내용 가운데 정렬 (분류 제목은 왼쪽 유지) */
+#page#page#page #pageContent .benefit-event-guide :is(.event-support-table,.mutual-fee-final-table) :is(th,td),
+#page#page#page #pageContent .benefit-event-guide :is(.event-support-table,.mutual-fee-final-table) :is(th,td):first-child{padding-left:10px!important;padding-right:10px!important;text-align:center!important;vertical-align:middle!important}
+#page#page#page #pageContent .benefit-event-guide .event-support-table .event-category-row td,
+#page#page#page #pageContent .benefit-event-guide .event-support-table .event-category-row td:first-child{padding-left:0!important;text-align:left!important}
+
+/* 휴양시설: 박스 없이 여백, 얇은 선, 로고 빨강 글자로 구분 */
+#page#page#page:has(.resort-guide){background:#fff!important}
+#page#page#page #pageContent:has(.resort-guide){display:block!important;width:auto!important;max-width:1120px!important;margin:0 auto!important;padding:64px 32px 104px!important;background:transparent!important;border:0!important;box-shadow:none!important;animation:none!important;transform:none!important}
+#page#page#page #pageContent:has(.resort-guide)::before,#page#page#page #pageContent:has(.resort-guide)::after{display:none!important}
+#page#page#page #pageContent:has(.resort-guide)>*{animation:none!important;transform:none!important;opacity:1}
+#page#page#page #pageContent .resort-guide{display:block!important;width:auto!important;max-width:none!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .resort-guide::before,#page#page#page #pageContent .resort-guide::after,#page#page#page #pageContent .resort-guide :is(.resort-hero,.resort-days-section,.resort-process,.resort-brand-card,.resort-notice-grid article)::before,#page#page#page #pageContent .resort-guide :is(.resort-hero,.resort-days-section,.resort-process,.resort-brand-card,.resort-notice-grid article)::after{display:none!important}
+
+/* 제목 */
+#page#page#page #pageContent .resort-guide .resort-hero{display:block!important;min-height:0!important;margin:0!important;padding:0 0 64px!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .resort-guide .resort-hero>div{display:block!important;margin:0!important;padding:0!important}
+#page#page#page #pageContent .resort-guide .resort-hero h3{margin:0!important;padding:0!important;font-size:40px!important;line-height:1.25!important;letter-spacing:-.02em!important;color:#14181e!important}
+#page#page#page #pageContent .resort-guide .resort-hero p{width:auto!important;max-width:680px!important;margin:14px 0 0!important;padding:0!important;font-size:16px!important;line-height:1.75!important;text-align:left!important;color:#4d5560!important}
+
+/* 제휴 리조트 */
+#page#page#page #pageContent .resort-guide .resort-brand-grid{display:block!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important}
+#page#page#page #pageContent .resort-guide .resort-brand-card{display:grid!important;grid-template-columns:minmax(0,300px) minmax(0,1fr) auto!important;column-gap:64px!important;align-items:center!important;min-height:0!important;height:auto!important;margin:0!important;padding:32px 0!important;background:transparent!important;border:0!important;border-top:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .resort-guide .resort-brand-card>span{display:none!important}
+#page#page#page #pageContent .resort-guide .resort-brand-card>div{display:contents!important}
+#page#page#page #pageContent .resort-guide .resort-brand-card h4{grid-column:1!important;grid-row:1!important;margin:0!important;font-size:24px!important;line-height:1.35!important;color:#14181e!important}
+#page#page#page #pageContent .resort-guide .resort-brand-card p{grid-column:2!important;grid-row:1!important;max-width:none!important;width:auto!important;margin:0!important;padding:0!important;font-size:15px!important;line-height:1.75!important;white-space:normal!important;text-align:left!important;color:#4d5560!important}
+#page#page#page #pageContent .resort-guide .resort-brand-card b{position:static!important;grid-column:3!important;grid-row:1!important;display:inline-flex!important;align-items:baseline!important;justify-content:flex-end!important;min-width:82px!important;margin:0!important;font-size:28px!important;line-height:1.2!important;font-weight:800!important;color:#e32526!important}
+#page#page#page #pageContent .resort-guide .resort-brand-card b::after{content:"개 지역";margin-left:3px;font-size:14px;font-weight:600;color:#6b7380}
+#page#page#page #pageContent .resort-guide .resort-brand-card em{display:none!important}
+
+/* 이용 가능 일수 */
+#page#page#page #pageContent .resort-guide .resort-days-section{display:grid!important;grid-template-columns:minmax(0,300px) minmax(0,1fr)!important;gap:64px!important;align-items:center!important;margin:0!important;padding:48px 0!important;background:transparent!important;border:0!important;border-top:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .resort-guide .resort-days-copy{width:auto!important;margin:0!important;padding:0!important}
+#page#page#page #pageContent .resort-guide .resort-days-copy h4{margin:0 0 10px!important;font-size:24px!important;line-height:1.4!important;color:#14181e!important}
+#page#page#page #pageContent .resort-guide .resort-days-copy p{margin:0!important;font-size:15px!important;line-height:1.75!important;color:#4d5560!important}
+#page#page#page #pageContent .resort-guide .resort-days-card{width:auto!important;min-height:0!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .resort-guide .resort-days-card-head{display:block!important;margin:0 0 10px!important;padding:0!important;background:transparent!important;border:0!important}
+#page#page#page #pageContent .resort-guide .resort-days-card-head>div{display:none!important}
+#page#page#page #pageContent .resort-guide .resort-days-card-head p{width:auto!important;margin:0!important;font-size:13px!important;line-height:1.6!important;text-align:right!important;color:#8a919c!important}
+#page#page#page #pageContent .resort-guide .resort-days-table{margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-top:1px solid #14181e!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .resort-guide .resort-days-row{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;align-items:center!important;min-height:0!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-bottom:1px solid #eceef1!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .resort-guide .resort-days-row>*{min-height:0!important;padding:13px 8px!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;font-size:15px!important;line-height:1.5!important;font-weight:500!important;text-align:center!important;color:#4d5560!important}
+#page#page#page #pageContent .resort-guide .resort-days-row>:first-child{justify-self:stretch!important;justify-content:center!important;font-weight:700!important;text-align:center!important;color:#14181e!important}
+#page#page#page #pageContent .resort-guide .resort-days-row>:last-child{font-weight:800!important;color:#e32526!important}
+#page#page#page #pageContent .resort-guide .resort-days-header{border-bottom-color:#d7dbe0!important}
+#page#page#page #pageContent .resort-guide .resort-days-header>*,#page#page#page #pageContent .resort-guide .resort-days-header>:first-child,#page#page#page #pageContent .resort-guide .resort-days-header>:last-child{text-align:center!important;padding-top:10px!important;padding-bottom:10px!important;font-size:13px!important;font-weight:600!important;color:#6b7380!important}
+#page#page#page #pageContent .resort-guide .resort-days-caption{display:none!important}
+
+/* 신청 방법 */
+#page#page#page #pageContent .resort-guide .resort-process{margin:0!important;padding:48px 0!important;background:transparent!important;border:0!important;border-top:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .resort-guide .resort-process-heading{margin:0 0 28px!important;padding:0!important;background:transparent!important;border:0!important}
+#page#page#page #pageContent .resort-guide .resort-process-heading span{display:none!important}
+#page#page#page #pageContent .resort-guide .resort-process-heading h4{margin:0!important;font-size:24px!important;line-height:1.35!important;color:#14181e!important}
+#page#page#page #pageContent .resort-guide .resort-process-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:40px!important;counter-reset:resortstep;margin:0!important;padding:0!important;background:transparent!important;border:0!important}
+#page#page#page #pageContent .resort-guide .resort-process-grid article{min-height:0!important;height:auto!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;counter-increment:resortstep}
+#page#page#page #pageContent .resort-guide .resort-process-grid article::before,#page#page#page #pageContent .resort-guide .resort-process-grid article::after{display:none!important}
+#page#page#page #pageContent .resort-guide .resort-process-grid span{display:block!important;margin:0 0 10px!important;padding:0!important;background:transparent!important;font-size:0!important;line-height:1!important;color:transparent!important}
+#page#page#page #pageContent .resort-guide .resort-process-grid span::before{content:counter(resortstep);font-size:32px;line-height:1;font-weight:800;color:#e32526}
+#page#page#page #pageContent .resort-guide .resort-process-grid b{display:block!important;margin:0 0 6px!important;font-size:18px!important;line-height:1.45!important;font-weight:800!important;color:#14181e!important}
+#page#page#page #pageContent .resort-guide .resort-process-grid p{margin:0!important;font-size:15px!important;line-height:1.7!important;color:#4d5560!important}
+
+/* 이용 기준 */
+#page#page#page #pageContent .resort-guide .resort-notice-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:40px!important;margin:0!important;padding:44px 0 0!important;background:transparent!important;border:0!important;border-top:1px solid #14181e!important}
+#page#page#page #pageContent .resort-guide .resort-notice-grid article{min-height:0!important;height:auto!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .resort-guide .resort-notice-grid span{display:block!important;margin:0 0 6px!important;padding:0!important;background:transparent!important;font-size:14px!important;font-weight:500!important;color:#6b7380!important}
+#page#page#page #pageContent .resort-guide .resort-notice-grid strong{display:block!important;margin:0 0 6px!important;font-size:17px!important;line-height:1.45!important;font-weight:800!important;color:#14181e!important}
+#page#page#page #pageContent .resort-guide .resort-notice-grid p{margin:0!important;font-size:14px!important;line-height:1.7!important;color:#4d5560!important}
+#page#page#page #pageContent .resort-guide .resort-notice-grid .resort-warning strong{color:#e32526!important}
+
+@media(max-width:960px){
+  #page#page#page #pageContent .resort-guide .resort-brand-card{grid-template-columns:minmax(0,1fr) auto!important;column-gap:20px!important;row-gap:8px!important}
+  #page#page#page #pageContent .resort-guide .resort-brand-card p{grid-column:1 / -1!important;grid-row:2!important}
+  #page#page#page #pageContent .resort-guide .resort-brand-card b{grid-column:2!important}
+  #page#page#page #pageContent .resort-guide .resort-days-section{grid-template-columns:minmax(0,1fr)!important;gap:24px!important}
+  #page#page#page #pageContent .resort-guide .resort-process-grid,#page#page#page #pageContent .resort-guide .resort-notice-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:30px!important}
+}
+@media(max-width:760px){
+  #page#page#page #pageContent:has(.resort-guide){padding:32px 20px 72px!important}
+  #page#page#page #pageContent .resort-guide .resort-hero{padding-bottom:36px!important}
+  #page#page#page #pageContent .resort-guide .resort-hero h3{font-size:28px!important}
+  #page#page#page #pageContent .resort-guide .resort-hero p{font-size:15px!important}
+  #page#page#page #pageContent .resort-guide .resort-brand-card{padding:26px 0!important}
+  #page#page#page #pageContent .resort-guide .resort-brand-card h4,#page#page#page #pageContent .resort-guide .resort-days-copy h4,#page#page#page #pageContent .resort-guide .resort-process-heading h4{font-size:20px!important}
+  #page#page#page #pageContent .resort-guide .resort-brand-card b{font-size:24px!important}
+  #page#page#page #pageContent .resort-guide .resort-days-section,#page#page#page #pageContent .resort-guide .resort-process{padding:32px 0!important}
+  #page#page#page #pageContent .resort-guide .resort-days-row>*{padding-left:4px!important;padding-right:4px!important;font-size:14px!important}
+  #page#page#page #pageContent .resort-guide .resort-process-grid,#page#page#page #pageContent .resort-guide .resort-notice-grid{grid-template-columns:minmax(0,1fr)!important;gap:22px!important}
+  #page#page#page #pageContent .resort-guide .resort-process-grid span::before{font-size:26px}
+  #page#page#page #pageContent .resort-guide .resort-notice-grid{padding-top:30px!important}
+}
+
+/* 복리후생·식사 지원: 박스 없이 여백, 얇은 선, 로고 빨강 글자로 구분 */
+#page#page#page:has(.meal-benefit-guide){background:#fff!important}
+#page#page#page #pageContent:has(.meal-benefit-guide){display:block!important;width:auto!important;max-width:1120px!important;margin:0 auto!important;padding:64px 32px 104px!important;background:transparent!important;border:0!important;box-shadow:none!important;animation:none!important;transform:none!important;transition:none!important;filter:none!important}
+#page#page#page #pageContent:has(.meal-benefit-guide)::before,#page#page#page #pageContent:has(.meal-benefit-guide)::after{display:none!important}
+#page#page#page #pageContent:has(.meal-benefit-guide)>*{animation:none!important;transform:none!important;opacity:1}
+#page#page#page #pageContent .meal-benefit-guide{display:block!important;width:auto!important;max-width:none!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .meal-benefit-guide::before,#page#page#page #pageContent .meal-benefit-guide::after,#page#page#page #pageContent .meal-benefit-guide :is(.meal-guide-header,.meal-highlight-grid,.meal-highlight-grid article,.meal-tab,.meal-image-viewer,.meal-notice-grid article,.meal-warning)::before,#page#page#page #pageContent .meal-benefit-guide :is(.meal-guide-header,.meal-highlight-grid,.meal-highlight-grid article,.meal-tab,.meal-image-viewer,.meal-notice-grid article,.meal-warning)::after{display:none!important}
+
+/* 제목 */
+#page#page#page #pageContent .meal-benefit-guide .meal-guide-header{display:block!important;min-height:0!important;margin:0!important;padding:0 0 64px!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-guide-header>div{display:block!important;margin:0!important;padding:0!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-guide-header h3{margin:0!important;padding:0!important;font-size:40px!important;line-height:1.25!important;letter-spacing:-.02em!important;color:#14181e!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-guide-header p{width:auto!important;max-width:720px!important;margin:14px 0 0!important;padding:0!important;font-size:16px!important;line-height:1.75!important;text-align:left!important;color:#4d5560!important}
+
+/* 핵심 정보 */
+#page#page#page #pageContent .meal-benefit-guide .meal-highlight-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:48px!important;margin:0!important;padding:44px 0!important;background:transparent!important;background-image:none!important;border:0!important;border-top:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-highlight-grid article{display:block!important;min-height:0!important;height:auto!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-highlight-grid span{display:block!important;margin:0 0 8px!important;padding:0!important;background:transparent!important;font-size:14px!important;font-weight:500!important;letter-spacing:0!important;color:#6b7380!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-highlight-grid strong,#page#page#page #pageContent .meal-benefit-guide .meal-highlight-grid b{display:inline!important;margin:0!important;font-size:28px!important;line-height:1.3!important;font-weight:800!important;letter-spacing:-.01em!important;color:#e32526!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-highlight-grid article:first-child b{margin-left:6px!important;font-size:16px!important;font-weight:700!important;color:#14181e!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-highlight-grid article:not(:first-child) b{margin-left:6px!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-highlight-grid p{margin:10px 0 0!important;font-size:14px!important;line-height:1.7!important;color:#4d5560!important}
+
+/* 탭 */
+#page#page#page #pageContent .meal-benefit-guide .meal-tab-list{display:flex!important;gap:32px!important;margin:0 0 32px!important;padding:0!important;background:transparent!important;border:0!important;border-top:1px solid #d7dbe0!important;border-bottom:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-tab{display:block!important;flex:none!important;width:auto!important;min-height:0!important;height:auto!important;margin:0 0 -1px!important;padding:16px 0 14px!important;background:transparent!important;border:0!important;border-bottom:2px solid transparent!important;border-radius:0!important;box-shadow:none!important;transform:none!important;text-align:left!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-tab>span,#page#page#page #pageContent .meal-benefit-guide .meal-tab>b,#page#page#page #pageContent .meal-benefit-guide .meal-tab p{display:none!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-tab>div{display:block!important;margin:0!important;padding:0!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-tab strong{display:block!important;margin:0!important;font-size:16px!important;line-height:1.5!important;font-weight:600!important;color:#6b7380!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-tab.active{border-bottom-color:#e32526!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-tab.active strong{font-weight:800!important;color:#e32526!important}
+
+/* 안내 화면 */
+#page#page#page #pageContent .meal-benefit-guide .meal-image-viewer{display:grid!important;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)!important;grid-template-rows:auto auto!important;column-gap:64px!important;row-gap:8px!important;align-items:center!important;min-height:0!important;margin:0!important;padding:8px 0 56px!important;background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-image-area{grid-column:1!important;grid-row:1!important;display:block!important;width:auto!important;height:auto!important;min-height:0!important;max-height:none!important;margin:0!important;padding:0!important;background:#fff!important;border:1px solid #e3e6ea!important;border-radius:4px!important;box-shadow:none!important;overflow:hidden!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-image-area img{display:block!important;width:100%!important;height:auto!important;max-width:none!important;max-height:none!important;margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;object-fit:contain!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-cardnews-overlay{display:none!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-viewer-bar{grid-column:1!important;grid-row:2!important;display:flex!important;justify-content:flex-end!important;min-height:0!important;height:auto!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-viewer-bar button{display:inline-flex!important;gap:4px!important;min-height:0!important;height:auto!important;padding:4px 0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;font-size:13px!important;font-weight:600!important;color:#4d5560!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-viewer-bar button b{font-weight:600!important;color:#4d5560!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-viewer-information{grid-column:2!important;grid-row:1 / span 2!important;display:block!important;min-height:0!important;height:auto!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-viewer-copy{width:auto!important;margin:0!important;padding:0!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-viewer-copy>span{display:none!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-viewer-copy h4{margin:0 0 10px!important;font-size:24px!important;line-height:1.35!important;color:#14181e!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-viewer-copy p{margin:0!important;font-size:15px!important;line-height:1.75!important;color:#4d5560!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-detail{display:block!important;width:auto!important;margin:22px 0 0!important;padding:0!important;background:transparent!important;border:0!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-detail>div{display:grid!important;grid-template-columns:96px minmax(0,1fr)!important;gap:12px!important;align-items:center!important;min-height:0!important;margin:0!important;padding:13px 0!important;background:transparent!important;border:0!important;border-top:1px solid #e6e8eb!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-detail span{display:block!important;margin:0!important;font-size:14px!important;font-weight:500!important;color:#6b7380!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-detail strong{display:block!important;font-size:16px!important;line-height:1.5!important;font-weight:700!important;color:#14181e!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-controls{display:none!important}
+
+/* 이용 순서·확인 */
+#page#page#page #pageContent .meal-benefit-guide .meal-notice-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:40px!important;margin:0!important;padding:44px 0 0!important;background:transparent!important;border:0!important;border-top:1px solid #d7dbe0!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-notice-grid article{min-height:0!important;height:auto!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-notice-grid span{display:block!important;margin:0 0 8px!important;padding:0!important;background:transparent!important;font-size:14px!important;font-weight:700!important;color:#e32526!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-notice-grid strong{display:block!important;margin:0 0 6px!important;font-size:17px!important;line-height:1.45!important;font-weight:800!important;color:#14181e!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-notice-grid p{margin:0!important;font-size:14px!important;line-height:1.7!important;color:#4d5560!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-warning{display:block!important;min-height:0!important;margin:44px 0 0!important;padding:32px 0 0!important;background:transparent!important;background-image:none!important;border:0!important;border-top:1px solid #14181e!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-warning>div{margin:0!important;padding:0!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-warning strong{display:block!important;margin:0 0 6px!important;font-size:17px!important;line-height:1.45!important;font-weight:800!important;color:#e32526!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-warning p{margin:0!important;font-size:15px!important;line-height:1.7!important;color:#4d5560!important}
+
+/* 크게 보기는 확대 기능이 있는 제휴식당 탭에서만 표시 */
+#page#page#page #pageContent .meal-benefit-guide:not(.meal-dinner-active) .meal-viewer-bar{display:none!important}
+#page#page#page #pageContent .meal-benefit-guide:not(.meal-dinner-active) .meal-image-area img{cursor:default!important}
+#page#page#page #pageContent .meal-benefit-guide.meal-dinner-active .meal-image-area img{cursor:zoom-in!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-image-modal,#page#page#page #pageContent .meal-benefit-guide .meal-image-modal *{transition:none!important;animation:none!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-image-modal.open{position:fixed!important;transform:none!important;inset:0!important;width:100vw!important;height:100dvh!important;margin:0!important;padding:56px 24px 24px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:10px!important;background:rgba(20,24,30,.9)!important;visibility:visible!important;opacity:1!important;overflow:hidden!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-image-modal.open img{display:block!important;width:auto!important;height:auto!important;max-width:min(100%,1100px)!important;max-height:calc(100dvh - 120px)!important;min-width:0!important;padding:0!important;background:#fff!important;border:0!important;border-radius:0!important;box-shadow:none!important;object-fit:contain!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-image-modal.open button{position:absolute!important;top:14px!important;right:16px!important;min-height:36px!important;padding:0 14px!important;background:#fff!important;border:0!important;border-radius:4px!important;box-shadow:none!important;color:#14181e!important;font-size:14px!important;font-weight:700!important}
+#page#page#page #pageContent .meal-benefit-guide .meal-image-modal.open p{margin:0!important;color:#fff!important;font-size:14px!important}
+
+@media(max-width:960px){
+  #page#page#page #pageContent .meal-benefit-guide .meal-image-viewer{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:none!important;row-gap:12px!important}
+  #page#page#page #pageContent .meal-benefit-guide .meal-image-area,#page#page#page #pageContent .meal-benefit-guide .meal-viewer-bar,#page#page#page #pageContent .meal-benefit-guide .meal-viewer-information{grid-column:1!important;grid-row:auto!important}
+  #page#page#page #pageContent .meal-benefit-guide .meal-image-area{order:1!important}
+  #page#page#page #pageContent .meal-benefit-guide .meal-viewer-bar{order:2!important}
+  #page#page#page #pageContent .meal-benefit-guide .meal-viewer-information{order:3!important}
+  #page#page#page #pageContent .meal-benefit-guide .meal-notice-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:30px!important}
+}
+@media(max-width:760px){
+  #page#page#page #pageContent:has(.meal-benefit-guide){padding:32px 20px 72px!important}
+  #page#page#page #pageContent .meal-benefit-guide .meal-guide-header{padding-bottom:36px!important}
+  #page#page#page #pageContent .meal-benefit-guide .meal-guide-header h3{font-size:28px!important}
+  #page#page#page #pageContent .meal-benefit-guide .meal-guide-header p{font-size:15px!important}
+  #page#page#page #pageContent .meal-benefit-guide .meal-highlight-grid{grid-template-columns:minmax(0,1fr)!important;gap:24px!important;padding:30px 0!important}
+  #page#page#page #pageContent .meal-benefit-guide .meal-highlight-grid strong,#page#page#page #pageContent .meal-benefit-guide .meal-highlight-grid article:not(:first-child) b{font-size:24px!important}
+  #page#page#page #pageContent .meal-benefit-guide .meal-tab-list{gap:22px!important;margin-bottom:22px!important}
+  #page#page#page #pageContent .meal-benefit-guide .meal-tab strong{font-size:15px!important}
+  #page#page#page #pageContent .meal-benefit-guide .meal-image-viewer{padding-bottom:36px!important}
+  #page#page#page #pageContent .meal-benefit-guide .meal-viewer-copy h4{font-size:20px!important}
+  #page#page#page #pageContent .meal-benefit-guide .meal-notice-grid{grid-template-columns:minmax(0,1fr)!important;gap:22px!important;padding-top:30px!important}
+  #page#page#page #pageContent .meal-benefit-guide .meal-warning{margin-top:32px!important;padding-top:26px!important}
+  #page#page#page #pageContent .meal-benefit-guide .meal-warning strong{font-size:16px!important}
+}
+/* 식사 지원 탭 전환 시 사진이 다시 나타나는 움직임 제거 */
+#page#page#page #pageContent .meal-benefit-guide #mealMainImage{animation:none!important;opacity:1!important;transform:none!important}
+
+/* 격주 4.5일제: 박스 없이 여백, 얇은 선, 로고 빨강 글자로 구분 */
+#page#page#page:has(.workweek-guide){background:#fff!important}
+#page#page#page #pageContent:has(.workweek-guide){display:block!important;width:auto!important;max-width:1120px!important;margin:0 auto!important;padding:64px 32px 104px!important;background:transparent!important;border:0!important;box-shadow:none!important;animation:none!important;transform:none!important;transition:none!important}
+#page#page#page #pageContent:has(.workweek-guide)::before,#page#page#page #pageContent:has(.workweek-guide)::after{display:none!important}
+#page#page#page #pageContent:has(.workweek-guide)>*{animation:none!important;transform:none!important;opacity:1}
+#page#page#page #pageContent .workweek-guide{display:flex!important;flex-direction:column!important;width:auto!important;max-width:none!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .workweek-guide::before,#page#page#page #pageContent .workweek-guide::after,#page#page#page #pageContent .workweek-guide :is(.workweek-header,.workweek-time-grid,.workweek-time-card,.flex-work-notice,.flex-time-normal,.flex-time-workweek,.flex-work-warning,.workweek-image-section,.workweek-schedule-board,.workweek-track,.workweek-track-rest,.workweek-track-work,.workweek-notice,.workweek-culture-note,.workweek-location-grid article)::before,#page#page#page #pageContent .workweek-guide :is(.workweek-header,.workweek-time-grid,.workweek-time-card,.flex-work-notice,.flex-time-normal,.flex-time-workweek,.flex-work-warning,.workweek-image-section,.workweek-schedule-board,.workweek-track,.workweek-track-rest,.workweek-track-work,.workweek-notice,.workweek-culture-note,.workweek-location-grid article)::after{display:none!important}
+
+/* 읽는 순서: 핵심 시간 → 하루 흐름 → 유연근무 → 사업장 → 확인 사항 */
+#page#page#page #pageContent .workweek-guide .workweek-header{order:1}
+#page#page#page #pageContent .workweek-guide .workweek-time-grid{order:2}
+#page#page#page #pageContent .workweek-guide .workweek-image-section{order:3}
+#page#page#page #pageContent .workweek-guide .flex-work-notice{order:4}
+#page#page#page #pageContent .workweek-guide .workweek-location-grid{order:5}
+#page#page#page #pageContent .workweek-guide .workweek-notice{order:6}
+#page#page#page #pageContent .workweek-guide .workweek-culture-note{order:7}
+
+/* 제목 */
+#page#page#page #pageContent .workweek-guide .workweek-header{display:block!important;min-height:0!important;margin:0!important;padding:0 0 56px!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .workweek-guide .workweek-header>div{display:block!important;margin:0!important;padding:0!important}
+#page#page#page #pageContent .workweek-guide .workweek-header h3{margin:0!important;padding:0!important;font-size:40px!important;line-height:1.25!important;letter-spacing:-.02em!important;color:#14181e!important}
+
+/* 핵심 시간 */
+#page#page#page #pageContent .workweek-guide .workweek-time-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:48px!important;margin:0!important;padding:44px 0!important;background:transparent!important;background-image:none!important;border:0!important;border-top:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .workweek-guide .workweek-time-card{min-height:0!important;height:auto!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .workweek-guide .workweek-time-card strong{display:block!important;margin:0 0 8px!important;font-size:28px!important;line-height:1.3!important;font-weight:800!important;letter-spacing:-.01em!important;color:#e32526!important}
+#page#page#page #pageContent .workweek-guide .workweek-time-card p{margin:0!important;font-size:15px!important;line-height:1.7!important;color:#4d5560!important}
+
+/* 하루 흐름 */
+#page#page#page #pageContent .workweek-guide .workweek-image-section{display:grid!important;grid-template-columns:minmax(0,340px) minmax(0,1fr)!important;gap:64px!important;align-items:center!important;min-height:0!important;margin:0!important;padding:48px 0!important;background:transparent!important;background-image:none!important;border:0!important;border-top:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .workweek-guide .workweek-image-copy{width:auto!important;margin:0!important;padding:0!important}
+#page#page#page #pageContent .workweek-guide .workweek-image-copy h4{margin:0 0 10px!important;font-size:24px!important;line-height:1.4!important;color:#14181e!important}
+#page#page#page #pageContent .workweek-guide .workweek-image-copy p{margin:0!important;font-size:15px!important;line-height:1.75!important;color:#4d5560!important}
+#page#page#page #pageContent .workweek-guide .workweek-copy-note{display:block!important;margin:12px 0 0!important;padding:0!important}
+#page#page#page #pageContent .workweek-guide .workweek-copy-note i{display:none!important}
+#page#page#page #pageContent .workweek-guide .workweek-copy-note span{font-size:13px!important;line-height:1.6!important;color:#8a919c!important}
+#page#page#page #pageContent .workweek-guide .workweek-schedule-board{width:auto!important;min-height:0!important;margin:0!important;padding:0!important;background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .workweek-guide .workweek-board-top,#page#page#page #pageContent .workweek-guide .workweek-board-summary{display:none!important}
+#page#page#page #pageContent .workweek-guide .workweek-clock-row{display:grid!important;grid-template-columns:repeat(10,minmax(0,1fr))!important;margin:0 0 8px!important;padding:0!important}
+#page#page#page #pageContent .workweek-guide .workweek-clock-row span{padding:0!important;background:transparent!important;font-size:13px!important;line-height:1.4!important;font-weight:500!important;text-align:left!important;color:#8a919c!important}
+#page#page#page #pageContent .workweek-guide .workweek-track{display:grid!important;grid-template-columns:4fr 5fr!important;gap:6px!important;width:90%!important;min-height:0!important;height:auto!important;margin:0!important;padding:0!important;background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .workweek-guide :is(.workweek-track-rest,.workweek-track-work){display:block!important;width:auto!important;min-height:0!important;height:auto!important;margin:0!important;padding:14px 0 0!important;background:transparent!important;background-image:none!important;border:0!important;border-top:5px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important;text-align:left!important}
+#page#page#page #pageContent .workweek-guide .workweek-track-work{border-top-color:#e32526!important}
+#page#page#page #pageContent .workweek-guide :is(.workweek-track-rest,.workweek-track-work) *{display:block!important;margin:0!important;padding:0!important;background:transparent!important;text-align:left!important}
+#page#page#page #pageContent .workweek-guide :is(.workweek-track-rest,.workweek-track-work)>:first-child{font-size:17px!important;line-height:1.45!important;font-weight:800!important;color:#14181e!important}
+#page#page#page #pageContent .workweek-guide .workweek-track-work>:first-child{color:#e32526!important}
+#page#page#page #pageContent .workweek-guide :is(.workweek-track-rest,.workweek-track-work)>:not(:first-child){margin-top:3px!important;font-size:14px!important;line-height:1.6!important;font-weight:400!important;color:#4d5560!important}
+
+/* 유연근무 */
+#page#page#page #pageContent .workweek-guide .flex-work-notice{margin:0!important;padding:48px 0!important;background:transparent!important;background-image:none!important;border:0!important;border-top:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .workweek-guide .flex-work-heading{display:grid!important;grid-template-columns:minmax(0,340px) minmax(0,1fr)!important;gap:64px!important;align-items:center!important;margin:0 0 32px!important;padding:0!important;background:transparent!important;border:0!important}
+#page#page#page #pageContent .workweek-guide .flex-work-heading>div{margin:0!important;padding:0!important}
+#page#page#page #pageContent .workweek-guide .flex-work-heading h4{margin:0!important;font-size:24px!important;line-height:1.4!important;color:#14181e!important}
+#page#page#page #pageContent .workweek-guide .flex-work-heading p{width:auto!important;max-width:none!important;margin:0!important;font-size:15px!important;line-height:1.75!important;text-align:left!important;color:#4d5560!important}
+#page#page#page #pageContent .workweek-guide .flex-time-comparison{display:grid!important;grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr)!important;gap:16px!important;align-items:center!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important}
+#page#page#page #pageContent .workweek-guide :is(.flex-time-normal,.flex-time-workweek){min-height:0!important;height:auto!important;margin:0!important;padding:0!important;background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .workweek-guide .flex-time-title{display:flex!important;justify-content:space-between!important;align-items:center!important;margin:0 0 16px!important;padding:0!important}
+#page#page#page #pageContent .workweek-guide .flex-time-title *{padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;font-size:14px!important;font-weight:600!important;color:#6b7380!important}
+#page#page#page #pageContent .workweek-guide .flex-time-workweek .flex-time-title>:last-child{font-weight:800!important;color:#e32526!important}
+#page#page#page #pageContent .workweek-guide :is(.flex-time-normal,.flex-time-workweek)>p{margin:12px 0 0!important;font-size:14px!important;line-height:1.6!important;color:#6b7380!important}
+#page#page#page #pageContent .workweek-guide .flex-change-arrow{width:auto!important;margin:0!important;padding:0!important;text-align:center!important}
+#page#page#page #pageContent .workweek-guide .flex-change-arrow span{display:none!important}
+#page#page#page #pageContent .workweek-guide .flex-change-arrow b{display:block!important;font-size:24px!important;line-height:1!important;font-weight:500!important;color:#a0a6af!important}
+#page#page#page #pageContent .workweek-guide .flex-work-warning{display:block!important;margin:32px 0 0!important;padding:0!important;background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .workweek-guide .flex-warning-mark{display:none!important}
+#page#page#page #pageContent .workweek-guide .flex-work-warning>div{margin:0!important;padding:0!important}
+#page#page#page #pageContent .workweek-guide .flex-work-warning strong{display:block!important;margin:0 0 4px!important;font-size:17px!important;line-height:1.5!important;font-weight:800!important;color:#e32526!important}
+#page#page#page #pageContent .workweek-guide .flex-work-warning p{margin:0!important;font-size:15px!important;line-height:1.7!important;color:#4d5560!important}
+
+/* 사업장·확인 */
+#page#page#page #pageContent .workweek-guide .workweek-location-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:48px!important;margin:0!important;padding:44px 0!important;background:transparent!important;border:0!important;border-top:1px solid #d7dbe0!important}
+#page#page#page #pageContent .workweek-guide .workweek-location-grid article{min-height:0!important;height:auto!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .workweek-guide .workweek-location-grid span{display:block!important;margin:0 0 6px!important;padding:0!important;background:transparent!important;font-size:14px!important;font-weight:500!important;color:#6b7380!important}
+#page#page#page #pageContent .workweek-guide .workweek-location-grid strong{display:block!important;margin:0 0 4px!important;font-size:18px!important;line-height:1.45!important;font-weight:800!important;color:#14181e!important}
+#page#page#page #pageContent .workweek-guide .workweek-location-grid p{margin:0!important;font-size:14px!important;line-height:1.7!important;color:#4d5560!important}
+#page#page#page #pageContent .workweek-guide :is(.workweek-notice,.workweek-culture-note){display:block!important;min-height:0!important;margin:0!important;padding:0!important;background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .workweek-guide .workweek-notice{padding-top:36px!important;border-top:1px solid #14181e!important}
+#page#page#page #pageContent .workweek-guide .workweek-notice>div{margin:0!important;padding:0!important}
+#page#page#page #pageContent .workweek-guide .workweek-notice strong{display:block!important;margin:0 0 4px!important;font-size:17px!important;line-height:1.5!important;font-weight:800!important;color:#e32526!important}
+#page#page#page #pageContent .workweek-guide .workweek-notice p{margin:0!important;font-size:15px!important;line-height:1.7!important;color:#4d5560!important}
+#page#page#page #pageContent .workweek-guide .workweek-culture-note{margin-top:24px!important}
+#page#page#page #pageContent .workweek-guide .workweek-culture-note span{display:none!important}
+#page#page#page #pageContent .workweek-guide .workweek-culture-note strong{display:block!important;margin:0 0 4px!important;font-size:17px!important;line-height:1.5!important;font-weight:800!important;color:#14181e!important}
+#page#page#page #pageContent .workweek-guide .workweek-culture-note p{margin:0!important;font-size:15px!important;line-height:1.7!important;color:#4d5560!important}
+
+/* 시간 막대: 가운데 회색 조각과 그라데이션 제거 */
+#page#page#page #pageContent .workweek-guide .flex-time-line i{display:none!important}
+#page#page#page #pageContent .workweek-guide .flex-time-workweek .flex-time-line{background:#e32526!important;background-image:none!important}
+#page#page#page #pageContent .workweek-guide .workweek-copy-note span{font-weight:400!important}
+
+@media(max-width:960px){
+  #page#page#page #pageContent .workweek-guide :is(.workweek-image-section,.flex-work-heading){grid-template-columns:minmax(0,1fr)!important;gap:24px!important}
+}
+@media(max-width:760px){
+  #page#page#page #pageContent:has(.workweek-guide){padding:32px 20px 72px!important}
+  #page#page#page #pageContent .workweek-guide .workweek-header{padding-bottom:32px!important}
+  #page#page#page #pageContent .workweek-guide .workweek-header h3{font-size:28px!important}
+  #page#page#page #pageContent .workweek-guide .workweek-time-grid{grid-template-columns:minmax(0,1fr)!important;gap:22px!important;padding:30px 0!important}
+  #page#page#page #pageContent .workweek-guide .workweek-time-card strong{font-size:24px!important}
+  #page#page#page #pageContent .workweek-guide :is(.workweek-image-section,.flex-work-notice){padding:32px 0!important}
+  #page#page#page #pageContent .workweek-guide :is(.workweek-image-copy h4,.flex-work-heading h4){font-size:20px!important}
+  #page#page#page #pageContent .workweek-guide .workweek-clock-row span{font-size:11px!important}
+  #page#page#page #pageContent .workweek-guide :is(.workweek-track-rest,.workweek-track-work)>:first-child{font-size:15px!important}
+  #page#page#page #pageContent .workweek-guide :is(.workweek-track-rest,.workweek-track-work)>:not(:first-child){font-size:13px!important}
+  #page#page#page #pageContent .workweek-guide .flex-time-comparison{grid-template-columns:minmax(0,1fr)!important;gap:18px!important}
+  #page#page#page #pageContent .workweek-guide .flex-change-arrow b{transform:rotate(90deg)!important}
+  #page#page#page #pageContent .workweek-guide .workweek-location-grid{grid-template-columns:minmax(0,1fr)!important;gap:20px!important;padding:30px 0!important}
+  #page#page#page #pageContent .workweek-guide .workweek-notice{padding-top:28px!important}
+}
+
+/* 사내판매 사이트: 박스 없이 여백, 얇은 선, 로고 빨강 글자로 구분 */
+#page#page#page:has(.staff-sale-guide){background:#fff!important}
+#page#page#page #pageContent:has(.staff-sale-guide){display:block!important;width:auto!important;max-width:1120px!important;min-height:0!important;margin:0 auto!important;padding:64px 32px 104px!important;background:transparent!important;border:0!important;box-shadow:none!important;animation:none!important;transform:none!important;transition:none!important}
+#page#page#page #pageContent:has(.staff-sale-guide)::before,#page#page#page #pageContent:has(.staff-sale-guide)::after,#page#page#page #pageContent:has(.staff-sale-guide)>h2::before,#page#page#page #pageContent:has(.staff-sale-guide)>h2::after{display:none!important}
+#page#page#page #pageContent:has(.staff-sale-guide)>*{animation:none!important;transform:none!important;opacity:1}
+#page#page#page #pageContent:has(.staff-sale-guide)>h2{position:static!important;display:block!important;width:auto!important;height:auto!important;min-height:0!important;margin:0!important;padding:0 0 56px!important;background:transparent!important;border:0!important;box-shadow:none!important;font-size:40px!important;line-height:1.25!important;letter-spacing:-.02em!important;text-align:left!important;color:#14181e!important}
+#page#page#page #pageContent .staff-sale-guide{display:block!important;width:auto!important;max-width:none!important;min-height:0!important;margin:0!important;padding:0!important;background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .staff-sale-guide::before,#page#page#page #pageContent .staff-sale-guide::after,#page#page#page #pageContent .staff-sale-guide :is(.staff-sale-info,.staff-sale-step,.staff-sale-link,.staff-sale-notice)::before,#page#page#page #pageContent .staff-sale-guide :is(.staff-sale-info,.staff-sale-step,.staff-sale-link,.staff-sale-notice)::after{display:none!important}
+
+/* 이용 순서 */
+#page#page#page #pageContent .staff-sale-guide .staff-sale-info{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:48px!important;counter-reset:salestep;margin:0!important;padding:44px 0!important;background:transparent!important;border:0!important;border-top:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .staff-sale-guide .staff-sale-step{min-height:0!important;height:auto!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;counter-increment:salestep}
+#page#page#page #pageContent .staff-sale-guide .staff-sale-number{display:block!important;width:auto!important;margin:0 0 10px!important;padding:0!important;background:transparent!important;font-size:0!important;line-height:1!important;color:transparent!important}
+#page#page#page #pageContent .staff-sale-guide .staff-sale-number::before{content:counter(salestep);font-size:32px;line-height:1;font-weight:800;color:#e32526}
+#page#page#page #pageContent .staff-sale-guide .staff-sale-step strong{display:block!important;margin:0 0 6px!important;font-size:20px!important;line-height:1.4!important;font-weight:800!important;color:#14181e!important}
+#page#page#page #pageContent .staff-sale-guide .staff-sale-step p{margin:0!important;font-size:15px!important;line-height:1.7!important;color:#4d5560!important}
+
+/* 바로가기 */
+#page#page#page #pageContent .staff-sale-guide .staff-sale-link{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:24px!important;min-height:0!important;margin:0!important;padding:36px 0!important;background:transparent!important;background-image:none!important;border:0!important;border-top:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .staff-sale-guide .staff-sale-link-text{margin:0!important;padding:0!important}
+#page#page#page #pageContent .staff-sale-guide .staff-sale-link-text strong{display:block!important;margin:0!important;font-size:24px!important;line-height:1.35!important;font-weight:800!important;color:#14181e!important}
+#page#page#page #pageContent .staff-sale-guide .staff-sale-button{display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:none!important;width:auto!important;min-height:48px!important;height:auto!important;margin:0!important;padding:0 24px!important;background:#e32526!important;background-image:none!important;border:0!important;border-radius:4px!important;box-shadow:none!important;transform:none!important;font-size:15px!important;font-weight:700!important;color:#fff!important;text-decoration:none!important}
+#page#page#page #pageContent .staff-sale-guide .staff-sale-button:hover{background:#c91d1e!important}
+#page#page#page #pageContent .staff-sale-guide .staff-sale-button:focus-visible{outline:2px solid #e32526!important;outline-offset:3px!important}
+
+/* 확인 사항 */
+#page#page#page #pageContent .staff-sale-guide .staff-sale-notice{display:block!important;min-height:0!important;margin:0!important;padding:36px 0 0!important;background:transparent!important;background-image:none!important;border:0!important;border-top:1px solid #14181e!important;border-radius:0!important;box-shadow:none!important;font-size:15px!important;line-height:1.7!important;text-align:left!important;color:#4d5560!important}
+#page#page#page #pageContent .staff-sale-guide .staff-sale-notice strong{display:inline-block!important;margin:0 0 4px!important;font-size:17px!important;line-height:1.5!important;font-weight:800!important;color:#e32526!important}
+
+@media(max-width:760px){
+  #page#page#page #pageContent:has(.staff-sale-guide){padding:32px 20px 72px!important}
+  #page#page#page #pageContent:has(.staff-sale-guide)>h2{padding-bottom:32px!important;font-size:28px!important}
+  #page#page#page #pageContent .staff-sale-guide .staff-sale-info{grid-template-columns:minmax(0,1fr)!important;gap:24px!important;padding:30px 0!important}
+  #page#page#page #pageContent .staff-sale-guide .staff-sale-number::before{font-size:26px}
+  #page#page#page #pageContent .staff-sale-guide .staff-sale-step strong{font-size:18px!important}
+  #page#page#page #pageContent .staff-sale-guide .staff-sale-link{display:block!important;padding:28px 0!important}
+  #page#page#page #pageContent .staff-sale-guide .staff-sale-link-text strong{font-size:20px!important}
+  #page#page#page #pageContent .staff-sale-guide .staff-sale-button{display:flex!important;width:100%!important;margin-top:14px!important}
+  #page#page#page #pageContent .staff-sale-guide .staff-sale-notice{padding-top:28px!important}
+  #page#page#page #pageContent .staff-sale-guide .staff-sale-notice strong{font-size:16px!important}
+}
+
+
+/* 버핏그라운드 헬스장: 박스 없이 여백, 얇은 선, 로고 빨강 글자로 구분 */
+#page#page#page:has(.butfit-info-board){background:#fff!important}
+#page#page#page #pageContent:has(.butfit-info-board){display:block!important;width:auto!important;max-width:1120px!important;min-height:0!important;margin:0 auto!important;padding:64px 32px 104px!important;background:transparent!important;border:0!important;box-shadow:none!important;animation:none!important;transform:none!important;transition:none!important}
+#page#page#page #pageContent:has(.butfit-info-board)::before,#page#page#page #pageContent:has(.butfit-info-board)::after{display:none!important}
+#page#page#page #pageContent:has(.butfit-info-board)>*{animation:none!important;transform:none!important;opacity:1}
+#page#page#page #pageContent .butfit-info-board{display:block!important;width:auto!important;max-width:none!important;min-height:0!important;margin:0!important;padding:0!important;background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .butfit-info-board::before,#page#page#page #pageContent .butfit-info-board::after,#page#page#page #pageContent .butfit-info-board :is(.butfit-membership-hero,.butfit-pricing-card,.butfit-pricing-grid article,.butfit-contact-card,.butfit-contact-name)::before,#page#page#page #pageContent .butfit-info-board :is(.butfit-membership-hero,.butfit-pricing-card,.butfit-pricing-grid article,.butfit-contact-card,.butfit-contact-name)::after{display:none!important}
+
+/* 제목 */
+#page#page#page #pageContent .butfit-info-board .butfit-membership-hero{display:block!important;min-height:0!important;margin:0!important;padding:0 0 64px!important;background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .butfit-info-board .butfit-membership-hero>*{display:block!important;width:auto!important;margin:0!important;padding:0!important}
+#page#page#page #pageContent .butfit-info-board .butfit-membership-hero h3{margin:0!important;padding:0!important;font-size:40px!important;line-height:1.25!important;letter-spacing:-.02em!important;color:#14181e!important}
+#page#page#page #pageContent .butfit-info-board .butfit-membership-hero p{max-width:680px!important;margin:14px 0 0!important;padding:0!important;font-size:16px!important;line-height:1.75!important;text-align:left!important;color:#4d5560!important}
+
+/* 이용 금액 */
+#page#page#page #pageContent .butfit-info-board .butfit-pricing-card{margin:0!important;padding:44px 0!important;background:transparent!important;background-image:none!important;border:0!important;border-top:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .butfit-info-board .butfit-pricing-head{display:flex!important;align-items:baseline!important;justify-content:flex-start!important;gap:14px!important;margin:0 0 28px!important;padding:0!important;background:transparent!important;border:0!important}
+#page#page#page #pageContent .butfit-info-board .butfit-pricing-head strong{font-size:24px!important;line-height:1.35!important;font-weight:800!important;color:#14181e!important}
+#page#page#page #pageContent .butfit-info-board .butfit-pricing-head div{display:block!important;margin:0!important;padding:0!important}
+#page#page#page #pageContent .butfit-info-board .butfit-pricing-head span{display:inline!important;height:auto!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;font-size:16px!important;line-height:1.5!important;font-weight:800!important;color:#e32526!important}
+#page#page#page #pageContent .butfit-info-board .butfit-pricing-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:40px!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important}
+#page#page#page #pageContent .butfit-info-board .butfit-pricing-grid article{min-height:0!important;height:auto!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .butfit-info-board .butfit-pricing-grid small{display:block!important;margin:0 0 6px!important;font-size:14px!important;line-height:1.5!important;font-weight:500!important;color:#6b7380!important}
+#page#page#page #pageContent .butfit-info-board .butfit-pricing-grid strong{display:block!important;margin:0!important;font-size:28px!important;line-height:1.3!important;font-weight:800!important;letter-spacing:-.01em!important;color:#14181e!important}
+#page#page#page #pageContent .butfit-info-board .butfit-pricing-grid article:nth-child(-n+2) strong{color:#e32526!important}
+
+/* 신청 및 문의 */
+#page#page#page #pageContent .butfit-info-board .butfit-contact-card{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:40px!important;align-items:center!important;min-height:0!important;margin:0!important;padding:36px 0 0!important;background:transparent!important;background-image:none!important;border:0!important;border-top:1px solid #14181e!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .butfit-info-board .butfit-contact-card>div{width:auto!important;min-height:0!important;margin:0!important;padding:0!important;background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;text-align:left!important}
+#page#page#page #pageContent .butfit-info-board .butfit-contact-card small,#page#page#page #pageContent .butfit-info-board .butfit-contact-name span{display:block!important;margin:0 0 4px!important;font-size:14px!important;line-height:1.5!important;font-weight:500!important;color:#6b7380!important}
+#page#page#page #pageContent .butfit-info-board .butfit-contact-card h3,#page#page#page #pageContent .butfit-info-board .butfit-contact-name strong{display:block!important;margin:0!important;font-size:18px!important;line-height:1.45!important;font-weight:800!important;color:#14181e!important}
+
+@media(max-width:760px){
+  #page#page#page #pageContent:has(.butfit-info-board){padding:32px 20px 72px!important}
+  #page#page#page #pageContent .butfit-info-board .butfit-membership-hero{padding-bottom:36px!important}
+  #page#page#page #pageContent .butfit-info-board .butfit-membership-hero h3{font-size:28px!important}
+  #page#page#page #pageContent .butfit-info-board .butfit-membership-hero p{font-size:15px!important}
+  #page#page#page #pageContent .butfit-info-board .butfit-pricing-card{padding:30px 0!important}
+  #page#page#page #pageContent .butfit-info-board .butfit-pricing-head strong{font-size:20px!important}
+  #page#page#page #pageContent .butfit-info-board .butfit-pricing-head span{font-size:15px!important}
+  #page#page#page #pageContent .butfit-info-board .butfit-pricing-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:24px 16px!important}
+  #page#page#page #pageContent .butfit-info-board .butfit-pricing-grid strong{font-size:22px!important}
+  #page#page#page #pageContent .butfit-info-board .butfit-contact-card{grid-template-columns:minmax(0,1fr)!important;gap:18px!important;padding-top:28px!important}
+}
+
+
+/* 평가제도: 박스 없이 여백, 얇은 선, 로고 빨강 글자로 구분 */
+#page#page#page:has(.evaluation-flow-v2){background:#fff!important}
+#page#page#page #pageContent:has(.evaluation-flow-v2){display:block!important;width:auto!important;max-width:1120px!important;min-height:0!important;margin:0 auto!important;padding:64px 32px 104px!important;background:transparent!important;border:0!important;box-shadow:none!important;animation:none!important;transform:none!important;transition:none!important}
+#page#page#page #pageContent:has(.evaluation-flow-v2)::before,#page#page#page #pageContent:has(.evaluation-flow-v2)::after{display:none!important}
+#page#page#page #pageContent:has(.evaluation-flow-v2)>*{animation:none!important;transform:none!important;opacity:1}
+#page#page#page #pageContent .evaluation-flow-v2{display:block!important;width:auto!important;max-width:none!important;min-height:0!important;margin:0!important;padding:0!important;background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .evaluation-flow-v2::before,#page#page#page #pageContent .evaluation-flow-v2::after,#page#page#page #pageContent .evaluation-flow-v2 *::before,#page#page#page #pageContent .evaluation-flow-v2 *::after{display:none!important}
+#page#page#page #pageContent .evaluation-flow-v2 *{animation:none!important;transform:none!important}
+
+/* 제목 */
+#page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-head{display:block!important;min-height:0!important;margin:0!important;padding:0 0 64px!important;background:transparent!important;border:0!important;box-shadow:none!important}
+#page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-head>div{display:block!important;margin:0!important;padding:0!important}
+#page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-head span{display:none!important}
+#page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-head h3{margin:0!important;padding:0!important;font-size:40px!important;line-height:1.25!important;letter-spacing:-.02em!important;font-weight:800!important;color:#14181e!important}
+#page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-head p{max-width:680px!important;margin:14px 0 0!important;padding:0!important;border:0!important;font-size:16px!important;line-height:1.75!important;text-align:left!important;color:#4d5560!important}
+
+/* 평가 두 줄 */
+#page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-list{display:block!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;gap:0!important}
+#page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-list article{display:grid!important;grid-template-columns:300px minmax(0,1fr)!important;gap:40px!important;align-items:center!important;min-height:0!important;margin:0!important;padding:44px 0!important;background:transparent!important;background-image:none!important;border:0!important;border-top:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-name{display:flex!important;align-items:baseline!important;gap:16px!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important}
+#page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-name span{display:inline!important;width:auto!important;height:auto!important;min-width:0!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;font-size:32px!important;line-height:1!important;font-weight:800!important;color:#e32526!important}
+#page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-name small{display:none!important}
+#page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-name h4{margin:0!important;padding:0!important;font-size:24px!important;line-height:1.35!important;font-weight:800!important;color:#14181e!important}
+#page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-track{display:grid!important;grid-template-columns:minmax(0,.8fr) minmax(0,.8fr) minmax(0,1.6fr)!important;gap:40px!important;align-items:center!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important}
+#page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-track>i{display:none!important}
+#page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-track>div{display:block!important;min-height:0!important;height:auto!important;margin:0!important;padding:0!important;background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;text-align:left!important}
+#page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-track small{display:block!important;margin:0 0 6px!important;font-size:14px!important;line-height:1.5!important;font-weight:500!important;color:#6b7380!important}
+#page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-track strong{display:block!important;margin:0!important;font-size:18px!important;line-height:1.5!important;font-weight:800!important;color:#14181e!important}
+#page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-track .evaluation-flow-focus strong{color:#e32526!important}
+
+/* 일정 확인 */
+#page#page#page #pageContent .evaluation-flow-v2>footer{display:flex!important;align-items:baseline!important;justify-content:flex-start!important;gap:16px!important;min-height:0!important;margin:0!important;padding:36px 0 0!important;background:transparent!important;background-image:none!important;border:0!important;border-top:1px solid #14181e!important;border-radius:0!important;box-shadow:none!important;text-align:left!important}
+#page#page#page #pageContent .evaluation-flow-v2>footer span{display:inline!important;margin:0!important;padding:0!important;background:transparent!important;font-size:14px!important;line-height:1.5!important;font-weight:500!important;color:#6b7380!important}
+#page#page#page #pageContent .evaluation-flow-v2>footer strong{display:inline!important;margin:0!important;font-size:18px!important;line-height:1.5!important;font-weight:800!important;color:#14181e!important}
+
+@media(max-width:760px){
+  #page#page#page #pageContent:has(.evaluation-flow-v2){padding:32px 20px 72px!important}
+  #page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-head{padding-bottom:36px!important}
+  #page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-head h3{font-size:28px!important}
+  #page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-head p{font-size:15px!important}
+  #page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-list article{grid-template-columns:minmax(0,1fr)!important;gap:20px!important;padding:30px 0!important}
+  #page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-name span{font-size:26px!important}
+  #page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-name h4{font-size:20px!important}
+  #page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-track{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px 16px!important}
+  #page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-track .evaluation-flow-focus{grid-column:1/-1!important}
+  #page#page#page #pageContent .evaluation-flow-v2 .evaluation-flow-track strong{font-size:16px!important}
+  #page#page#page #pageContent .evaluation-flow-v2>footer{display:block!important;padding-top:28px!important}
+  #page#page#page #pageContent .evaluation-flow-v2>footer span,#page#page#page #pageContent .evaluation-flow-v2>footer strong{display:block!important}
+  #page#page#page #pageContent .evaluation-flow-v2>footer span{margin-bottom:4px!important}
+}
+
+
+/* 업무 지원제도: 박스 없이 여백, 얇은 선, 로고 빨강 글자로 구분 */
+#page#page#page:has(.work-support-guide){background:#fff!important}
+#page#page#page #pageContent:has(.work-support-guide){display:block!important;width:auto!important;max-width:1120px!important;min-height:0!important;margin:0 auto!important;padding:64px 32px 104px!important;background:transparent!important;border:0!important;box-shadow:none!important;animation:none!important;transform:none!important;transition:none!important}
+#page#page#page #pageContent:has(.work-support-guide)::before,#page#page#page #pageContent:has(.work-support-guide)::after{display:none!important}
+#page#page#page #pageContent:has(.work-support-guide)>*{animation:none!important;transform:none!important;opacity:1}
+#page#page#page #pageContent .work-support-guide{display:block!important;width:auto!important;max-width:none!important;min-height:0!important;margin:0!important;padding:0!important;background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .work-support-guide::before,#page#page#page #pageContent .work-support-guide::after,#page#page#page #pageContent .work-support-guide *::before,#page#page#page #pageContent .work-support-guide *::after{display:none!important}
+#page#page#page #pageContent .work-support-guide *{animation:none!important;transform:none!important}
+
+/* 제목 */
+#page#page#page #pageContent .work-support-guide .work-support-head{display:block!important;min-height:0!important;margin:0!important;padding:0 0 64px!important;background:transparent!important;border:0!important;box-shadow:none!important}
+#page#page#page #pageContent .work-support-guide .work-support-head>div{display:block!important;margin:0!important;padding:0!important}
+#page#page#page #pageContent .work-support-guide .work-support-head span{display:none!important}
+#page#page#page #pageContent .work-support-guide .work-support-head h3{margin:0!important;padding:0!important;font-size:40px!important;line-height:1.25!important;letter-spacing:-.02em!important;font-weight:800!important;color:#14181e!important}
+#page#page#page #pageContent .work-support-guide .work-support-head p{max-width:680px!important;margin:14px 0 0!important;padding:0!important;border:0!important;font-size:16px!important;line-height:1.75!important;text-align:left!important;color:#4d5560!important}
+
+/* 문서 묶음 */
+#page#page#page #pageContent .work-support-guide .work-support-groups{display:block!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;gap:0!important}
+#page#page#page #pageContent .work-support-guide .work-support-group{display:grid!important;grid-template-columns:300px minmax(0,1fr)!important;gap:40px!important;align-items:center!important;min-height:0!important;margin:0!important;padding:40px 0!important;background:transparent!important;background-image:none!important;border:0!important;border-top:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important}
+#page#page#page #pageContent .work-support-guide .work-support-group-title{display:flex!important;align-items:baseline!important;gap:16px!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important}
+#page#page#page #pageContent .work-support-guide .work-support-group-title b{display:inline!important;width:auto!important;height:auto!important;min-width:0!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;font-size:32px!important;line-height:1!important;font-weight:800!important;color:#e32526!important}
+#page#page#page #pageContent .work-support-guide .work-support-group-title>div{display:block!important;margin:0!important;padding:0!important}
+#page#page#page #pageContent .work-support-guide .work-support-group-title small{display:none!important}
+#page#page#page #pageContent .work-support-guide .work-support-group-title h4{margin:0!important;padding:0!important;font-size:24px!important;line-height:1.35!important;font-weight:800!important;color:#14181e!important}
+#page#page#page #pageContent .work-support-guide .work-support-links{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px 40px!important;align-items:center!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important}
+#page#page#page #pageContent .work-support-guide .work-support-links a{display:inline-flex!important;align-items:center!important;justify-content:flex-start!important;gap:8px!important;width:auto!important;min-height:0!important;height:auto!important;margin:0!important;padding:4px 0!important;background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;color:#14181e!important;text-decoration:none!important}
+#page#page#page #pageContent .work-support-guide .work-support-links a span{display:block!important;margin:0!important;padding:0!important}
+#page#page#page #pageContent .work-support-guide .work-support-links a small{display:none!important}
+#page#page#page #pageContent .work-support-guide .work-support-links a strong{display:block!important;margin:0!important;font-size:18px!important;line-height:1.5!important;font-weight:800!important;color:inherit!important}
+#page#page#page #pageContent .work-support-guide .work-support-links a i{display:inline!important;width:auto!important;height:auto!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;font-style:normal!important;font-size:17px!important;line-height:1!important;font-weight:700!important;color:#e32526!important}
+#page#page#page #pageContent .work-support-guide .work-support-links a:hover{color:#e32526!important}
+#page#page#page #pageContent .work-support-guide .work-support-links a:hover strong{text-decoration:underline!important;text-underline-offset:4px!important}
+#page#page#page #pageContent .work-support-guide .work-support-links a:focus-visible{outline:2px solid #e32526!important;outline-offset:3px!important}
+
+/* 안내 */
+#page#page#page #pageContent .work-support-guide .work-support-note{margin:0!important;padding:32px 0 0!important;background:transparent!important;border:0!important;border-top:1px solid #14181e!important;border-radius:0!important;box-shadow:none!important;font-size:15px!important;line-height:1.7!important;text-align:left!important;color:#4d5560!important}
+
+@media(max-width:760px){
+  #page#page#page #pageContent:has(.work-support-guide){padding:32px 20px 72px!important}
+  #page#page#page #pageContent .work-support-guide .work-support-head{padding-bottom:36px!important}
+  #page#page#page #pageContent .work-support-guide .work-support-head h3{font-size:28px!important}
+  #page#page#page #pageContent .work-support-guide .work-support-head p{font-size:15px!important}
+  #page#page#page #pageContent .work-support-guide .work-support-group{grid-template-columns:minmax(0,1fr)!important;gap:16px!important;padding:28px 0!important}
+  #page#page#page #pageContent .work-support-guide .work-support-group-title b{font-size:26px!important}
+  #page#page#page #pageContent .work-support-guide .work-support-group-title h4{font-size:20px!important}
+  #page#page#page #pageContent .work-support-guide .work-support-links{grid-template-columns:minmax(0,1fr)!important;gap:6px!important}
+  #page#page#page #pageContent .work-support-guide .work-support-links a strong{font-size:17px!important}
+  #page#page#page #pageContent .work-support-guide .work-support-note{padding-top:24px!important;font-size:14px!important}
+}
+
+
+/* 호칭 가이드: 박스 없이 여백, 얇은 선, 로고 빨강 글자로 구분 */
+#page#page#page:has(.title-guide-restored){background:#fff!important}
+#page#page#page #pageContent:has(.title-guide-restored){display:block!important;width:auto!important;max-width:1120px!important;min-height:0!important;margin:0 auto!important;padding:64px 32px 104px!important;background:transparent!important;border:0!important;box-shadow:none!important;animation:none!important;transform:none!important;transition:none!important}
+#page#page#page #pageContent:has(.title-guide-restored)::before,#page#page#page #pageContent:has(.title-guide-restored)::after,#page#page#page #pageContent:has(.title-guide-restored)>h2::before,#page#page#page #pageContent:has(.title-guide-restored)>h2::after{display:none!important}
+#page#page#page #pageContent:has(.title-guide-restored)>*{animation:none!important;transform:none!important;opacity:1}
+#page#page#page #pageContent:has(.title-guide-restored)>h2{position:static!important;display:block!important;width:auto!important;height:auto!important;min-height:0!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;font-size:40px!important;line-height:1.25!important;letter-spacing:-.02em!important;font-weight:800!important;text-align:left!important;color:#14181e!important}
+#page#page#page #pageContent .title-guide-restored{display:block!important;width:auto!important;max-width:none!important;min-height:0!important;margin:0!important;padding:0!important;background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+#page#page#page #pageContent .title-guide-restored::before,#page#page#page #pageContent .title-guide-restored::after,#page#page#page #pageContent .title-guide-restored *::before,#page#page#page #pageContent .title-guide-restored *::after{display:none!important}
+#page#page#page #pageContent .title-guide-restored *{animation:none!important;transform:none!important}
+
+/* 안내 문장 */
+#page#page#page #pageContent .title-guide-restored .tg-lead{max-width:760px!important;margin:14px 0 0!important;padding:0 0 64px!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;font-size:16px!important;line-height:1.75!important;font-weight:400!important;text-align:left!important;color:#4d5560!important}
+#page#page#page #pageContent .title-guide-restored .tg-lead strong{display:inline!important;padding:0!important;background:transparent!important;font-weight:800!important;color:#e32526!important}
+
+/* 호칭 규칙 */
+#page#page#page #pageContent .title-guide-restored .tg-rules{display:block!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-bottom:1px solid #14181e!important;gap:0!important}
+#page#page#page #pageContent .title-guide-restored .tg-rules article{display:grid!important;grid-template-columns:220px 300px minmax(0,1fr)!important;grid-template-rows:auto auto!important;column-gap:40px!important;row-gap:4px!important;align-items:center!important;min-height:0!important;height:auto!important;margin:0!important;padding:36px 0!important;background:transparent!important;background-image:none!important;border:0!important;border-top:1px solid #d7dbe0!important;border-radius:0!important;box-shadow:none!important;text-align:left!important}
+#page#page#page #pageContent .title-guide-restored .tg-rules article>span{grid-column:1!important;grid-row:1/3!important;display:block!important;width:auto!important;height:auto!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;font-size:18px!important;line-height:1.45!important;font-weight:800!important;color:#14181e!important}
+#page#page#page #pageContent .title-guide-restored .tg-rules article>strong{grid-column:2!important;grid-row:1/3!important;display:block!important;margin:0!important;padding:0!important;font-size:24px!important;line-height:1.35!important;font-weight:800!important;letter-spacing:-.01em!important;color:#14181e!important}
+#page#page#page #pageContent .title-guide-restored .tg-rules article.tg-main>strong{color:#e32526!important}
+#page#page#page #pageContent .title-guide-restored .tg-rules article>strong em{margin-left:2px!important;font-style:normal!important;font-size:18px!important;font-weight:700!important;color:#6b7380!important}
+#page#page#page #pageContent .title-guide-restored .tg-rules article>p{grid-column:3!important;grid-row:1!important;align-self:end!important;margin:0!important;padding:0!important;font-size:15px!important;line-height:1.7!important;color:#4d5560!important}
+#page#page#page #pageContent .title-guide-restored .tg-rules article>small{grid-column:3!important;grid-row:2!important;align-self:start!important;display:block!important;margin:0!important;padding:0!important;background:transparent!important;border:0!important;font-size:14px!important;line-height:1.6!important;font-weight:600!important;color:#14181e!important}
+#page#page#page #pageContent .title-guide-restored .tg-rules article:not(:has(small))>p{grid-row:1/3!important;align-self:center!important}
+
+@media(max-width:760px){
+  #page#page#page #pageContent:has(.title-guide-restored){padding:32px 20px 72px!important}
+  #page#page#page #pageContent:has(.title-guide-restored)>h2{font-size:28px!important}
+  #page#page#page #pageContent .title-guide-restored .tg-lead{padding-bottom:36px!important;font-size:15px!important}
+  #page#page#page #pageContent .title-guide-restored .tg-rules article{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:none!important;row-gap:6px!important;padding:26px 0!important}
+  #page#page#page #pageContent .title-guide-restored .tg-rules article>span,#page#page#page #pageContent .title-guide-restored .tg-rules article>strong,#page#page#page #pageContent .title-guide-restored .tg-rules article>p,#page#page#page #pageContent .title-guide-restored .tg-rules article>small,#page#page#page #pageContent .title-guide-restored .tg-rules article:not(:has(small))>p{grid-column:1!important;grid-row:auto!important;align-self:start!important}
+  #page#page#page #pageContent .title-guide-restored .tg-rules article>span{font-size:14px!important;font-weight:600!important;color:#6b7380!important}
+  #page#page#page #pageContent .title-guide-restored .tg-rules article>strong{margin-bottom:4px!important;font-size:21px!important}
+  #page#page#page #pageContent .title-guide-restored .tg-rules article>strong em{font-size:16px!important}
 }
