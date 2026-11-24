@@ -1174,7 +1174,8 @@ html body .header-dropdown button:is(:hover,:focus-visible){
 .required-flow .rf-copy b{font-weight:700;color:#14181e}
 .rf-side{min-width:0}
 
-.rf-access{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:64px}
+.rf-access{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 24px;min-height:64px}
+.rf-access>div{min-width:0}
 .rf-access small{display:block;margin-bottom:4px;font-size:14px;color:#6b7380}
 .rf-access strong{display:block;font-size:22px;line-height:1.35;font-weight:800;color:#e32526;overflow-wrap:anywhere}
 .rf-access a{flex:none;display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:4px;background:#e32526;color:#fff;font-size:15px;font-weight:700;text-decoration:none;transition:background-color .15s}
